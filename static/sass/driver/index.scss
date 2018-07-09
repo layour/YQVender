@@ -1,0 +1,97 @@
+@import "../style";
+@import "../base";
+#index {
+  .content {
+    background-color: #fff;
+    .banner {
+      padding-bottom: 0;
+      img {
+        width: 100%;
+        height: 8rem;
+      }
+      .swiper-pagination {
+        bottom: 0rem !important;
+        .swiper-pagination-bullet-active{
+          background: $themeRed;
+        }
+      }
+    }
+    .menu{
+      background: #fff;
+      text-align: center;
+      font-size: .6rem;
+      align-items: center;
+      justify-items:center;
+      padding: 0.2rem 0;
+      a{
+        color: $color-black;
+      }
+      .active{
+        color: $themeColor;
+      }
+      img{
+        width: 1.8rem;
+        vertical-align: middle;
+        display: block;
+        margin:  0 auto .2rem;
+      }
+    }
+    .list-block{
+      ul{
+        background: #eee !important;
+        li{
+          background: #fff;
+          margin-bottom: .25rem;
+        }
+      }
+    }
+    .list-box{
+      padding: .2rem .75rem .2rem 0;
+      align-items: center;
+      width: 100%;
+      .starNum{
+        .xing {
+          width: .7rem;
+          height: .7rem;
+          background: url("../../img/star1.png") no-repeat;
+          background-size: 100% 100%;
+          display: inline-block;
+        }
+      }
+      .bt{
+        color: #333;
+        font-size: .6rem;
+        font-weight: 700;
+      }
+      .distance{
+        font-size: .6rem;
+        color: #a09d9d;
+      }
+      img{
+        width: 6rem;
+        height: 4rem;
+        margin-right: .5rem;
+      }
+      .price-box{
+        font-size: .6rem;
+        line-height: 1.2rem;
+        color: #999;
+        align-items: flex-end;
+        width: 100%;
+        .price{
+          font-size: .7rem;
+          color: $themeColor;
+          font-weight: 700;
+          margin-right: .2rem;
+        }
+      }
+      .more{
+        font-size: .6rem;
+        color: $themeColor;
+        padding: 0 .3rem;
+        border-radius: .3rem;
+        background: #f2f2f2;
+      }
+    }
+  }
+}

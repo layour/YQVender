@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>充值详情</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.listForm.css">
+</head>
+<body>
+<div class="page-group" id="list_form">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./index.html?orgin=recharge" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">充值详情</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0 list-xx">
+                <ul id="list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="popup registerPageTwo" id="registerPageTwo">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup">
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">发票申请说明</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="p20 font12">
+                <p> 1、申请发票后，在15个工作内开出</p>
+                <p> 2、只能申请最近1年的发票信息</p>
+                <p> 3、只能开与实际消费金额等值的发票</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="form" type="text/html">
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">充值金额(豆):</div>
+                <div class="item-input">
+                    {{rechargeAmount}}
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">到账能源豆:</div>
+                <div class="item-input">
+                    {{rechargeAmount}}
+                </div>
+            </div>
+        </div>
+    </li>
+    {{#consumCategory}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">消费科目:</div>
+                <div class="item-input">
+                    {{consumCategory}}
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/consumCategory}}
+    {{#amountReceiptNo}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">流水号:</div>
+                <div class="item-input">
+                    {{amountReceiptNo}}
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/amountReceiptNo}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">用户手机号:</div>
+                <div class="item-input">
+                    {{userMobile}}
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">充值方式:</div>
+                <div class="item-input">
+                    {{rechargeMethod}}
+                </div>
+            </div>
+        </div>
+    </li>
+    {{#amountSourceAccount}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">资金来源账号:</div>
+                <div class="item-input">
+                    {{amountSourceAccount}}
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/amountSourceAccount}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">充值时间:</div>
+                <div class="item-input">
+                    {{rechargeTime}}
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">充值状态:</div>
+                <div class="item-input">
+                    {{status_txt}}
+                </div>
+            </div>
+        </div>
+    </li>
+    {{#invoiceApplyStatus}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">发票状态</div>
+                <div class="item-input">
+                    {{invoiceApplyStatus}}
+                    {{#isgoinvoice}}
+                    <a href="./invoiceApplication.html?id={{id}}" class="close-popup">去开发票</a>
+                    {{/isgoinvoice}}
+                    <span  class="open-popup" data-popup=".registerPageTwo" style="background: #0894ec;color: #fff;  border-radius: 50%;  padding: 0 .25rem;">?</span>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/invoiceApplyStatus}}
+    {{^invoiceApplyStatus}}
+    {{#status}}
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title label w45p bt-labels">发票状态</div>
+                <div class="item-input">
+                    {{#isgoinvoice}}
+                    <a href="./invoiceApplication.html?id={{id}}" class="close-popup">去开发票</a>
+                    {{/isgoinvoice}}
+                    <span class="open-popup" data-popup=".registerPageTwo"
+                          style="background: #0894ec;color: #fff;  border-radius: 50%;  padding: 0 .25rem;">?</span>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/status}}
+    {{/invoiceApplyStatus}}
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.rechargeDetail.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>我的钱包</title>
+    <link rel="stylesheet" href="../../static/css/app/vender.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="wallet" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./me.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">我的钱包</h1>
+        </header>
+        <div class="content native-scroll dis-n">
+            <div class="list-block mt0">
+                <div class="wallet-box">
+                    <div class="wallet-top-box">
+                        <div class="flex-box top">
+                            <div class="flex-box-1">账户能源豆</div>
+                            <div id="collectAmount">0.00</div>
+                        </div>
+                        <div class="mt10 yqSite">可提现能源豆</div>
+                        <div class="flex-box yqSite">
+                            <div class="flex-box flex-box-1">
+                                <div class="mr10">可用:</div>
+                                <div class="collectAmount">0.00</div>
+                            </div>
+                            <div class="flex-box flex-box-1 txt-r">
+                                <div class="mr10">冻结:</div>
+                                <div class="lockAmount">0.00</div>
+                            </div>
+                        </div>
+                        <div class="mt10">可转账能源豆</div>
+                        <div class="flex-box">
+                            <div class="flex-box flex-box-1">
+                                <div class="mr10">可用:</div>
+                                <div id="rechargeAmount">0.00</div>
+                            </div>
+                            <!--<div class="flex-box flex-box-1 txt-r">-->
+                                <!--<div class="mr10">冻结:</div>-->
+                                <!--<div class="lockAmount">0.00</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <div class="list-block mt10">
+                        <ul>
+                            <li>
+                                <a href="./cashWithdrawal.html" class="item-link item-content GasStation  close-popup">
+                                    <div class="item-inner">
+                                        <div class="item-title">资金提现</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./withdrawalsRecord.html" class="item-link item-content GasStation close-popup">
+                                    <div class="item-inner">
+                                        <div class="item-title">提现记录</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./receiptRecord.html" class="item-link item-content GasStation  close-popup">
+                                    <div class="item-inner">
+                                        <div class="item-title">收款记录</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./transferRecord.html" class="item-link item-content LogisticsProviders  close-popup">
+                                    <div class="item-inner">
+                                        <div class="item-title">转账记录</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./BankCard.html" class="item-link item-content  close-popup">
+                                    <div class="item-inner">
+                                        <div class="item-title">银行卡</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../../static/js/app/vender.wallet.js' charset='utf-8'></script>
+</body>
+</html>

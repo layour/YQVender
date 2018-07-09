@@ -1,0 +1,514 @@
+<?xml version="1.0"?>
+<project name="ZhongxinEnergy" default="build">
+    <!--yuicompressor程序路径-->
+    <property name="yuicompressor.path" location="${current.dir}/yuicompressor/yuicompressor.jar"/>
+    <property name="closure.path" location="${current.dir}/closure-compiler/compiler.jar"/>
+    <target name="build">
+        <concat destfile="js/app/driver.index.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/index.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.detail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/detail.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.site.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/site.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.find.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/find.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.findList.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/findlist.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.findDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/findDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.me.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/me.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.modify.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/sui/sm-city-picker.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/modify.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.recharge.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/recharge.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.setPassWord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/setPassWord.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.forgetWord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/forgetWord.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.consumerList.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/consumerList.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.consumerReturnRecord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/consumerReturnRecord.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.rechargeList.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/rechargeList.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.consumeDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/consumeDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.rechargeDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/rechargeDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.messagePublic.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/sui/sm-city-picker.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/messagePublic.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.messagModify.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/sui/sm-city-picker.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/messagModify.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.transferRecord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/transferRecord.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.message.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/message.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.messageDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/messgeDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.transfer.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/transfer.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.record.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/record.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.invoiceApplication.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.js"></path>
+            <path path="js/lib/sui/sm-city-picker.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/invoiceApplication.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.set.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/set.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.wallet.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/wallet.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.loginRegister.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/login.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.setPassWord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/setPassWord.js"></path>
+        </concat>
+        <concat destfile="js/app/driver.version.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/driver/version.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.loginRegister.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/login.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.index.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/vender/index.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.venderDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/vender/venderDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.receipt.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/qrcode.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/receipt.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.transfer.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/transfer.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.transferDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/transferDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.recharge.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/recharge.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.rechargeDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/rechargeDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.find.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/vender/find.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.findList.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/vender/findlist.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.findDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/vender/findDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.messageList.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/vender/messageList.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.messagePublic.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.js"></path>
+            <path path="js/lib/sui/sm-city-picker.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/messagePublic.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.messageDetail.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/messageDetail.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.me.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/me.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.OilAndGas.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/OilAndGas.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.OilAndGasList.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-extend.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/OilAndGasList.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.cashWithdrawal.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/cashWithdrawal.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.certification.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/certification.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.set.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/set.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.wallet.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/wallet.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.WithdrawalsRecord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/WithdrawalsRecord.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.receiptRecord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/receiptRecord.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.transferRecord.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/transferRecord.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.BankCard.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/BankCard.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.addBank.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/addBank.js"></path>
+        </concat>
+        <concat destfile="js/app/vender.invoiceApply.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+            <path path="js/lib/sui/sm-city-picker.js"></path>
+            <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/invoiceApply.js"></path>
+        </concat>
+        <concat destfile="js/app/common.base.js" encoding="utf8">
+            <path path="js/lib/zepto.js"></path>
+            <path path="js/lib/sui/sm.min.js"></path>
+        </concat>
+        <concat destfile="css/app/driver.index.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/lib/sui/sm-extend.min.css"></path>
+            <path path="css/driver/index.css"></path>
+        </concat>
+        <concat destfile="css/app/driver.me.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/driver/me.css"></path>
+        </concat>
+        <concat destfile="css/app/driver.recordList.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/driver/recordList.css"></path>
+        </concat>
+        <concat destfile="css/app/driver.detail.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/driver/detail.css"></path>
+        </concat>
+        <concat destfile="css/app/driver.find.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/lib/sui/sm-extend.min.css"></path>
+            <path path="css/driver/find.css"></path>
+        </concat>
+        <concat destfile="css/app/driver.loginRegister.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/driver/registerLogin.css"></path>
+        </concat>
+        <concat destfile="css/app/driver.form.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/driver/form.css"></path>
+        </concat>
+        <concat destfile="css/app/vender.recordList.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/vender/recordList.css"></path>
+        </concat>
+        <concat destfile="css/app/vender.loginRegister.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/vender/form.css"></path>
+        </concat>
+        <concat destfile="css/app/vender.index.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/lib/sui/sm-extend.min.css"></path>
+            <path path="css/vender/index.css"></path>
+        </concat>
+        <concat destfile="css/app/vender.listForm.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/lib/sui/sm-extend.min.css"></path>
+            <path path="css/vender/listForm.css"></path>
+        </concat>
+        <concat destfile="css/app/vender.find.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/lib/sui/sm-extend.min.css"></path>
+            <path path="css/vender/find.css"></path>
+        </concat>
+        <concat destfile="css/app/vender.me.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/lib/sui/sm-extend.min.css"></path>
+            <path path="css/vender/me.css"></path>
+        </concat>
+        <concat destfile="css/app/common.base.css" encoding="utf8">
+            <path path="css/lib/sui/sm.min.css"></path>
+            <path path="css/base.css"></path>
+        </concat>
+    </target>
+</project>

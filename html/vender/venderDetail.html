@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>站点详情</title>
+    <link rel="stylesheet" href="../../static/css/app/vender.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div  class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./me.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">站点详情</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0 list-xx">
+                <ul id="list_dom">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="list">
+    {{#companyType}}
+        <li class="item-content">
+            <div class="item-inner">
+                <div class="item-title w100p">
+                    <div class="flex-box">
+                        <div class="flex-box-1 bt-labels">站点类型</div>
+                        <div>{{companyType}}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/companyType}}
+    {{#userName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">站点名称</div>
+                    <div>{{userName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/userName}}
+    {{#loginName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">站点联系人</div>
+                    <div>{{loginName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/loginName}}
+    {{#mobile}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">联系电话</div>
+                    <div> <a href="tel:{{mobile}}">{{mobile}}</a></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/mobile}}
+    {{#address}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">注册地址</div>
+                    <div class="auto-line">{{address}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/address}}
+    {{#sitePicPath}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">站点图片</div>
+                    <div> <img src="/app{{sitePicPath}}" width="80" height="50" onerror="this.src='../../static/img/default.png'"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/sitePicPath}}
+
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.venderDetail.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+@import "style";
+@import "base";
+.limit-length{
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+#find {
+  .banner {
+    padding-bottom: 0;
+    img {
+      width: 100%;
+      height: 10rem;
+    }
+  }
+  .out-link {
+    > div {
+      //border-right: .05rem solid $border-light-grey;
+      border-bottom: .05rem solid $border-light-grey;
+      height: 4rem;
+      background: #fff;
+      text-align: center;
+    }
+    > div:last-child {
+      border-right: none;
+    }
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: $color-black;
+      font-size: .6rem;
+      line-height: 1rem;
+    }
+    img {
+      width: 2rem;
+      height: 2rem;
+      display: block;
+      margin: .35rem auto;
+      border-radius: .5rem;
+    }
+  }
+  .find-list {
+    .item-title {
+      font-size: .7rem;
+      color: $color-black;
+      white-space: normal;
+      .label-block {
+        width: 6rem;
+        margin-right: .4rem;
+      }
+      .label-box {
+        width: 3rem;
+      }
+    }
+  }
+  .filter-pop-box{
+    position: fixed;
+    right: 1rem;
+    top: 10rem;
+  }
+}

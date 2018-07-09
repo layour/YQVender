@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>我的账户</title>
+    <link rel="stylesheet" href="../../static/css/lib/sui/sm.css">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <style>
+        .pay-box{
+            padding: .6rem;
+            text-align: center;
+            font-size: .6rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div id="account" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./wallet.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">我的账户</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0">
+                <div class="account-box">
+                    <div class="flex-box">
+                        <div class="flex-box-1">总积分</div>
+                        <div><span id="score" class="mr4">0</span>分</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/lib/zepto.js"></script>
+<script type='text/javascript' src='../../static/js/lib/sui/sm.js' charset='utf-8'></script>
+<script src="../../static/js/base.js"></script>
+<script src="../../static/js/config.js"></script>
+<script src="../../static/js/me.js"></script>
+<script>
+$("#score").html(getCookie("score"));
+</script>
+</body>
+</html>

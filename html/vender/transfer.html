@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>转账</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.listForm.css">
+</head>
+<body>
+<div class="page-group" id="list_form">
+    <div class="page page-current" id="loginPage">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./index.html?orgin=transfer" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">转账</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0 list-xx">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">对方姓名</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入对方姓名" id="receiveUserName">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">对方手机号</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入对方手机号" id="receiveUserMobile">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">转账能源豆</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请输入转账金额" id="amount">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-input">
+                                    <textarea id="comm" placeholder="备注说明"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a href="javascript:;" class="button button-big button-theme" id="next">转账</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup registerPageTwo" id="registerPageTwo">
+        <header class="bar bar-nav">
+            <h1 class="title">确认转账</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0">
+                <ul id="list">
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">对方姓名:</div>
+                                <div class="item-input receiveUserName">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">转账手机号:</div>
+                                <div class="item-input receiveUserMobile">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">转账能源豆:</div>
+                                <div class="item-input amount">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a href="javascript:;" class="button button-big  close-popup" id="cancel">返回</a></div>
+                    <div class="col-50"><a href="javascript:;" class="button button-big button-theme" id="submit">转账</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../../static/js/app/vender.transfer.js' charset='utf-8'></script>
+</body>
+</html>

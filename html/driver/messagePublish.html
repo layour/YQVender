@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>车源信息</title>
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="account" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./consumptionCategory.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">车源信息</h1>
+        </header>
+        <div class="content native-scroll">
+            <form method="post" action="" id="from">
+                <div class="list-block mt10">
+                    <ul class="login-form-list pb60">
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>信息标题</div>
+                                    <div>
+                                        <input type="text" id="infoTitle" placeholder="请输入信息标题" class="txt-r">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>车型选择</div>
+                                    <div>
+                                        <select name="" id="carType">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>车源图片</div>
+                                    <div>
+                                        <img src="../../static/img/default.svg" id="infoPicPathUrl" width="80" height="50" onerror="this.src='../../static/img/default.svg'">
+                                        <input type="hidden" id="infoPicPath">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>起始地址</div>
+                                    <div class="flex-box address1 address-box">
+                                        <input type="text" id='begin_city_picker' class="txt-r address-choose" placeholder="请输入起始地址" value="" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input type="text" placeholder="请输入详细地址" id="beginAddress">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>目的地</div>
+                                    <div class="flex-box address2 address-box">
+                                        <input type="text" id='end_city_picker' class="txt-r address-choose" placeholder="请输入目的地地址" value="" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input type="text" placeholder="请输入详细地址" id="endAddress">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>出发时间</div>
+                                    <div><input type="text" id="leaveTime" class="txt-r" placeholder="请输入出发时间"  readonly=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <textarea name="" id="infoDetail" class="txt-l" placeholder="请输入信息描述"></textarea>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-block">
+                                <div class="button button-big button-theme" id="next" data-popup=".registerPageTwo">下一步
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup registerPageTwo" id="registerPageTwo">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-right back close-popup">
+                上一步
+            </a>
+            <h1 class="title">支付信息</h1>
+        </header>
+        <div class="content native-scroll p20" id="payMessage">
+            <div class="list-block mt0 bt">
+                <div class="account-box">
+                    <div class="flex-box">
+                        <div class="flex-box-1">信息发布</div>
+                        <div><span class="unit mr4"></span>能源豆/条</div>
+                    </div>
+                    <div class="flex-box">
+                        <div class="mr4">展示时长:</div>
+                        <div><span class="infoNum mr4"></span>天</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-box fee-box" id="feeList">
+
+            </div>
+            <form method="post"  class="form">
+                <div class="list-block mt10">
+                    <ul class="login-form-list">
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input id="mobile" type="tel" name="mobile" placeholder="联系人手机">
+                                    <span class="error-tip"></span>
+                                    <span class="check-icon  icon icon-check"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div class="flex-box">
+                                        <input id="validateCode" type="text" placeholder="请输入短信验证码">
+                                        <div class="getcode" data-timeout="90" data-end="1" data-type="3">获取验证码</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-block pb60">
+                                <div  class="button button-big button-theme" id="submit">支付</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="option">
+    {{#children}}
+    <option value="{{code}}" data-id="{{index}}">{{name}}</option>
+    {{/children}}
+
+</script>
+<script id="list" type="x-tmpl-mustache">
+    {{#data}}
+    <div class="flex-box-1 item" data-id="{{id}}">
+        <div>费用：<span class="money mr4">{{totalFee}}</span>豆</div>
+        <div>时间：<span class="num mr4">{{days}}</span>天</div>
+    </div>
+    {{/data}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.messagePublic.js' charset='utf-8'></script>
+</body>
+</html>

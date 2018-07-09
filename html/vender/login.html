@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.loginRegister.css">
+</head>
+<body>
+<div class="page-group" id="vender_form">
+    <div class="page page-current" id="loginPage">
+        <div class="content">
+            <div class="logo">
+                <div class="logo-box">
+                    <img src="../../static/img/logo.png">
+                </div>
+            </div>
+            <form method="post"  class="form">
+                <div class="list-block mt10">
+                    <ul class="login-form-list">
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input id="loginName" type="text" name="loginName" placeholder="请输入登录账号" data-check="no">
+                                    <span class="error-tip"></span>
+                                    <span class="check-icon  icon icon-check"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input id="loginPwd" type="password" name="loginPwd" placeholder="请输入密码" data-check="no">
+                                    <span class="error-tip"></span>
+                                    <span class="check-icon  icon icon-check"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-block">
+                                <div  class="button button-big button-theme" id="login">登录</div>
+                            </div>
+                        </li>
+                        <li class="agree-agreement">
+                            <div class="flex-box operate-box">
+                                <div class="flex-box-1 txt-l">
+                                    <a href="./register.html" class="close-popup">立即注册</a>
+                                </div>
+                                <div class="flex-box-1 txt-r">
+                                    <a href="./forgetPassword.html" class="close-popup">忘记密码</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../../static/js/app/vender.loginRegister.js' charset='utf-8'></script>
+<script>
+    if(window.gasstation){
+        var loginName = window.gasstation.getCookie("#loginName");
+        var loginPwd = window.gasstation.getCookie("#loginPwd");
+        $("#loginName").val(loginName);
+        $("#loginPwd").val(loginPwd);
+    }
+</script>
+</body>
+</html>

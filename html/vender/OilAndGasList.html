@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>站点油气列表</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.me.css">
+</head>
+<body>
+<div class="page-group" id="OilAndGasList">
+    <div id="page-infinite-scroll-bottom" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="me.html">
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">站点油气列表</h1>
+            <a class="button button-link button-nav pull-right close-popup" href="./index.html">
+                <span class="icon icon-home"></span>
+            </a>
+        </header>
+        <div class="content infinite-scroll native-scroll dis-n" data-distance="100">
+            <div class="list-box">
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a href="./OilAndGas.html" class="button button-big button-theme close-popup">添加</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script id="list" type="text/html">
+    {{#list}}
+    <div class="item">
+        <div class="flex-box">
+            <div class="resource-type-name mr10">{{resourceType}}</div>
+            {{#usedUnitFee}}<div class="flex-box-1"><span class="mr4">协议价: </span><span class="used-unit-fee">{{usedUnitFee}}能源豆/L</span></div>{{/usedUnitFee}}
+            {{^usedUnitFee}}<div class="flex-box-1"><span class="mr4">申请价: </span><span class="used-unit-fee">{{applyUnitFee}}能源豆/L</span></div>{{/usedUnitFee}}
+            {{#isShowAuditStatus}}<div>{{auditStatus}}</div>{{/isShowAuditStatus}}
+        </div>
+        <div class="flex-box">
+            <div class="resource-grade mr10 flex-box-1">{{resourceGrade}}</div>
+            <div class=""><span class="mr4">库存：</span><span class="store-status">{{#storeStatus}}有{{/storeStatus}}{{^storeStatus}}有{{/storeStatus}}</span></div>
+        </div>
+        <div class="row mt10">
+            <div class="col-50">&nbsp;</div>
+            <div class="col-25"><a href="./OilAndGas.html?id={{id}}" class="button modify close-popup">修改</a></div>
+            <div class="col-25"><a href="javascript:;" class="button  button-theme del" data-id="{{id}}">删除</a></div>
+        </div>
+    </div>
+    {{/list}}
+
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.OilAndGasList.js' charset='utf-8'></script>
+</body>
+</html>

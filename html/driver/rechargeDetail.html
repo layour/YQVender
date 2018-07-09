@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>消费详情</title>
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div  class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./rechargeList.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">消费详情</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="list">
+    {{#rechargeTime}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">充值日期</div>
+                    <div>{{rechargeTime}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/rechargeTime}}
+    {{#rechargeAmount}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">充值金额</div>
+                    <div>{{rechargeAmount}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/rechargeAmount}}
+    {{#userMobile}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">充值手机号</div>
+                    <div>{{userMobile}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/userMobile}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">充值状态</div>
+                    <div>{{status_txt}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{#userName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">用户姓名</div>
+                    <div>{{userName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/userName}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.rechargeDetail.js' charset='utf-8'></script>
+</body>
+</html>

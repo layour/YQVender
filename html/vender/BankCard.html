@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的银行卡</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.me.css">
+</head>
+<body>
+<div class="page-group" id="BankCard">
+    <div id="page-infinite-scroll-bottom" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./wallet.html">
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">我的银行卡</h1>
+        </header>
+        <div class="content mt10">
+            <div class="list-box" id="BankCardList">
+
+            </div>
+            <div class="row">
+                <div class="col-100"><a href="./addBnak.html" class="button button-big addBnak close-popup">添加银行卡</a></div>
+            </div>
+            <div style="padding: 0 .65rem;color: #999;font-size: .6rem;">如需修改银行卡信息或审核银行卡,请联系我们的客服人员 0937-5932368</div>
+        </div>
+    </div>
+
+</div>
+
+<script id="list" type="text/html">
+    {{#list}}
+    <div class="item flex-box" data-id = "{{id}}">
+        <div>
+            <div class="bankCardType">{{bankTypeName}}{{#bankStatus}}<small style="
+    margin-left: 20px;
+">{{bankStatus}}</small>{{/bankStatus}}</div>
+            <div class="bankCard">
+               {{bankCardNo}}
+            </div>
+        </div>
+    </div>
+    {{/list}}
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.BankCard.js' charset='utf-8'></script>
+</body>
+</html>

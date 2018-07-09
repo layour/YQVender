@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>信息详情</title>
+    <link rel="stylesheet" href="../../static/css/app/vender.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div  class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./myMessage.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">信息详情</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0 list-xx">
+                <ul id="list_dom">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="list">
+{{#infoTitle}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">信息标题:</div>
+                    <div>{{infoTitle}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/infoTitle}}
+    {{#updateTime}}
+        <li class="item-content">
+            <div class="item-inner">
+                <div class="item-title w100p">
+                    <div class="flex-box">
+                        <div class="flex-box-1 bt-labels">信息日期</div>
+                        <div>{{updateTime}}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/updateTime}}
+    {{#beginAddress}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">起始地</div>
+                    <div class="auto-line">{{beginAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/beginAddress}}
+    {{#endAddress}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">目的地</div>
+                    <div class="auto-line">{{endAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/endAddress}}
+    {{#mobile}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">联系人手机</div>
+                    <div> <a href="tel:{{mobile}}">{{mobile}}</a></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/mobile}}
+    {{#fee}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">订单价格</div>
+                    <div>{{fee}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/fee}}
+    {{#leaveTime}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">出发时间</div>
+                    <div>{{leaveTimes}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/leaveTime}}
+    {{#infoPicPath}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">车辆照片</div>
+                    <div><img src="/app{{infoPicPath}}" width="50" height="30" onerror="this.src='../../static/img/siteImg.jpg'"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/infoPicPath}}
+    {{#venderName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">商家名称</div>
+                    <div>{{venderName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/venderName}}
+    {{#infoDetail}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+               <div>{{infoDetail}}</div>
+            </div>
+        </div>
+    </li>
+    {{/infoDetail}}
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.messageDetail.js' charset='utf-8'></script>
+</body>
+</html>

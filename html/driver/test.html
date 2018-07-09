@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试数据</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/css/app/driver.index.css">
+</head>
+<body>
+<div class="page-group">
+    <div><button id="photo">上传图片</button></div>
+    <div><img src="../../static/img/default.svg"  id="img"></div>
+    <div><button id="latLng">获取经纬度</button></div>
+    <div><button id="navigation">导航</button></div>
+    <div><button id="saveCookie">存储cookie</button></div>
+    <div><button id="getCookie">获取cookie</button></div>
+    <a href="tel:400-618-3066" class="ringUp">400-618-3066</a>
+    <a href="tel://13828172679">13622178579</a>
+</div>
+<script type='text/javascript' src='../../static/js/app/common.base.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../static/js/common/base.js' charset='utf-8'></script>
+<script>
+    if (browser.versions.ios) {
+        $("#photo").on("click",function () {
+            window.gasstation.mapLocation.getPhoto()
+        })
+
+    }else if(browser.versions.android){
+        $("#photo").on("click",function () {
+             window.gasstation.getPhoto();
+        })
+        function setImage(path) {
+            $("#img").attr("src",path);
+        }
+        $("#latLng").on("click",function () {
+            var latLng = window.gasstation.getLocation();
+            var latlng = JSON.parse(latLng)
+            alert(latlng.lat,latlng.lng);
+        })
+        $("#navigation").on("click",function () {
+            var Lng = "116.427281";
+            var lat = "39.903719";
+            window.gasstation.mapLocation(Lng,lat);
+        })
+        $("#saveCookie").on("click",function () {
+            var json = {
+                id:1,
+                password:'123456'
+            }
+            var str = JSON.stringify(json);
+            window.gasstation.saveCookie(str);
+        })
+        $("#getCookie").on("click",function () {
+            var id = window.gasstation.getCookie('id');
+            alert("id"+id);
+        })
+    }else{
+        $.alert("请下载app再进行操作！");
+    }
+</script>
+</body>
+</html>

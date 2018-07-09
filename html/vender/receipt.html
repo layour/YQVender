@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>收款</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.listForm.css">
+</head>
+<body>
+<div class="page-group" id="list_form">
+    <div class="page page-current receipt-page" id="loginPage">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./index.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">收款</h1>
+        </header>
+        <div class="content native-scroll" id="receipt">
+            <div class="list-block mt0 dis-n list-xx">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">油气类型</div>
+                                <div class="item-input">
+                                    <select name="" id="venderResourceId">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">单价(豆/升)</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="" id="usedUnitFee" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">数量(升)</div>
+                                <div class="item-input">
+                                    <div class="item-input">
+                                        <div class="flex-box align-items-center">
+                                            <input type="text" placeholder="请在此输入购买数量" id="consumNum">
+                                            <span class="error-tip"></span>
+                                            <span class="check-icon  icon icon-check"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">总价(豆)</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="请在此输入购买金额" value="" id="consumFee">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label bt-labels">喷枪号</div>
+                                <div class="item-input">
+                                    <select name="" id="resourceOutDeviceNo">
+                                        <option value="">请选择</option>
+                                        <option value="1">1号枪</option>
+                                        <option value="2">2号枪</option>
+                                        <option value="3">3号枪</option>
+                                        <option value="4">4号枪</option>
+                                        <option value="5">5号枪</option>
+                                        <option value="6">6号枪</option>
+                                        <option value="8">8号枪</option>
+                                        <option value="9">9号枪</option>
+                                        <option value="10">10号枪</option>
+                                        <option value="11">11号枪</option>
+                                        <option value="12">12号枪</option>
+                                        <option value="13">13号枪</option>
+                                        <option value="14">14号枪</option>
+                                        <option value="15">15号枪</option>
+                                        <option value="16">16号枪</option>
+                                        <option value="17">17号枪</option>
+                                        <option value="18">18号枪</option>
+                                        <option value="19">19号枪</option>
+                                        <option value="20">20号枪</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="zhifu">
+                    <div class="w50p"><a href="javascript:;" class="button-theme  qrcode"  data-type="qrcode">扫码支付</a></div>
+                    <div class="w50p"><a href="javascript:;" class="button-theme  submit"  data-type="submit">短信支付</a></div>
+                    <div class="clearboth"></div>
+                </div>
+                <div class="qrcode-box"><div id="qrcode" class="mt10 margin-center" width="128" height="128" style="width: 138px;background:#fff;padding: .2rem;border:1px solid #333;display: none;"></div></div>
+                <div class="notice">
+                    <div>收款支持两种方式:  </div>
+                    <div>1.司机扫描二维码收款</div>
+                    <div>2.输入司机手机号和短信验证码收款</div>
+                </div>
+            </div>
+        </div>
+        <div class="mark"></div>
+        <div class="pop">
+            <div class="pop-group">
+                <div class="receipt-info-box">
+                    <div><input type="tel" id="mobile" placeholder="请在此输入手机号" maxlength="11"></div>
+                    <div class="code-box"><input id="validateCode" type="text" placeholder="请输入短信验证码" class="flex-box-1"
+                                                 data-isCheck="yes"><span class="getcode box" data-timeout="90"
+                                                                          data-end="1" data-type="3">获取验证码</span></div>
+                </div>
+            </div>
+            <div class="pop-group btn" id="pay"><span class="actions-modal-button bg-danger">确认</span></div>
+        </div>
+    </div>
+</div>
+<script id="list" type="text/html">
+    {{#list}}
+    <li>
+        <div class="flex-box item item2">
+            <div><img src="../../static/img/me.png" width="44"></div>
+            <div class="p20 flex-box-1">
+                <div class="bt1">{{sourceUseName}}</div>
+                <div class="bt2">{{tranDate}}</div>
+            </div>
+            <div class="txt-r bt3">
+                {{amount}}
+            </div>
+        </div>
+    </li>
+    {{/list}}
+
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.receipt.js' charset='utf-8'></script>
+</body>
+</html>

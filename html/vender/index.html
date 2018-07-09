@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/css/app/vender.index.css">
+</head>
+<body>
+<div class="page-group" id="Index">
+    <div class="page page-current" id="page-fixed-tab-infinite-scroll">
+        <div class="content" data-type="">
+            <div class="swiper-container swiper-container-horizontal banner" data-space-between="10"
+                 data-autoplay-disable-on-interaction="false">
+                <div class="swiper-wrapper">
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="buttons-tab fixed-tab menu-nav" data-offset="0">
+                <a href="#tab1" class="tab-link  button btn_1 active" data-type="1" data-currentPage="1" data-totalPage="1">
+                    <div class="menu-item">
+                        <div class="flex-box">收款</div>
+                    </div>
+                </a>
+                <a href="#tab2" class="tab-link  button btn_2" data-type="2" data-currentPage="1" data-totalPage="1">
+                    <div class="menu-item">
+                        <div class="flex-box">转账</div>
+                    </div>
+                </a>
+                <a href="#tab3" class="tab-link  button btn_3" data-type="3" data-currentPage="1" data-totalPage="1">
+                    <div class="menu-item">
+                        <div class="flex-box">充值</div>
+                    </div>
+                </a>
+            </div>
+            <div class="tabs pb60">
+                <div id="tab1" class="tab infinite-scroll active index-box">
+                    <ul id="indexList1">
+
+                    </ul>
+                    <!-- 加载提示符 -->
+                    <div class="infinite-scroll-preloader">
+                        <div class="preloader">
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab infinite-scroll index-box">
+                    <ul id="indexList2">
+                    </ul>
+                    <!-- 加载提示符 -->
+                    <div class="infinite-scroll-preloader">
+                        <div class="preloader">
+                        </div>
+                    </div>
+                </div>
+                <div id="tab3" class="tab infinite-scroll index-box">
+                    <ul id="indexList3">
+
+                    </ul>
+                    <!-- 加载提示符 -->
+                    <div class="infinite-scroll-preloader">
+                        <div class="preloader">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer flex-box">
+            <div class="flex-box-1">
+                <a href="./index.html" class="close-popup active">
+                    <div><span class="icon icon-home"></span></div>
+                    <div><span class="tab-label">首页</span></div>
+                </a>
+            </div>
+            <div class="flex-box-1">
+                <a href="./find.html" class="close-popup">
+                    <div> <span class="icon icon-star"></span></div>
+                    <div><span class="tab-label">发现</span></div>
+                </a>
+            </div>
+            <div class="flex-box-1">
+                <a href="./me.html" class="close-popup">
+                    <div><span class="icon icon-me"></span></div>
+                    <div><span class="tab-label">我的</span></div>
+                </a>
+            </div>
+        </div>
+        <div id="pop"><a href="./receipt.html" class="item-link  close-popup">收款</a></div>
+    </div>
+</div>
+<div id="mapContainer" style="display: none;"></div>
+<script id="banner" type="x-tmpl-mustache">
+{{#data}}
+<div class="swiper-slide">
+     <img src="/app{{.}}" onerror="this.src='../../static/img/driver-banner.jpg'">
+ </div>
+{{/data}}
+</script>
+<script id="list1" type="x-tmpl-mustache">
+{{#list}}
+<li>
+    <a class="item1 div100p close-popup">
+        <div class="flex-box item bt1">
+            <div class="mark"><span>{{carNum}}</span></div>
+            <div class="flex-box-1">{{createTime}}</div>
+            <div>{{unitFee}}豆/L</div>
+        </div>
+        <div class="flex-box item bt2">
+            <div class="flex-box-1">
+            <span class="mr4">{{resourceOutDeviceNo}}号枪</span>
+            <span class="mr4">{{resourceType}}</span>
+            <span class="mr4">{{resourceGrade}}</span>
+            </div>
+            <div>{{consumFee}}豆</div>
+        </div>
+        <div class="flex-box item bt3">
+            <div class="flex-box-1">{{aid}}</div>
+            <div>{{consumNum}}升</div>
+        </div>
+    </a>
+</li>
+{{/list}}
+</script>
+<script id="list2" type="x-tmpl-mustache">
+{{#list}}
+<li>
+    <div class="flex-box item item2">
+        <div><img src="../../static/img/me.png" width="44"></div>
+        <div class="p20 flex-box-1">
+            <div class="bt1">{{receiveUserName}}</div>
+            <div class="bt2">{{tranDate}}</div>
+        </div>
+        <div class="txt-r bt3">
+            {{amount}}
+        </div>
+    </div>
+</li>
+{{/list}}
+
+</script>
+<script id="list3" type="x-tmpl-mustache">
+{{#list}}
+<li>
+    <a class="flex-box item item2  close-popup" href="./rechargeDetail.html?id={{id}}">
+        <div><img src="../../static/img/me.png" width="44"></div>
+        <div class="p20 flex-box-1">
+            <div class="bt1">
+                 {{status_txt}}
+            </div>
+            <div class="bt2">{{rechargeTime}}</div>
+        </div>
+        <div class="txt-r bt3">
+            {{rechargeAmount}}
+        </div>
+    </a>
+</li>
+{{/list}}
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.index.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>提现记录</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/vender.me.css">
+</head>
+<body>
+<div class="page-group" id="WithdrawalsRecord">
+    <div id="page-infinite-scroll-bottom" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./wallet.html">
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">提现记录</h1>
+        </header>
+        <div class="content infinite-scroll native-scroll" data-distance="100">
+            <div class="list-box" id="itemList" data-currentPage="1" data-totalPage="1">
+            </div>
+            <!-- 加载提示符 -->
+            <div class="infinite-scroll-preloader">
+                <div class="preloader">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script id="list" type="text/html">
+    {{#list}}
+    <div class="item">
+        <div class="flex-box">
+            <div>
+                <div>{{status}}</div>
+                <div>{{updateTime}}</div>
+            </div>
+            <div class="txt-c flex-box-1 amount"><span>{{money}} </span>能源豆</div>
+            {{#orderStatus}}<div>{{orderStatus}}</div>{{/orderStatus}}
+        </div>
+    </div>
+    {{/list}}
+</script>
+<script type='text/javascript' src='../../static/js/app/vender.WithdrawalsRecord.js' charset='utf-8'></script>
+</body>
+</html>
