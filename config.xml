@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <application> 
-  <app_start>html/driver/login.html</app_start>  
+  <app_start>html/vender/login.html</app_start>  
   <app_name>众鑫商家</app_name>  
   <project_name>YQVender</project_name>  
   <package_name>com.yq.vender</package_name>  
@@ -12,11 +12,11 @@
   <versionBuild>1.0.0</versionBuild>  
   <versionName>1.0.0</versionName>  
   <orientation>unspecified</orientation>  
-  <permission id="android.permission.INTERNET"/>  
+  <permission id="android.permission.INTERNET"></permission>  
   <statusBarStyle>dark</statusBarStyle>  
   <fullScreen>false</fullScreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
-  <import id="cordova-plugin-compat" type="web" ref="cordova"/>  
+  <import id="cordova-plugin-compat" type="web" ref="cordova"></import>  
   <import id="cordova-plugin-file" type="web" ref="cordova"/>  
   <import id="cordova-plugin-http" type="web" ref="cordova"/>  
   <import id="cordova-plugin-camera" type="web" ref="cordova"/> 
