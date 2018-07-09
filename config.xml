@@ -2,7 +2,7 @@
 
 <application> 
   <app_start>html/driver/login.html</app_start>  
-  <app_name>YQVender</app_name>  
+  <app_name>众鑫商家</app_name>  
   <project_name>YQVender</project_name>  
   <package_name>com.yq.vender</package_name>  
   <frame_name>summer-um</frame_name>  
