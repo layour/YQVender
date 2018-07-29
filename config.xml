@@ -16,6 +16,7 @@
   <statusBarStyle>dark</statusBarStyle>  
   <fullScreen>false</fullScreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
+  <openMDoctor>false</openMDoctor>
   <import id="cordova-plugin-compat" type="web" ref="cordova"/>  
   <import id="cordova-plugin-file" type="web" ref="cordova"/>  
   <import id="cordova-plugin-http" type="web" ref="cordova"/>  
