@@ -6433,6 +6433,18 @@ function setBanner(type,callback) {
 ;//$(function () {
 summerready = function(){
     'use strict';
+    
+       //自动登录
+    var token = getCookie("token");
+    var cUrl = window.location.pathname; // register-added.html页面也加载了login.js
+	if(token && (cUrl.indexOf("login.html") != -1)){
+	   	pageGo("index");
+	} else {
+	    //关闭启动图
+		setTimeout(function() {
+			summer.hideLaunch();
+		}, 200);
+	}
     var $loginName = $("#loginName");//登录名
     var $loginBtn = $("#login");//登录按钮
     var $userName = $("#userName");//商家名称

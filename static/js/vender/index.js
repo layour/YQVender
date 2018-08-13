@@ -1,5 +1,7 @@
 ;//$(function () {
 summerready = function(){
+	    //关闭启动图
+    summer.hideLaunch();
     'use strict';
     var companyType = getCookie("companyType");
     var $infinite_scroll_preloader = $(".infinite-scroll-preloader");
