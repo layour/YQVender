@@ -1,4 +1,5 @@
-$(function () {
+;//$(function () {
+summerready = function(){
     var id = getQueryString("id");
     var ownAmount = 2500;//司机充值金额
     var turnIntoAmount = 300;//司机转账金额
@@ -151,4 +152,5 @@ $(function () {
 
         $.init();
     })
-});
+    }
+//});

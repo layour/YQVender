@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/18.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     var id = getQueryString("id");
     var taxId;
@@ -78,5 +79,6 @@ $(function () {
         })
     })
     $.init();
-});
+    }
+//});
 

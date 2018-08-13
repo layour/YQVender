@@ -183,7 +183,7 @@
 </script>
 <script id="outlink" type="x-tmpl-mustache">
 {{#driver_findOutLink}}
-    <div class="flex-box-1" ><a href="{{url}}" class="external"><img src="{{img_url}}"><div>{{title}}</div></a></div>
+    <div class="flex-box-1" onclick="openWin('{{url}}','{{title}}')" ><a   class="external"><img src="{{img_url}}"><div>{{title}}</div></a></div>
 {{/driver_findOutLink}}
 </script>
 <script type="text/html" id="infoList1">

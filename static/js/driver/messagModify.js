@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/1.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     $.showPreloader();
     var type = getQueryString('type');
     var id = getQueryString('id');
@@ -30,7 +31,7 @@ $(function () {
         value: getCurrentTime()
     });
     $infoPicPathUrl.on("click",function () {
-        getAPPMethod(function () {
+        /* getAPPMethod(function () {
             if(window.gasstation){
                 window.gasstation.getPhoto('messageInfo');
             }
@@ -38,7 +39,59 @@ $(function () {
             if(window.webkit){
                 window.webkit.messageHandlers.getPhoto.postMessage("messageInfo");
             }
-        })
+        }) */
+        UM.actionsheet({
+            title : '',
+            items : ['拍照', '从相册中选择'],
+            callbacks : [camera, openPhotoAlbum]
+        });
+        function camera() {
+            summer.openCamera({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        function openPhotoAlbum() {
+            summer.openPhotoAlbum({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        // 把图片流上传用户中心
+        function upload(path) {
+            summer.showProgress();
+            var fileArray = [];
+            var item = {
+                fileURL : path,
+                type : "image/jpeg",
+                name : "file" 
+            };
+            fileArray.push(item);
+            summer.multiUpload({
+                fileArray : fileArray,
+                params : {},
+                SERVER : BASE_URL + "/common/upload/uploadFile"
+            }, function(ret) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "头像修改成功"
+                });
+                var photoPath = ret.data;
+                $("#infoPicPathUrl").attr("src", BASE_URL + photoPath);
+                $("#infoPicPath").val(photoPath);
+            }, function(err) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "头像修改失败"
+                });
+            });
+        }
     })
     $(document).on("click", "#submit", function (e) {
         var infoDetail = $infoDetail.val();
@@ -225,7 +278,8 @@ $(function () {
         }
     })
     $.init();
-})
+    }
+//})
 function setImage(path) {
     if (browser.versions.ios) {
         var pathSata = JSON.stringify(path)

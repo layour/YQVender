@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/9.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     $.init();
     var companyType = getCookie("companyType");
     if (companyType == 3 || companyType == 4) {
@@ -22,4 +23,5 @@ $(function () {
             }
         }
     });
-})
+    }
+//})

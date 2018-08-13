@@ -1,4 +1,5 @@
-;$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     var currentPage = 1;
     var totalPage = 1;
@@ -120,4 +121,5 @@
     }
     getListData();
     $.init();
-});
+    }
+//});

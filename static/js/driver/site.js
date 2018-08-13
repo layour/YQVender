@@ -1,6 +1,7 @@
 
 
-;$(function () {
+;//$(function () {
+summerready = function(){
     var id = getQueryString("id");
     var $venderResourceId = $("#resourceGrade");
     var $amount_box = $(".amount-box");
@@ -123,11 +124,17 @@
                 })
             }else{
                 submitPay(function (response) {
-                    var params = {
+                    /*var params = {
                         WIDout_trade_no:response.data.billDetailId,
                         WIDsubject:filterGoodsTypes(response.data.consumCategory)+response.data.consumFee+"元",
                         total_amount:setNumFixed_2(response.data.consumFee),
                         WIDbody:typeName
+                    }*/
+                    var params = {
+                        "widoutTradeNo":response.data.billDetailId + "01",
+                        "widsubject":filterGoodsTypes(response.data.consumCategory)+response.data.consumFee+"元",
+                        "widtotalAmount":setNumFixed_2(response.data.consumFee),
+                        "widbody":typeName
                     }
                     if (type == 2) {
                         wxPay(params);
@@ -205,16 +212,36 @@
         }
     }
     function alipayPay(params) {
-        $("#WIDout_trade_no").val(params.WIDout_trade_no+"01");
+        /*$("#WIDout_trade_no").val(params.WIDout_trade_no);
         $("#WIDsubject").val(params.WIDsubject);
         $("#WIDtotal_amount").val(params.total_amount);
         $("#WIDbody").val(params.WIDbody);
         $("#token").val(getCookie("token"));
-        $("#payform").attr("action",BASE_URL+'/driverPayPage/alipay/pay').submit();
+        $("#payform").attr("action",BASE_URL+'/driverPayPage/alipay/pay').submit();*/
+       
+        ajaxRequests("/driverPayPage/appAlipay/pay","post",{
+            body: params
+        },function (response) {
+        	if(response.status != "1"){
+        		$.toast('生成定单失败', 2000, 'custom-toast');
+        		return;
+        	}
+            cordova.require("cordova-plugin-summer-pay.summerpay").alipay({
+                "orderInfo": response.body
+            }, function(args) {
+                // 打开支付成功页面
+                $.toast('支付成功', 2000, 'custom-toast');
+                pageGo("consumerList");
+            }, function(err) {
+                // 打开支付失败页面
+                $.toast('支付失败', 2000, 'custom-toast');
+                pageGo("consumerList");
+            });
+        })
     }
     
     function wxPay(params) {
-    	var payTypes;
+    	/*var payTypes;
     	getAPPMethod(function(){
     		payTypes ="Android";
     	},function(){
@@ -223,12 +250,45 @@
     		payTypes ="Wap";
     	})
     	// setCookie("site_wx_status",'wxPay');
-        $("#out_trade_no").val(params.WIDout_trade_no+"01");
+        $("#out_trade_no").val(params.WIDout_trade_no);
         $("#total_fee").val(params.total_amount);
         $("#body").val(params.WIDbody);
         $("#payType").val(payTypes);
         $("#token").val(getCookie("token"));
-        $("#payform").attr("action",BASE_URL+'/driverPayPage/webChat/payPage').submit();
+        $("#payform").attr("action",BASE_URL+'/driverPayPage/webChat/payPage').submit();*/
+       
+       	var wxpayParams = {
+            "outTradeNo": params.widoutTradeNo,
+            "totalFee": params.widtotalAmount,
+            "body": params.widbody
+        }
+    	ajaxRequests("/driverPayPage/appWebChat/payPage","post",{
+            body: wxpayParams
+        },function (response) {
+        	if(response.status != "1"){
+        		$.toast('生成定单失败', 2000, 'custom-toast');
+        		return;
+        	}
+        	if(response.contentWx.return_code != "SUCCESS"){
+        		$.toast('失败:' + response.contentWx.return_msg, 2000, 'custom-toast');
+        		return;
+        	}
+	        var totalData = response.content;
+			var params = {
+			    "partnerid": totalData.partnerid, // merchant id
+			    "prepayid": totalData.prepayid, // prepay id
+			    "noncestr": totalData.noncestr, // nonce
+			    "timestamp": totalData.timestamp, // timestamp
+			    "sign": totalData.sign, // signed string
+			};
+			Wechat.sendPaymentRequest(params, function (arg) {
+		        $.toast('支付成功', 2000, 'custom-toast');
+		        pageGo("consumerList");
+			}, function (reason) {
+                $.toast('失败:' + reason, 2000, 'custom-toast');
+                pageGo("consumerList");
+			});
+	    });
     }
     // var site_wx_status = getCookie("site_wx_status");
     // if(site_wx_status&&site_wx_status=="wxPay"){
@@ -236,4 +296,5 @@
     // 	pageGo("consumerList");
     // }
     $.init();
-});
+    }
+//});

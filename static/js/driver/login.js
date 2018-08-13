@@ -1,8 +1,22 @@
 /**
  * Created by zhujinyu on 2018/3/6.
  */
-;$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
+    
+    //自动登录
+    var token = getCookie("token");
+    var cUrl = window.location.pathname; // register-added.html页面也加载了login.js
+	if(token && (cUrl.indexOf("login.html") != -1)){
+	   	pageGo("index");
+	} else {
+	    //关闭启动图
+		setTimeout(function() {
+			summer.hideLaunch();
+		}, 200);
+	}
+    
     var $registerBtn = $("#register");//注册按钮
     var $mobile = $("#mobile");//手机号
     var $userName = $("#userName");//用户姓名
@@ -407,7 +421,8 @@
                             "id": id
                         }
                         var messageStr = JSON.stringify(message);
-                        getAPPMethod(function () {
+                        setCookie("messageStr",messageStr);
+                      /*  getAPPMethod(function () {
                             if(window.gasstation){
                                 window.gasstation.saveCookie(messageStr);
                             }
@@ -415,7 +430,7 @@
                             if(window.webkit){
                                 window.webkit.messageHandlers.saveCookie.postMessage(messageStr);
                             }
-                        });
+                        });*/
                         pageGo("index");
                     }else{
                         $.toast(response.retMsg||'登录失败', 3000);
@@ -425,6 +440,7 @@
             ajaxRequest(params);
         }
     });
+    
     //注释自动登录
     // if(window.location.pathname=="/app/html/driver/login.html"){
     //     getAPPMethod(function () {
@@ -444,4 +460,5 @@
     //     })
     // }
     $.init();
-});
+    }
+//});

@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/1.
- */
-;$(function () {
+ */;
+ //$(function () {
+summerready = function(){
     var type;
     var $password = $("#password");
     var $repassword = $("#repassword");
@@ -66,4 +67,5 @@
         }
     })
     $.init();
-})
+    }
+//})

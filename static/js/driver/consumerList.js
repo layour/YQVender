@@ -1,7 +1,9 @@
 /**
  * Created by Administrator on 2018/4/22.
  */
-$(function () {
+;
+//$(function () {
+summerready = function(){
     var totalPage = 1;
     var currentPage = 1;
     var $infinite_scroll_preloader = $(".infinite-scroll-preloader");
@@ -82,4 +84,5 @@ $(function () {
     }
     getList();
     $.init();
-})
+    }
+//})

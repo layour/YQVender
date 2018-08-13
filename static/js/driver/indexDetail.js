@@ -1,4 +1,5 @@
-$(function () {
+;//$(function () {
+summerready = function(){
     var id = getQueryString("id");
     var params = {
         url: '/driverVender/driverVenderInfo/' + id,
@@ -26,4 +27,5 @@ $(function () {
     })
     ajaxRequest(params);
     $.init();
-})
+    }
+//})

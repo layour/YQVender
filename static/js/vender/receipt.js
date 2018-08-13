@@ -1,4 +1,5 @@
-;$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     var id = getQueryString("id");
     var venderId = getCookie("id");
@@ -208,4 +209,5 @@
 
     }
     $.init();
-});
+    }
+//});

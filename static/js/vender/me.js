@@ -2,7 +2,8 @@
  * Created by Administrator on 2018/3/25.
  */
 /*获取司机个人信息*/
-;$(function () {
+;//$(function () {
+summerready = function(){
     var companyType = getCookie("companyType");
     var status = Number(getCookie("status"));
     var $statusDemoNo = $(".status-no");
@@ -32,4 +33,5 @@
         }
     });
     $.init();
-})
+   }
+//})

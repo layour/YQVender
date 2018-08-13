@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/3/25.
  */
-;$(function () {
+;//$(function () {
+summerready = function(){
     var transferPre;
     var param = {
         url: '/driverTransfer/transferPre',
@@ -108,4 +109,5 @@
        }
    })
     $.init();
-})
+   }
+//})

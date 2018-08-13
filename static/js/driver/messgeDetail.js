@@ -1,4 +1,5 @@
-$(function () {
+;//$(function () {
+summerready = function(){
     var id = getQueryString("id");
     var type = getQueryString("type");
     var noticeInfoId = getQueryString("noticeInfoId");
@@ -104,4 +105,5 @@ $(function () {
 
     })
     $.init();
-})
+    }
+//})

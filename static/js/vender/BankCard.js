@@ -4,7 +4,8 @@
 /**
  * Created by Administrator on 2018/4/10.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     $.init();
     var currentPage = 1;
     var $addBnak = $(".addBnak");
@@ -52,4 +53,5 @@ $(function () {
         })
     }
     getReceiptList();
-})
+    }
+//})

@@ -1,4 +1,5 @@
-$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     var companyType = getCookie("companyType");
     var $infinite_scroll_preloader = $(".infinite-scroll-preloader");
@@ -293,5 +294,6 @@ $(function () {
     if (orgin == "transfer") {
         $(".btn_2").trigger("click");
     }
-});
+    }
+//});
 

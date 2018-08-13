@@ -1,4 +1,5 @@
-;$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     $.showPreloader();
     var lng,lat;
@@ -272,4 +273,27 @@
         getListData();
         $.init();
     })
-});
+    }
+//});
+function openWin(url,title){
+	  summer.openWin({
+        "id" : "outLink",
+        "url" :"html/driver/outLink.html",
+        "create" : "false",
+		"type" : "actionBar",
+        "actionBar" : {
+			title : title,
+			titleColor: "#3d4145", //注意必须是6位数的颜色值。（3位数颜色值会不正常）
+		    backgroundColor: "#f7f7f8",
+		    bottomLineColor: "#f7f7f8",
+			leftItem : {
+				image : "static/img/back.png",
+				method : ""
+			}
+		},
+        "pageParam" : {
+            "outUrl":url
+        }
+    });
+
+}

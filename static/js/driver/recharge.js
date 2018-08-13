@@ -4,7 +4,8 @@
 /**
  * Created by Administrator on 2018/4/1.
  */
-;$(function () {
+;//$(function () {
+summerready = function(){
     var type;
     var ispayTmpl = 'shoushu';
     //获取司机基本信息
@@ -14,7 +15,7 @@
             var turnIntoAmount = setNumFixed_2(response.data.turnIntoAmount);
             $("#own_amount").html(ownAmount);
             $("#turn_into_amount").html(turnIntoAmount);
-            $("#total").html(ownAmount + turnIntoAmount);
+            $("#total").html(parseFloat(ownAmount)+parseFloat(turnIntoAmount));
         }
     })
     $(document).on("click",".pay-btn",function () {
@@ -51,7 +52,7 @@
     	$("#feeList .item").removeClass("active");
         ispayTmpl = 'shoushu';
     })
-    $(document).on("click","#submit",function () {
+    /*$(document).on("click","#submit",function () {
         var id = $("#feeList .item").attr("data-id");
         var amount = $("#amount").val();
         if (amount > 0) {
@@ -98,6 +99,92 @@
         }else{
             $.toast( '请输入充值金额', 2000, 'custom-toast');
         }
+    })*/
+    $(document).on("click","#submit",function () {
+        var id = $("#feeList .item").attr("data-id");
+        var amount = $("#amount").val();
+        if (amount > 0) {
+            if(type == 'alipay'){
+                var rechargeMethod = 2;
+            }else{
+                var rechargeMethod = 1;
+            }
+            var params = {
+                amount:amount,
+                rechargeMethod:rechargeMethod
+            }
+            if(ispayTmpl == 'tmpl'){
+                params.rechargeFeeTemplateId = id;
+            }
+            ajaxRequests("/driverRechargeDetail/driverSaveRecharge","post",{
+                body:params
+            },function (response) {
+                if(type == 'alipay'){
+                    // 支付宝支付
+                    var alipayParams = {
+                        "widoutTradeNo": response.data.rechargeDetailId +"02",
+                        "widsubject": "充值",
+                        "widtotalAmount": amount,
+                        "widbody": "充值"
+                    }
+                    ajaxRequests("/driverPayPage/appAlipay/pay","post",{
+                        body: alipayParams
+                    },function (response) {
+                    	if(response.status != "1"){
+                    		$.toast('生成定单失败', 2000, 'custom-toast');
+                    		return;
+                    	}
+                        cordova.require("cordova-plugin-summer-pay.summerpay").alipay({
+                            "orderInfo": response.body
+                        }, function(args) {
+                            // 打开支付成功页面
+                            $.toast('支付成功', 2000, 'custom-toast');
+                            pageGo("rechargeList");
+                        }, function(err) {
+                            // 打开支付失败页面
+                            $.toast('支付失败', 2000, 'custom-toast');
+                            pageGo("rechargeList");
+                        });
+                    })
+                } else {
+                    // 微信支付
+                    var wxpayParams = {
+                        "outTradeNo": response.data.rechargeDetailId +"02",
+                        "totalFee": amount,
+                        "body": "充值"
+                    }
+                	ajaxRequests("/driverPayPage/appWebChat/payPage","post",{
+                        body: wxpayParams
+                    },function (response) {
+                    	if(response.status != "1"){
+                    		$.toast('生成定单失败', 2000, 'custom-toast');
+                    		return;
+                    	}
+                    	if(response.contentWx.return_code != "SUCCESS"){
+                    		$.toast('失败:' + response.contentWx.return_msg, 2000, 'custom-toast');
+                    		return;
+                    	}
+				        var totalData = response.content;
+						var params = {
+						    "partnerid": totalData.partnerid, // merchant id
+						    "prepayid": totalData.prepayid, // prepay id
+						    "noncestr": totalData.noncestr, // nonce
+						    "timestamp": totalData.timestamp, // timestamp
+						    "sign": totalData.sign, // signed string
+						};
+						Wechat.sendPaymentRequest(params, function (arg) {
+					        $.toast('支付成功', 2000, 'custom-toast');
+					        pageGo("rechargeList");
+						}, function (reason) {
+                            $.toast('失败:' + reason, 2000, 'custom-toast');
+                            pageGo("rechargeList");
+						});
+				    });
+                }
+            })
+        }else{
+            $.toast( '请输入充值金额', 2000, 'custom-toast');
+        }
     })
     // var recharge_wx_status = getCookie("recharge_wx_status");
     // if (recharge_wx_status && recharge_wx_status == "wxPay") {
@@ -105,4 +192,5 @@
     //     pageGo("me");
     // }
     $.init();
-})
+    }
+//})

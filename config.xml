@@ -9,13 +9,14 @@
   <theme>blue</theme>  
   <icon relativePath="css/themes/default/app">app</icon>  
   <versionCode>100</versionCode>  
-  <versionBuild>1.0.0</versionBuild>  
+  <versionBuild>1.0.3</versionBuild>  
   <versionName>1.0.0</versionName>  
   <orientation>unspecified</orientation>  
-  <permission id="android.permission.INTERNET"/>  
   <statusBarStyle>dark</statusBarStyle>  
   <fullScreen>false</fullScreen>  
   <windowSoftInputMode>stateHidden</windowSoftInputMode>  
+  <autoHideLaunch>false</autoHideLaunch>  
+  <openMDoctor>false</openMDoctor>
   <import id="cordova-plugin-compat" type="web" ref="cordova"/>  
   <import id="cordova-plugin-file" type="web" ref="cordova"/>  
   <import id="cordova-plugin-http" type="web" ref="cordova"/>  

@@ -2,7 +2,8 @@
  * Created by Administrator on 2018/3/25.
  */
 /*获取司机个人信息*/
-;$(function () {
+;//$(function () {
+summerready = function(){
     $.showPreloader();
     ajaxRequests('/venderInfo/info/','get','',function (response) {
         if (response.retCode === '0') {
@@ -17,4 +18,5 @@
         }
     });
     $.init();
-})
+    }
+//})

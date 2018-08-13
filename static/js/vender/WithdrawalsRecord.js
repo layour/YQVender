@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/7.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     var $itemList= $("#itemList");
     var $infinite_scroll_preloader = $(".infinite-scroll-preloader");
@@ -78,4 +79,5 @@ $(function () {
     }
     getWithdrawalsApplyList();
     $.init();
-});
+    }
+//});

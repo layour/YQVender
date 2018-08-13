@@ -1,7 +1,8 @@
 /**
  * Created by zhujinyu on 2018/3/6.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     var $loginName = $("#loginName");//登录名
     var $loginBtn = $("#login");//登录按钮
@@ -495,7 +496,8 @@ $(function () {
              setCookie("lat",lat);
              })
     }
-});
+  }
+//});
 function setImage(path,type) {
     if (browser.versions.ios) {
         path =path.imageUrl;

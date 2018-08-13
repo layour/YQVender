@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/3/29.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     $.showPreloader();
     var  $city_picker = $("#city_picker");
     function getDriverInfo() {
@@ -9,7 +10,7 @@ $(function () {
             if (response.retCode === '0') {
                 var userName = response.data.userName;
                 $("#userName").val(userName);
-                $("#headImgPath").attr("src", "/app"+response.data.headImgPath);
+                $("#headImgPath").attr("src", BASE_URL+response.data.headImgPath);
                 $("#headImgPath").attr("data-headImgPath", response.data.headImgPath);
                 $("#sex").val(response.data.sex);
                 $("#mobile").val(response.data.mobile);
@@ -33,7 +34,7 @@ $(function () {
     }
     getDriverInfo();
     $("#headImgPath").on("click",function () {
-        getAPPMethod(function () {
+        /* getAPPMethod(function () {
             if(window.gasstation){
                 window.gasstation.getPhoto('modifyDriverInfo');
             }
@@ -41,7 +42,60 @@ $(function () {
             if(window.webkit){
                 window.webkit.messageHandlers.getPhoto.postMessage("modifyDriverInfo");
             }
-        })
+        }) */
+        UM.actionsheet({
+            title : '',
+            items : ['拍照', '从相册中选择'],
+            callbacks : [camera, openPhotoAlbum]
+        });
+        function camera() {
+            summer.openCamera({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        function openPhotoAlbum() {
+            summer.openPhotoAlbum({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        // 把图片流上传用户中心
+        function upload(path) {
+            summer.showProgress();
+            var fileArray = [];
+            var item = {
+                fileURL : path,
+                type : "image/jpeg",
+                name : "file" 
+            };
+            fileArray.push(item);
+            summer.multiUpload({
+                fileArray : fileArray,
+                params : {},
+                SERVER : BASE_URL + "/common/upload/uploadFile"
+            }, function(ret) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "头像修改成功"
+                });
+                var photoPath = ret.data;
+                $("#headImgPath").attr("src", BASE_URL + photoPath);
+                $("#headImgPath").attr("data-headImgPath", photoPath);
+                
+            }, function(err) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "头像修改失败"
+                });
+            });
+        }
     })
     $(document).on("click","#save",function () {
         var id = getCookie("id");
@@ -90,7 +144,8 @@ $(function () {
         addressId($city_picker);
     })
     $.init();
-})
+    }
+//})
 function setImage(path) {
     if (browser.versions.ios) {
         path =path.imageUrl;

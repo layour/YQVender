@@ -1,7 +1,8 @@
 /**
  * Created by zhujinyu on 2018/5/11.
  */
-;$(function () {
+;//$(function () {
+summerready = function(){
     var BankTypeData = config.bank_type;
     var bankTypeTmpl = '';
     BankTypeData.forEach(function (v) {
@@ -67,4 +68,5 @@
         }
 
     })
-})
+    }
+//})

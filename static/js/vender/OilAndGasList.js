@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/6.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     $.init();
     var id = getQueryString("id");
 
@@ -41,5 +42,6 @@ $(function () {
             }
         });
     })
-})
+   }
+//})
 

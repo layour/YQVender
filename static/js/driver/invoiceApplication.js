@@ -1,4 +1,5 @@
-;$(function () {
+;//$(function () {
+summerready = function(){
     $.showPreloader();
     var $city_picker = $("#city_picker");
     var $address = $("#address");
@@ -97,4 +98,5 @@
         })
     }
     $.init();
-})
+    }
+//})

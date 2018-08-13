@@ -2,8 +2,10 @@
  * Created by zhujinyu on 2018/2/7.
  */
 //var BASE_URL = '/app';
-//Aman工作室修改//
-var BASE_URL = 'http://118.190.152.119/app';
+//测试环境
+//var BASE_URL = 'http://118.190.152.119/app';
+//正式环境
+var BASE_URL = 'https://m.zhongxinnengyuan.cn/app';
 
 /**渲染模板*/
 function getRenderTmpl(tmpl, data_set) {
@@ -28,70 +30,104 @@ function addItem(tmpl, data_set, obj) {
 
 /*获取经纬度*/
 function getLngLat(callback,error) {
-    if(window.hasOwnProperty("AMap")){
-        var map = new AMap.Map("mapContainer", {
-            resizeEnable: true
-        });
-        map.plugin('AMap.Geolocation', function () {
-            geolocation = new AMap.Geolocation({
-                enableHighAccuracy: true,//是否使用高精度定位，默认:true
-                timeout: 10000,          //超过10秒后停止定位，默认：无穷大
-                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-            });
-            geolocation.getCurrentPosition(function (status,result) {
-                if (status == "complete" ||status == "ok") {
-                    var str = [];
-                    str.push(result.position.lng);
-                    str.push(result.position.lat);
-                    str = GCJ2WGS(str);
-                    callback && callback(str);
-                }else{
-                    error && error();
-                    console.log("定位失败");
-                }
-            });
-        });
+    if($summer.os=="android"){
+        if(window.hasOwnProperty("AMap")){
+	        var map = new AMap.Map("mapContainer", {
+	            resizeEnable: true
+	        });
+	        map.plugin('AMap.Geolocation', function () {
+	            geolocation = new AMap.Geolocation({
+	                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+	                timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+	                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+	            });
+	          
+	            geolocation.getCurrentPosition(function (status,result) {
+	                if (status == "complete" ||status == "ok") {
+	                    var str = [];
+	                    str.push(result.position.lng);
+	                    str.push(result.position.lat);
+	                    str = GCJ2WGS(str);
+	                    callback && callback(str);
+	                }else{
+	                    error && error();
+	                    console.log("定位失败");
+	                }
+	            });
+	        });
+	    }else{
+	        var str = [];
+	        str.push('116.40717');
+	        str.push('39.90469');
+	        callback && callback(str);
+	    }
     }else{
-        var str = [];
-        str.push('116.40717');
-        str.push('39.90469');
-        callback && callback(str);
+    	summer.getNativeLocation({
+		    "single" : "true"
+		},function(result){
+			 var str = [];
+            str.push(result.longitude);
+            str.push(result.latitude);
+            str = GCJ2WGS(str);
+            callback && callback(str);
+		},function(args) {
+			 error && error();
+	         console.log("定位失败");
+
+		});
     }
+
 }
 /**跳转到地图*/
 $(document).on('click', '.navigation', function () {
     var location_end = $(this).attr("data-end").split(",");
     var userName = $(this).attr("data-userName");
-    getAPPMethod(function () {
-        if(window.gasstation){
-           var  location = {
-               lng:location_end[0],
-               lat:location_end[1],
-               venderName:userName
-           }
-            var newLocation = JSON.stringify(location);
-            window.gasstation.mapLocation(newLocation);
-        }else{
+    if($summer.os == "ios") {
+        summer.openWin({
+            "id" : "mapLink",
+            "url" :"html/driver/mapLink.html",
+            "create" : "false",
+    		"type" : "actionBar",
+            "actionBar" : {
+    			title : "导航",
+    			titleColor: "#3d4145", //注意必须是6位数的颜色值。（3位数颜色值会不正常）
+    		    backgroundColor: "#f7f7f8",
+    		    bottomLineColor: "#f7f7f8",
+    			leftItem : {
+    				image : "static/img/back.png",
+    				method : ""
+    			}
+    		},
+            "pageParam" : {
+                "location_end": location_end,
+                "userName": userName
+            }
+        });
+    } else {
+        getAPPMethod(function () {
+            if(window.gasstation){
+               var  location = {
+                   lng:location_end[0],
+                   lat:location_end[1],
+                   venderName:userName
+               }
+                var newLocation = JSON.stringify(location);
+                window.gasstation.mapLocation(newLocation);
+            }else{
+                getLngLat(function (data) {
+                    GoDestination(data, location_end);
+                })
+            }
+        },function () {
             getLngLat(function (data) {
                 GoDestination(data, location_end);
             })
-        }
-    },function () {
-        if(window.webkit){
-            window.webkit.messageHandlers.mapLocation.postMessage({
-                Lng: location_end[0],
-                lat: location_end[1]
-            });
-        }else {
+        },function () {
             getLngLat(function (data) {
                 GoDestination(data, location_end);
             })
-        }
-    },function () {
-        getLngLat(function (data) {
-            GoDestination(data, location_end);
-        })
-    });
+        });
+    }
 })
 /**地图导航*/
 function GoDestination(currentlocation, endLocation) {
@@ -130,8 +166,41 @@ function ajaxRequest(params) {
             pageGo("login");
         }
     }
+	/*改造成summer.ajax 
+	   zhoulei修改
+	 */
+	//设置超时
+	window.cordovaHTTP.settings = {
+		timeout: 10000
+	};
+	summer.ajax({
+		type: params.type,
+		url: BASE_URL + params.url,
+		param:  params.data,
+		header: {
+		"Content-Type": "application/json",
+		 "token":token
+		}
+	}, function (response) {
+		if (Object.prototype.toString.call(response.data) === '[object String]') {
+			response.data = JSON.parse(response.data);
+		}
+		response = response.data;
+ 		if(response.retCode === '1000'){
+                pageGo("login");
+            }else{
+                params.callback && params.callback(response);
+            }
+	}, function (status) {
+			console.log(status);
+ 		      if(status=='timeout'){
+                $.alert("请求超时,请重新刷新页面", '',function () {
+                    window.location.reload();
+                });
+            }
+	});
 
-    $.ajax({
+  /*  $.ajax({
         headers: {
             Accept: "application/json; charset=utf-8",
             token:token
@@ -157,7 +226,8 @@ function ajaxRequest(params) {
                 });
             }
         }
-    })
+    })*/
+   
 }
 /**新ajax请求封装*/
 function ajaxRequests(url,type,data,callback,errorBack) {
@@ -179,7 +249,38 @@ function ajaxRequests(url,type,data,callback,errorBack) {
         }
     }
     if (type == 'get') {
-        $.ajax({
+    		window.cordovaHTTP.settings = {
+				timeout: 10000
+			};
+
+			summer.ajax({
+				type: type,
+				url: BASE_URL + url,
+				param: {},
+			header: {
+				"Content-Type": "application/json",
+				 "token":token
+				}
+			}, function (response) {
+				if (Object.prototype.toString.call(response.data) === '[object String]') {
+					response.data = JSON.parse(response.data);
+				}
+				response = response.data;
+		 		  if(response.retCode === '1000'){
+                    pageGo("login");
+                }else{
+                    callback && callback(response);
+                }
+                console.timeEnd('请求计时');
+			}, function (status) {
+					console.log(status);
+ 					  if(status=='timeout'){
+		                    $.alert("请求超时,请重新刷新页面", '',function () {
+		                        window.location.reload();
+		                    });
+		                }
+			});
+    /*    $.ajax({
             headers: {
                 Accept: "application/json; charset=utf-8",
                 token: token
@@ -208,9 +309,39 @@ function ajaxRequests(url,type,data,callback,errorBack) {
                     });
                 }
             }
-        })
+        })*/
     } else {
-        $.ajax({
+    		window.cordovaHTTP.settings = {
+				timeout: 10000
+			};
+			summer.ajax({
+				type: type,
+				url: BASE_URL + url,
+				param: data,
+			header: {
+				"Content-Type": "application/json",
+				 "token":token
+				}
+			}, function (response) {
+ 				if (Object.prototype.toString.call(response.data) === '[object String]') {
+					response.data = JSON.parse(response.data);
+				}
+				response = response.data;
+                if(response.retCode === '1000'){
+                    pageGo("login");
+                }else{
+                    callback && callback(response);
+                }
+                console.timeEnd('请求计时');
+			}, function (status) {
+					console.log(status);
+ 					  if(status=='timeout'){
+		                    $.alert("请求超时,请重新刷新页面", '',function () {
+		                        window.location.reload();
+		                    });
+		                }
+			});
+       /* $.ajax({
             headers: {
                 Accept: "application/json; charset=utf-8",
                 token: token
@@ -240,14 +371,42 @@ function ajaxRequests(url,type,data,callback,errorBack) {
                     });
                 }
             }
-        })
+        })*/
     }
 }
 /**完整ajax请求*/
 function ajaxCompleteRequests(url,type,data,callback,beforeSend,complete) {
     console.time('请求计时');
     var token = getCookie("token");
-    $.ajax({
+        	   window.cordovaHTTP.settings = {
+				timeout: 10000
+			};
+			summer.ajax({
+				type: type,
+				url: BASE_URL + url,
+				param:  data,
+			header: {
+				"Content-Type": "application/json",
+				 "token":token
+				}
+			}, function (response) {
+				if (Object.prototype.toString.call(response.data) === '[object String]') {
+			response.data = JSON.parse(response.data);
+		}
+				response = response.data;
+ 				callback && callback(response);
+           		 console.timeEnd('请求计时');
+			}, function (status) {
+				 console.log("请求完成");
+	            if(status=='timeout'){
+	                $.alert("请求超时,重新刷新页面", '',function () {
+	                    window.location.reload();
+	                });
+	            }else{
+	                complete && complete();
+	            }
+			});
+    /*$.ajax({
         headers: {
             Accept: "application/json; charset=utf-8",
             token: token
@@ -277,7 +436,7 @@ function ajaxCompleteRequests(url,type,data,callback,beforeSend,complete) {
                 complete && complete();
             }
         }
-    })
+    })*/
 }
 var t;
 /**验证码倒计时*/
@@ -570,18 +729,23 @@ function delCookie(name){
 
 //Aman工作室修改//
 function setCookie(name, value){
-    var storage = window.localStorage;
-    storage.setItem(name, value);
+    summer.setStorage(name, value);
+    var loginTime = new Date().getTime();
+    summer.setStorage("loginTime",loginTime);
 }
 
 function getCookie(name){
-    var storage = window.localStorage;
-    return storage.getItem(name);
+    var loginTime = summer.getStorage("loginTime");
+    if(loginTime){
+    	if((new Date().getTime()-parseInt(loginTime))>30*24*60*60*1000){
+    		summer.rmStorage(name);
+    	}
+    }
+ 	return summer.getStorage(name);
 }
 
 function delCookie(name){
-    var storage = window.localStorage;
-    storage.removeItem(name);
+    summer.rmStorage(name);
 }
 
 //判断是否为空
@@ -1058,7 +1222,7 @@ function addressId(obj) {
     $.getJSON('../../static/js/lib/address.json',function (data) {
         cityJson = data;
         var val = obj.val();
-        for(var i in cityJson){
+        /* for(var i in cityJson){
             if (val.indexOf(cityJson[i].name) != -1) {
                 pid = cityJson[i].code;
                 pname = cityJson[i].name;
@@ -1080,7 +1244,30 @@ function addressId(obj) {
                     }
                 }
             }
-        }
+        } */
+        cityJson.forEach(function (e, i) {
+            if (val.indexOf(e.name) != -1) {
+                pid = e.code;
+                pname = e.name;
+                var second = e.children;
+                val = jiequ(val,pname);
+                console.log(val);
+                second.forEach(function (e, i) {
+                    if (val.indexOf(e.name) != -1) {
+                        sid = e.code;
+                        sname = e.name;
+                        var three = e.children;
+                        val = jiequ(val,sname);
+                        three.forEach(function (e, i) {
+                            if (val.indexOf(e.name) != -1) {
+                                qid = e.code;
+                                qname =  e.name;
+                            }
+                        });
+                    }
+                });
+            }
+        });
         obj.attr("data-provinceId",pid);
         obj.attr("data-provinceName",pname);
         obj.attr("data-cityId",sid);
@@ -1188,10 +1375,13 @@ function rechargeStatus(status) {
     switch (status){
         case 0:
             status_txt = "充值审核中";
+            break;
         case 1:
             status_txt = "充值已完成";
+            break;
         case 2:
             status_txt = "充值失败";
+            break;
     }
     return status_txt;
 }

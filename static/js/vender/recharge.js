@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/5.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     'use strict';
     ajaxRequests("/venderRecharge/oilGasRechargePre", "get", '', function (response) {
         if (response.retCode === '0') {
@@ -62,5 +63,6 @@ $(function () {
         value: getCurrentTime()
     });
     $.init();
-});
+    }
+//});
 

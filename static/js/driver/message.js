@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/3/25.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     var totalPage = 1;
     var currentPage = 1;
 
@@ -81,4 +82,5 @@ $(function () {
     }
     getList();
     $.init();
-})
+    }
+//})

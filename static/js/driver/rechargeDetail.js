@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/22.
  */
-;$(function () {
+;//$(function () {
+summerready = function(){
     var id = getQueryString("id");
     ajaxRequests('/driverRechargeDetail/driverRechargeDetail/' + id,'get','',function (response) {
         if (response.retCode === '0') {
@@ -17,4 +18,5 @@
         }
     })
     $.init();
-})
+    }
+//})

@@ -1604,1210 +1604,6 @@ if("undefined"==typeof o&&(o=!!(o||Math.abs(d-x.y)>Math.abs(c-x.x))),o)return vo
 +function(a){"use strict";var b=function(c,d){function e(){return"horizontal"===o.params.direction}function f(){o.autoplayTimeoutId=setTimeout(function(){o.params.loop?(o.fixLoop(),o._slideNext()):o.isEnd?d.autoplayStopOnLast?o.stopAutoplay():o._slideTo(0):o._slideNext()},o.params.autoplay)}function g(b,c){var d=a(b.target);if(!d.is(c))if("string"==typeof c)d=d.parents(c);else if(c.nodeType){var e;return d.parents().each(function(a,b){b===c&&(e=c)}),e?c:void 0}if(0!==d.length)return d[0]}function h(a,b){b=b||{};var c=window.MutationObserver||window.WebkitMutationObserver,d=new c(function(a){a.forEach(function(a){o.onResize(),o.emit("onObserverUpdate",o,a)})});d.observe(a,{attributes:"undefined"==typeof b.attributes?!0:b.attributes,childList:"undefined"==typeof b.childList?!0:b.childList,characterData:"undefined"==typeof b.characterData?!0:b.characterData}),o.observers.push(d)}function i(b,c){b=a(b);var d,f,g;d=b.attr("data-swiper-parallax")||"0",f=b.attr("data-swiper-parallax-x"),g=b.attr("data-swiper-parallax-y"),f||g?(f=f||"0",g=g||"0"):e()?(f=d,g="0"):(g=d,f="0"),f=f.indexOf("%")>=0?parseInt(f,10)*c+"%":f*c+"px",g=g.indexOf("%")>=0?parseInt(g,10)*c+"%":g*c+"px",b.transform("translate3d("+f+", "+g+",0px)")}function j(a){return 0!==a.indexOf("on")&&(a=a[0]!==a[0].toUpperCase()?"on"+a[0].toUpperCase()+a.substring(1):"on"+a),a}var k=this.defaults,l=d&&d.virtualTranslate;d=d||{};for(var m in k)if("undefined"==typeof d[m])d[m]=k[m];else if("object"==typeof d[m])for(var n in k[m])"undefined"==typeof d[m][n]&&(d[m][n]=k[m][n]);var o=this;if(o.params=d,o.classNames=[],o.$=a,o.container=a(c),0!==o.container.length){if(o.container.length>1)return void o.container.each(function(){new a.Swiper(this,d)});o.container[0].swiper=o,o.container.data("swiper",o),o.classNames.push("swiper-container-"+o.params.direction),o.params.freeMode&&o.classNames.push("swiper-container-free-mode"),o.support.flexbox||(o.classNames.push("swiper-container-no-flexbox"),o.params.slidesPerColumn=1),(o.params.parallax||o.params.watchSlidesVisibility)&&(o.params.watchSlidesProgress=!0),["cube","coverflow"].indexOf(o.params.effect)>=0&&(o.support.transforms3d?(o.params.watchSlidesProgress=!0,o.classNames.push("swiper-container-3d")):o.params.effect="slide"),"slide"!==o.params.effect&&o.classNames.push("swiper-container-"+o.params.effect),"cube"===o.params.effect&&(o.params.resistanceRatio=0,o.params.slidesPerView=1,o.params.slidesPerColumn=1,o.params.slidesPerGroup=1,o.params.centeredSlides=!1,o.params.spaceBetween=0,o.params.virtualTranslate=!0,o.params.setWrapperSize=!1),"fade"===o.params.effect&&(o.params.slidesPerView=1,o.params.slidesPerColumn=1,o.params.slidesPerGroup=1,o.params.watchSlidesProgress=!0,o.params.spaceBetween=0,"undefined"==typeof l&&(o.params.virtualTranslate=!0)),o.params.grabCursor&&o.support.touch&&(o.params.grabCursor=!1),o.wrapper=o.container.children("."+o.params.wrapperClass),o.params.pagination&&(o.paginationContainer=a(o.params.pagination),o.params.paginationClickable&&o.paginationContainer.addClass("swiper-pagination-clickable")),o.rtl=e()&&("rtl"===o.container[0].dir.toLowerCase()||"rtl"===o.container.css("direction")),o.rtl&&o.classNames.push("swiper-container-rtl"),o.rtl&&(o.wrongRTL="-webkit-box"===o.wrapper.css("display")),o.params.slidesPerColumn>1&&o.classNames.push("swiper-container-multirow"),o.device.android&&o.classNames.push("swiper-container-android"),o.container.addClass(o.classNames.join(" ")),o.translate=0,o.progress=0,o.velocity=0,o.lockSwipeToNext=function(){o.params.allowSwipeToNext=!1},o.lockSwipeToPrev=function(){o.params.allowSwipeToPrev=!1},o.lockSwipes=function(){o.params.allowSwipeToNext=o.params.allowSwipeToPrev=!1},o.unlockSwipeToNext=function(){o.params.allowSwipeToNext=!0},o.unlockSwipeToPrev=function(){o.params.allowSwipeToPrev=!0},o.unlockSwipes=function(){o.params.allowSwipeToNext=o.params.allowSwipeToPrev=!0},o.params.grabCursor&&(o.container[0].style.cursor="move",o.container[0].style.cursor="-webkit-grab",o.container[0].style.cursor="-moz-grab",o.container[0].style.cursor="grab"),o.imagesToLoad=[],o.imagesLoaded=0,o.loadImage=function(a,b,c,d){function e(){d&&d()}var f;a.complete&&c?e():b?(f=new Image,f.onload=e,f.onerror=e,f.src=b):e()},o.preloadImages=function(){function a(){"undefined"!=typeof o&&null!==o&&(void 0!==o.imagesLoaded&&o.imagesLoaded++,o.imagesLoaded===o.imagesToLoad.length&&(o.params.updateOnImagesReady&&o.update(),o.emit("onImagesReady",o)))}o.imagesToLoad=o.container.find("img");for(var b=0;b<o.imagesToLoad.length;b++)o.loadImage(o.imagesToLoad[b],o.imagesToLoad[b].currentSrc||o.imagesToLoad[b].getAttribute("src"),!0,a)},o.autoplayTimeoutId=void 0,o.autoplaying=!1,o.autoplayPaused=!1,o.startAutoplay=function(){return"undefined"!=typeof o.autoplayTimeoutId?!1:o.params.autoplay?o.autoplaying?!1:(o.autoplaying=!0,o.emit("onAutoplayStart",o),void f()):!1},o.stopAutoplay=function(){o.autoplayTimeoutId&&(o.autoplayTimeoutId&&clearTimeout(o.autoplayTimeoutId),o.autoplaying=!1,o.autoplayTimeoutId=void 0,o.emit("onAutoplayStop",o))},o.pauseAutoplay=function(a){o.autoplayPaused||(o.autoplayTimeoutId&&clearTimeout(o.autoplayTimeoutId),o.autoplayPaused=!0,0===a?(o.autoplayPaused=!1,f()):o.wrapper.transitionEnd(function(){o.autoplayPaused=!1,o.autoplaying?f():o.stopAutoplay()}))},o.minTranslate=function(){return-o.snapGrid[0]},o.maxTranslate=function(){return-o.snapGrid[o.snapGrid.length-1]},o.updateContainerSize=function(){o.width=o.container[0].clientWidth,o.height=o.container[0].clientHeight,o.size=e()?o.width:o.height},o.updateSlidesSize=function(){o.slides=o.wrapper.children("."+o.params.slideClass),o.snapGrid=[],o.slidesGrid=[],o.slidesSizesGrid=[];var a,b=o.params.spaceBetween,c=0,d=0,f=0;"string"==typeof b&&b.indexOf("%")>=0&&(b=parseFloat(b.replace("%",""))/100*o.size),o.virtualSize=-b,o.rtl?o.slides.css({marginLeft:"",marginTop:""}):o.slides.css({marginRight:"",marginBottom:""});var g;o.params.slidesPerColumn>1&&(g=Math.floor(o.slides.length/o.params.slidesPerColumn)===o.slides.length/o.params.slidesPerColumn?o.slides.length:Math.ceil(o.slides.length/o.params.slidesPerColumn)*o.params.slidesPerColumn);var h;for(a=0;a<o.slides.length;a++){h=0;var i=o.slides.eq(a);if(o.params.slidesPerColumn>1){var j,k,l,m,n=o.params.slidesPerColumn;"column"===o.params.slidesPerColumnFill?(k=Math.floor(a/n),l=a-k*n,j=k+l*g/n,i.css({"-webkit-box-ordinal-group":j,"-moz-box-ordinal-group":j,"-ms-flex-order":j,"-webkit-order":j,order:j})):(m=g/n,l=Math.floor(a/m),k=a-l*m),i.css({"margin-top":0!==l&&o.params.spaceBetween&&o.params.spaceBetween+"px"}).attr("data-swiper-column",k).attr("data-swiper-row",l)}"none"!==i.css("display")&&("auto"===o.params.slidesPerView?h=e()?i.outerWidth(!0):i.outerHeight(!0):(h=(o.size-(o.params.slidesPerView-1)*b)/o.params.slidesPerView,e()?o.slides[a].style.width=h+"px":o.slides[a].style.height=h+"px"),o.slides[a].swiperSlideSize=h,o.slidesSizesGrid.push(h),o.params.centeredSlides?(c=c+h/2+d/2+b,0===a&&(c=c-o.size/2-b),Math.abs(c)<.001&&(c=0),f%o.params.slidesPerGroup===0&&o.snapGrid.push(c),o.slidesGrid.push(c)):(f%o.params.slidesPerGroup===0&&o.snapGrid.push(c),o.slidesGrid.push(c),c=c+h+b),o.virtualSize+=h+b,d=h,f++)}o.virtualSize=Math.max(o.virtualSize,o.size);var p;if(o.rtl&&o.wrongRTL&&("slide"===o.params.effect||"coverflow"===o.params.effect)&&o.wrapper.css({width:o.virtualSize+o.params.spaceBetween+"px"}),(!o.support.flexbox||o.params.setWrapperSize)&&(e()?o.wrapper.css({width:o.virtualSize+o.params.spaceBetween+"px"}):o.wrapper.css({height:o.virtualSize+o.params.spaceBetween+"px"})),o.params.slidesPerColumn>1&&(o.virtualSize=(h+o.params.spaceBetween)*g,o.virtualSize=Math.ceil(o.virtualSize/o.params.slidesPerColumn)-o.params.spaceBetween,o.wrapper.css({width:o.virtualSize+o.params.spaceBetween+"px"}),o.params.centeredSlides)){for(p=[],a=0;a<o.snapGrid.length;a++)o.snapGrid[a]<o.virtualSize+o.snapGrid[0]&&p.push(o.snapGrid[a]);o.snapGrid=p}if(!o.params.centeredSlides){for(p=[],a=0;a<o.snapGrid.length;a++)o.snapGrid[a]<=o.virtualSize-o.size&&p.push(o.snapGrid[a]);o.snapGrid=p,Math.floor(o.virtualSize-o.size)>Math.floor(o.snapGrid[o.snapGrid.length-1])&&o.snapGrid.push(o.virtualSize-o.size)}0===o.snapGrid.length&&(o.snapGrid=[0]),0!==o.params.spaceBetween&&(e()?o.rtl?o.slides.css({marginLeft:b+"px"}):o.slides.css({marginRight:b+"px"}):o.slides.css({marginBottom:b+"px"})),o.params.watchSlidesProgress&&o.updateSlidesOffset()},o.updateSlidesOffset=function(){for(var a=0;a<o.slides.length;a++)o.slides[a].swiperSlideOffset=e()?o.slides[a].offsetLeft:o.slides[a].offsetTop},o.updateSlidesProgress=function(a){if("undefined"==typeof a&&(a=o.translate||0),0!==o.slides.length){"undefined"==typeof o.slides[0].swiperSlideOffset&&o.updateSlidesOffset();var b=o.params.centeredSlides?-a+o.size/2:-a;o.rtl&&(b=o.params.centeredSlides?a-o.size/2:a),o.slides.removeClass(o.params.slideVisibleClass);for(var c=0;c<o.slides.length;c++){var d=o.slides[c],e=o.params.centeredSlides===!0?d.swiperSlideSize/2:0,f=(b-d.swiperSlideOffset-e)/(d.swiperSlideSize+o.params.spaceBetween);if(o.params.watchSlidesVisibility){var g=-(b-d.swiperSlideOffset-e),h=g+o.slidesSizesGrid[c],i=g>=0&&g<o.size||h>0&&h<=o.size||0>=g&&h>=o.size;i&&o.slides.eq(c).addClass(o.params.slideVisibleClass)}d.progress=o.rtl?-f:f}}},o.updateProgress=function(a){"undefined"==typeof a&&(a=o.translate||0);var b=o.maxTranslate()-o.minTranslate();0===b?(o.progress=0,o.isBeginning=o.isEnd=!0):(o.progress=(a-o.minTranslate())/b,o.isBeginning=o.progress<=0,o.isEnd=o.progress>=1),o.isBeginning&&o.emit("onReachBeginning",o),o.isEnd&&o.emit("onReachEnd",o),o.params.watchSlidesProgress&&o.updateSlidesProgress(a),o.emit("onProgress",o,o.progress)},o.updateActiveIndex=function(){var a,b,c,d=o.rtl?o.translate:-o.translate;for(b=0;b<o.slidesGrid.length;b++)"undefined"!=typeof o.slidesGrid[b+1]?d>=o.slidesGrid[b]&&d<o.slidesGrid[b+1]-(o.slidesGrid[b+1]-o.slidesGrid[b])/2?a=b:d>=o.slidesGrid[b]&&d<o.slidesGrid[b+1]&&(a=b+1):d>=o.slidesGrid[b]&&(a=b);(0>a||"undefined"==typeof a)&&(a=0),c=Math.floor(a/o.params.slidesPerGroup),c>=o.snapGrid.length&&(c=o.snapGrid.length-1),a!==o.activeIndex&&(o.snapIndex=c,o.previousIndex=o.activeIndex,o.activeIndex=a,o.updateClasses())},o.updateClasses=function(){o.slides.removeClass(o.params.slideActiveClass+" "+o.params.slideNextClass+" "+o.params.slidePrevClass);var b=o.slides.eq(o.activeIndex);if(b.addClass(o.params.slideActiveClass),b.next("."+o.params.slideClass).addClass(o.params.slideNextClass),b.prev("."+o.params.slideClass).addClass(o.params.slidePrevClass),o.bullets&&o.bullets.length>0){o.bullets.removeClass(o.params.bulletActiveClass);var c;o.params.loop?(c=Math.ceil(o.activeIndex-o.loopedSlides)/o.params.slidesPerGroup,c>o.slides.length-1-2*o.loopedSlides&&(c-=o.slides.length-2*o.loopedSlides),c>o.bullets.length-1&&(c-=o.bullets.length)):c="undefined"!=typeof o.snapIndex?o.snapIndex:o.activeIndex||0,o.paginationContainer.length>1?o.bullets.each(function(){a(this).index()===c&&a(this).addClass(o.params.bulletActiveClass)}):o.bullets.eq(c).addClass(o.params.bulletActiveClass)}o.params.loop||(o.params.prevButton&&(o.isBeginning?(a(o.params.prevButton).addClass(o.params.buttonDisabledClass),o.params.a11y&&o.a11y&&o.a11y.disable(a(o.params.prevButton))):(a(o.params.prevButton).removeClass(o.params.buttonDisabledClass),o.params.a11y&&o.a11y&&o.a11y.enable(a(o.params.prevButton)))),o.params.nextButton&&(o.isEnd?(a(o.params.nextButton).addClass(o.params.buttonDisabledClass),o.params.a11y&&o.a11y&&o.a11y.disable(a(o.params.nextButton))):(a(o.params.nextButton).removeClass(o.params.buttonDisabledClass),o.params.a11y&&o.a11y&&o.a11y.enable(a(o.params.nextButton)))))},o.updatePagination=function(){if(o.params.pagination&&o.paginationContainer&&o.paginationContainer.length>0){for(var a="",b=o.params.loop?Math.ceil((o.slides.length-2*o.loopedSlides)/o.params.slidesPerGroup):o.snapGrid.length,c=0;b>c;c++)a+=o.params.paginationBulletRender?o.params.paginationBulletRender(c,o.params.bulletClass):'<span class="'+o.params.bulletClass+'"></span>';o.paginationContainer.html(a),o.bullets=o.paginationContainer.find("."+o.params.bulletClass)}},o.update=function(a){function b(){d=Math.min(Math.max(o.translate,o.maxTranslate()),o.minTranslate()),o.setWrapperTranslate(d),o.updateActiveIndex(),o.updateClasses()}if(o.updateContainerSize(),o.updateSlidesSize(),o.updateProgress(),o.updatePagination(),o.updateClasses(),o.params.scrollbar&&o.scrollbar&&o.scrollbar.set(),a){var c,d;o.params.freeMode?b():(c="auto"===o.params.slidesPerView&&o.isEnd&&!o.params.centeredSlides?o.slideTo(o.slides.length-1,0,!1,!0):o.slideTo(o.activeIndex,0,!1,!0),c||b())}},o.onResize=function(){if(o.updateContainerSize(),o.updateSlidesSize(),o.updateProgress(),("auto"===o.params.slidesPerView||o.params.freeMode)&&o.updatePagination(),o.params.scrollbar&&o.scrollbar&&o.scrollbar.set(),o.params.freeMode){var a=Math.min(Math.max(o.translate,o.maxTranslate()),o.minTranslate());o.setWrapperTranslate(a),o.updateActiveIndex(),o.updateClasses()}else o.updateClasses(),"auto"===o.params.slidesPerView&&o.isEnd&&!o.params.centeredSlides?o.slideTo(o.slides.length-1,0,!1,!0):o.slideTo(o.activeIndex,0,!1,!0)};var p=["mousedown","mousemove","mouseup"];window.navigator.pointerEnabled?p=["pointerdown","pointermove","pointerup"]:window.navigator.msPointerEnabled&&(p=["MSPointerDown","MSPointerMove","MSPointerUp"]),o.touchEvents={start:o.support.touch||!o.params.simulateTouch?"touchstart":p[0],move:o.support.touch||!o.params.simulateTouch?"touchmove":p[1],end:o.support.touch||!o.params.simulateTouch?"touchend":p[2]},(window.navigator.pointerEnabled||window.navigator.msPointerEnabled)&&("container"===o.params.touchEventsTarget?o.container:o.wrapper).addClass("swiper-wp8-"+o.params.direction),o.initEvents=function(b){var c=b?"off":"on",e=b?"removeEventListener":"addEventListener",f="container"===o.params.touchEventsTarget?o.container[0]:o.wrapper[0],g=o.support.touch?f:document,h=o.params.nested?!0:!1;o.browser.ie?(f[e](o.touchEvents.start,o.onTouchStart,!1),g[e](o.touchEvents.move,o.onTouchMove,h),g[e](o.touchEvents.end,o.onTouchEnd,!1)):(o.support.touch&&(f[e](o.touchEvents.start,o.onTouchStart,!1),f[e](o.touchEvents.move,o.onTouchMove,h),f[e](o.touchEvents.end,o.onTouchEnd,!1)),!d.simulateTouch||o.device.ios||o.device.android||(f[e]("mousedown",o.onTouchStart,!1),g[e]("mousemove",o.onTouchMove,h),g[e]("mouseup",o.onTouchEnd,!1))),window[e]("resize",o.onResize),o.params.nextButton&&(a(o.params.nextButton)[c]("click",o.onClickNext),o.params.a11y&&o.a11y&&a(o.params.nextButton)[c]("keydown",o.a11y.onEnterKey)),o.params.prevButton&&(a(o.params.prevButton)[c]("click",o.onClickPrev),o.params.a11y&&o.a11y&&a(o.params.prevButton)[c]("keydown",o.a11y.onEnterKey)),o.params.pagination&&o.params.paginationClickable&&a(o.paginationContainer)[c]("click","."+o.params.bulletClass,o.onClickIndex),(o.params.preventClicks||o.params.preventClicksPropagation)&&f[e]("click",o.preventClicks,!0)},o.attachEvents=function(){o.initEvents()},o.detachEvents=function(){o.initEvents(!0)},o.allowClick=!0,o.preventClicks=function(a){o.allowClick||(o.params.preventClicks&&a.preventDefault(),o.params.preventClicksPropagation&&(a.stopPropagation(),a.stopImmediatePropagation()))},o.onClickNext=function(a){a.preventDefault(),o.slideNext()},o.onClickPrev=function(a){a.preventDefault(),o.slidePrev()},o.onClickIndex=function(b){b.preventDefault();var c=a(this).index()*o.params.slidesPerGroup;o.params.loop&&(c+=o.loopedSlides),o.slideTo(c)},o.updateClickedSlide=function(b){var c=g(b,"."+o.params.slideClass);if(!c)return o.clickedSlide=void 0,void(o.clickedIndex=void 0);if(o.clickedSlide=c,o.clickedIndex=a(c).index(),o.params.slideToClickedSlide&&void 0!==o.clickedIndex&&o.clickedIndex!==o.activeIndex){var d,e=o.clickedIndex;if(o.params.loop)if(d=a(o.clickedSlide).attr("data-swiper-slide-index"),e>o.slides.length-o.params.slidesPerView)o.fixLoop(),e=o.wrapper.children("."+o.params.slideClass+'[data-swiper-slide-index="'+d+'"]').eq(0).index(),setTimeout(function(){o.slideTo(e)},0);else if(e<o.params.slidesPerView-1){o.fixLoop();var f=o.wrapper.children("."+o.params.slideClass+'[data-swiper-slide-index="'+d+'"]');e=f.eq(f.length-1).index(),setTimeout(function(){o.slideTo(e)},0)}else o.slideTo(e);else o.slideTo(e)}};var q,r,s,t,u,v,w,x,y,z="input, select, textarea, button",A=Date.now(),B=[];o.animating=!1,o.touches={startX:0,startY:0,currentX:0,currentY:0,diff:0};var C,D;o.onTouchStart=function(b){if(b.originalEvent&&(b=b.originalEvent),C="touchstart"===b.type,C||!("which"in b)||3!==b.which){if(o.params.noSwiping&&g(b,"."+o.params.noSwipingClass))return void(o.allowClick=!0);if(!o.params.swipeHandler||g(b,o.params.swipeHandler)){if(q=!0,r=!1,t=void 0,D=void 0,o.touches.startX=o.touches.currentX="touchstart"===b.type?b.targetTouches[0].pageX:b.pageX,o.touches.startY=o.touches.currentY="touchstart"===b.type?b.targetTouches[0].pageY:b.pageY,s=Date.now(),o.allowClick=!0,o.updateContainerSize(),o.swipeDirection=void 0,o.params.threshold>0&&(w=!1),"touchstart"!==b.type){var c=!0;a(b.target).is(z)&&(c=!1),document.activeElement&&a(document.activeElement).is(z)&&document.activeElement.blur(),c&&b.preventDefault()}o.emit("onTouchStart",o,b)}}},o.onTouchMove=function(b){if(b.originalEvent&&(b=b.originalEvent),!(C&&"mousemove"===b.type||b.preventedByNestedSwiper)){if(o.params.onlyExternal)return r=!0,void(o.allowClick=!1);if(C&&document.activeElement&&b.target===document.activeElement&&a(b.target).is(z))return r=!0,void(o.allowClick=!1);if(o.emit("onTouchMove",o,b),!(b.targetTouches&&b.targetTouches.length>1)){if(o.touches.currentX="touchmove"===b.type?b.targetTouches[0].pageX:b.pageX,o.touches.currentY="touchmove"===b.type?b.targetTouches[0].pageY:b.pageY,"undefined"==typeof t){var c=180*Math.atan2(Math.abs(o.touches.currentY-o.touches.startY),Math.abs(o.touches.currentX-o.touches.startX))/Math.PI;t=e()?c>o.params.touchAngle:90-c>o.params.touchAngle}if(t&&o.emit("onTouchMoveOpposite",o,b),"undefined"==typeof D&&o.browser.ieTouch&&(o.touches.currentX!==o.touches.startX||o.touches.currentY!==o.touches.startY)&&(D=!0),q){if(t)return void(q=!1);if(D||!o.browser.ieTouch){o.allowClick=!1,o.emit("onSliderMove",o,b),b.preventDefault(),o.params.touchMoveStopPropagation&&!o.params.nested&&b.stopPropagation(),r||(d.loop&&o.fixLoop(),v=o.getWrapperTranslate(),o.setWrapperTransition(0),o.animating&&o.wrapper.trigger("webkitTransitionEnd transitionend oTransitionEnd MSTransitionEnd msTransitionEnd"),o.params.autoplay&&o.autoplaying&&(o.params.autoplayDisableOnInteraction?o.stopAutoplay():o.pauseAutoplay()),y=!1,o.params.grabCursor&&(o.container[0].style.cursor="move",o.container[0].style.cursor="-webkit-grabbing",o.container[0].style.cursor="-moz-grabbin",o.container[0].style.cursor="grabbing")),r=!0;var f=o.touches.diff=e()?o.touches.currentX-o.touches.startX:o.touches.currentY-o.touches.startY;f*=o.params.touchRatio,o.rtl&&(f=-f),o.swipeDirection=f>0?"prev":"next",u=f+v;var g=!0;if(f>0&&u>o.minTranslate()?(g=!1,o.params.resistance&&(u=o.minTranslate()-1+Math.pow(-o.minTranslate()+v+f,o.params.resistanceRatio))):0>f&&u<o.maxTranslate()&&(g=!1,o.params.resistance&&(u=o.maxTranslate()+1-Math.pow(o.maxTranslate()-v-f,o.params.resistanceRatio))),g&&(b.preventedByNestedSwiper=!0),!o.params.allowSwipeToNext&&"next"===o.swipeDirection&&v>u&&(u=v),!o.params.allowSwipeToPrev&&"prev"===o.swipeDirection&&u>v&&(u=v),o.params.followFinger){if(o.params.threshold>0){if(!(Math.abs(f)>o.params.threshold||w))return void(u=v);if(!w)return w=!0,o.touches.startX=o.touches.currentX,o.touches.startY=o.touches.currentY,u=v,void(o.touches.diff=e()?o.touches.currentX-o.touches.startX:o.touches.currentY-o.touches.startY)}(o.params.freeMode||o.params.watchSlidesProgress)&&o.updateActiveIndex(),o.params.freeMode&&(0===B.length&&B.push({position:o.touches[e()?"startX":"startY"],time:s}),B.push({position:o.touches[e()?"currentX":"currentY"],time:(new Date).getTime()})),o.updateProgress(u),o.setWrapperTranslate(u)}}}}}},o.onTouchEnd=function(b){if(b.originalEvent&&(b=b.originalEvent),o.emit("onTouchEnd",o,b),q){o.params.grabCursor&&r&&q&&(o.container[0].style.cursor="move",o.container[0].style.cursor="-webkit-grab",o.container[0].style.cursor="-moz-grab",o.container[0].style.cursor="grab");var c=Date.now(),d=c-s;if(o.allowClick&&(o.updateClickedSlide(b),o.emit("onTap",o,b),300>d&&c-A>300&&(x&&clearTimeout(x),x=setTimeout(function(){o&&(o.params.paginationHide&&o.paginationContainer.length>0&&!a(b.target).hasClass(o.params.bulletClass)&&o.paginationContainer.toggleClass(o.params.paginationHiddenClass),o.emit("onClick",o,b))},300)),300>d&&300>c-A&&(x&&clearTimeout(x),o.emit("onDoubleTap",o,b))),A=Date.now(),setTimeout(function(){o&&o.allowClick&&(o.allowClick=!0)},0),!q||!r||!o.swipeDirection||0===o.touches.diff||u===v)return void(q=r=!1);q=r=!1;var e;if(e=o.params.followFinger?o.rtl?o.translate:-o.translate:-u,o.params.freeMode){if(e<-o.minTranslate())return void o.slideTo(o.activeIndex);if(e>-o.maxTranslate())return void o.slideTo(o.slides.length-1);if(o.params.freeModeMomentum){if(B.length>1){var f=B.pop(),g=B.pop(),h=f.position-g.position,i=f.time-g.time;o.velocity=h/i,o.velocity=o.velocity/2,Math.abs(o.velocity)<.02&&(o.velocity=0),(i>150||(new Date).getTime()-f.time>300)&&(o.velocity=0)}else o.velocity=0;B.length=0;var j=1e3*o.params.freeModeMomentumRatio,k=o.velocity*j,l=o.translate+k;o.rtl&&(l=-l);var m,n=!1,p=20*Math.abs(o.velocity)*o.params.freeModeMomentumBounceRatio;l<o.maxTranslate()&&(o.params.freeModeMomentumBounce?(l+o.maxTranslate()<-p&&(l=o.maxTranslate()-p),m=o.maxTranslate(),n=!0,y=!0):l=o.maxTranslate()),l>o.minTranslate()&&(o.params.freeModeMomentumBounce?(l-o.minTranslate()>p&&(l=o.minTranslate()+p),m=o.minTranslate(),n=!0,y=!0):l=o.minTranslate()),0!==o.velocity&&(j=o.rtl?Math.abs((-l-o.translate)/o.velocity):Math.abs((l-o.translate)/o.velocity)),o.params.freeModeMomentumBounce&&n?(o.updateProgress(m),o.setWrapperTransition(j),o.setWrapperTranslate(l),o.onTransitionStart(),o.animating=!0,o.wrapper.transitionEnd(function(){y&&(o.emit("onMomentumBounce",o),o.setWrapperTransition(o.params.speed),o.setWrapperTranslate(m),o.wrapper.transitionEnd(function(){o.onTransitionEnd()}))})):o.velocity?(o.updateProgress(l),o.setWrapperTransition(j),o.setWrapperTranslate(l),o.onTransitionStart(),o.animating||(o.animating=!0,o.wrapper.transitionEnd(function(){o.onTransitionEnd()}))):o.updateProgress(l),o.updateActiveIndex()}return void((!o.params.freeModeMomentum||d>=o.params.longSwipesMs)&&(o.updateProgress(),o.updateActiveIndex()))}var t,w=0,z=o.slidesSizesGrid[0];for(t=0;t<o.slidesGrid.length;t+=o.params.slidesPerGroup)"undefined"!=typeof o.slidesGrid[t+o.params.slidesPerGroup]?e>=o.slidesGrid[t]&&e<o.slidesGrid[t+o.params.slidesPerGroup]&&(w=t,z=o.slidesGrid[t+o.params.slidesPerGroup]-o.slidesGrid[t]):e>=o.slidesGrid[t]&&(w=t,z=o.slidesGrid[o.slidesGrid.length-1]-o.slidesGrid[o.slidesGrid.length-2]);var C=(e-o.slidesGrid[w])/z;if(d>o.params.longSwipesMs){if(!o.params.longSwipes)return void o.slideTo(o.activeIndex);"next"===o.swipeDirection&&(C>=o.params.longSwipesRatio?o.slideTo(w+o.params.slidesPerGroup):o.slideTo(w)),"prev"===o.swipeDirection&&(C>1-o.params.longSwipesRatio?o.slideTo(w+o.params.slidesPerGroup):o.slideTo(w))}else{if(!o.params.shortSwipes)return void o.slideTo(o.activeIndex);"next"===o.swipeDirection&&o.slideTo(w+o.params.slidesPerGroup),"prev"===o.swipeDirection&&o.slideTo(w)}}},o._slideTo=function(a,b){return o.slideTo(a,b,!0,!0)},o.slideTo=function(a,b,c,d){"undefined"==typeof c&&(c=!0),"undefined"==typeof a&&(a=0),0>a&&(a=0),o.snapIndex=Math.floor(a/o.params.slidesPerGroup),o.snapIndex>=o.snapGrid.length&&(o.snapIndex=o.snapGrid.length-1);var e=-o.snapGrid[o.snapIndex];o.params.autoplay&&o.autoplaying&&(d||!o.params.autoplayDisableOnInteraction?o.pauseAutoplay(b):o.stopAutoplay()),o.updateProgress(e);for(var f=0;f<o.slidesGrid.length;f++)-e>=o.slidesGrid[f]&&(a=f);return"undefined"==typeof b&&(b=o.params.speed),o.previousIndex=o.activeIndex||0,o.activeIndex=a,e===o.translate?(o.updateClasses(),!1):(o.onTransitionStart(c),0===b?(o.setWrapperTransition(0),o.setWrapperTranslate(e),o.onTransitionEnd(c)):(o.setWrapperTransition(b),o.setWrapperTranslate(e),o.animating||(o.animating=!0,o.wrapper.transitionEnd(function(){o.onTransitionEnd(c)}))),o.updateClasses(),!0)},o.onTransitionStart=function(a){"undefined"==typeof a&&(a=!0),o.lazy&&o.lazy.onTransitionStart(),a&&(o.emit("onTransitionStart",o),o.activeIndex!==o.previousIndex&&o.emit("onSlideChangeStart",o))},o.onTransitionEnd=function(a){o.animating=!1,o.setWrapperTransition(0),"undefined"==typeof a&&(a=!0),o.lazy&&o.lazy.onTransitionEnd(),a&&(o.emit("onTransitionEnd",o),o.activeIndex!==o.previousIndex&&o.emit("onSlideChangeEnd",o)),o.params.hashnav&&o.hashnav&&o.hashnav.setHash()},o.slideNext=function(a,b,c){return o.params.loop?o.animating?!1:(o.fixLoop(),o.slideTo(o.activeIndex+o.params.slidesPerGroup,b,a,c)):o.slideTo(o.activeIndex+o.params.slidesPerGroup,b,a,c)},o._slideNext=function(a){return o.slideNext(!0,a,!0)},o.slidePrev=function(a,b,c){return o.params.loop?o.animating?!1:(o.fixLoop(),o.slideTo(o.activeIndex-1,b,a,c)):o.slideTo(o.activeIndex-1,b,a,c)},o._slidePrev=function(a){return o.slidePrev(!0,a,!0)},o.slideReset=function(a,b){return o.slideTo(o.activeIndex,b,a)},o.setWrapperTransition=function(a,b){o.wrapper.transition(a),"slide"!==o.params.effect&&o.effects[o.params.effect]&&o.effects[o.params.effect].setTransition(a),o.params.parallax&&o.parallax&&o.parallax.setTransition(a),o.params.scrollbar&&o.scrollbar&&o.scrollbar.setTransition(a),o.params.control&&o.controller&&o.controller.setTransition(a,b),o.emit("onSetTransition",o,a)},o.setWrapperTranslate=function(a,b,c){var d=0,f=0,g=0;e()?d=o.rtl?-a:a:f=a,o.params.virtualTranslate||(o.support.transforms3d?o.wrapper.transform("translate3d("+d+"px, "+f+"px, "+g+"px)"):o.wrapper.transform("translate("+d+"px, "+f+"px)")),o.translate=e()?d:f,b&&o.updateActiveIndex(),"slide"!==o.params.effect&&o.effects[o.params.effect]&&o.effects[o.params.effect].setTranslate(o.translate),o.params.parallax&&o.parallax&&o.parallax.setTranslate(o.translate),o.params.scrollbar&&o.scrollbar&&o.scrollbar.setTranslate(o.translate),o.params.control&&o.controller&&o.controller.setTranslate(o.translate,c),o.emit("onSetTranslate",o,o.translate)},o.getTranslate=function(a,b){var c,d,e,f;return"undefined"==typeof b&&(b="x"),o.params.virtualTranslate?o.rtl?-o.translate:o.translate:(e=window.getComputedStyle(a,null),window.WebKitCSSMatrix?f=new WebKitCSSMatrix("none"===e.webkitTransform?"":e.webkitTransform):(f=e.MozTransform||e.OTransform||e.MsTransform||e.msTransform||e.transform||e.getPropertyValue("transform").replace("translate(","matrix(1, 0, 0, 1,"),c=f.toString().split(",")),"x"===b&&(d=window.WebKitCSSMatrix?f.m41:16===c.length?parseFloat(c[12]):parseFloat(c[4])),"y"===b&&(d=window.WebKitCSSMatrix?f.m42:16===c.length?parseFloat(c[13]):parseFloat(c[5])),o.rtl&&d&&(d=-d),d||0)},o.getWrapperTranslate=function(a){return"undefined"==typeof a&&(a=e()?"x":"y"),o.getTranslate(o.wrapper[0],a)},o.observers=[],o.initObservers=function(){if(o.params.observeParents)for(var a=o.container.parents(),b=0;b<a.length;b++)h(a[b]);h(o.container[0],{childList:!1}),h(o.wrapper[0],{attributes:!1})},o.disconnectObservers=function(){for(var a=0;a<o.observers.length;a++)o.observers[a].disconnect();o.observers=[]},o.createLoop=function(){o.wrapper.children("."+o.params.slideClass+"."+o.params.slideDuplicateClass).remove();var b=o.wrapper.children("."+o.params.slideClass);o.loopedSlides=parseInt(o.params.loopedSlides||o.params.slidesPerView,10),o.loopedSlides=o.loopedSlides+o.params.loopAdditionalSlides,o.loopedSlides>b.length&&(o.loopedSlides=b.length);var c,d=[],e=[];for(b.each(function(c,f){var g=a(this);c<o.loopedSlides&&e.push(f),c<b.length&&c>=b.length-o.loopedSlides&&d.push(f),g.attr("data-swiper-slide-index",c)}),c=0;c<e.length;c++)o.wrapper.append(a(e[c].cloneNode(!0)).addClass(o.params.slideDuplicateClass));for(c=d.length-1;c>=0;c--)o.wrapper.prepend(a(d[c].cloneNode(!0)).addClass(o.params.slideDuplicateClass))},o.destroyLoop=function(){o.wrapper.children("."+o.params.slideClass+"."+o.params.slideDuplicateClass).remove(),o.slides.removeAttr("data-swiper-slide-index")},o.fixLoop=function(){var a;o.activeIndex<o.loopedSlides?(a=o.slides.length-3*o.loopedSlides+o.activeIndex,a+=o.loopedSlides,o.slideTo(a,0,!1,!0)):("auto"===o.params.slidesPerView&&o.activeIndex>=2*o.loopedSlides||o.activeIndex>o.slides.length-2*o.params.slidesPerView)&&(a=-o.slides.length+o.activeIndex+o.loopedSlides,a+=o.loopedSlides,o.slideTo(a,0,!1,!0))},o.appendSlide=function(a){if(o.params.loop&&o.destroyLoop(),"object"==typeof a&&a.length)for(var b=0;b<a.length;b++)a[b]&&o.wrapper.append(a[b]);else o.wrapper.append(a);o.params.loop&&o.createLoop(),o.params.observer&&o.support.observer||o.update(!0)},o.prependSlide=function(a){o.params.loop&&o.destroyLoop();var b=o.activeIndex+1;if("object"==typeof a&&a.length){for(var c=0;c<a.length;c++)a[c]&&o.wrapper.prepend(a[c]);b=o.activeIndex+a.length}else o.wrapper.prepend(a);o.params.loop&&o.createLoop(),o.params.observer&&o.support.observer||o.update(!0),o.slideTo(b,0,!1)},o.removeSlide=function(a){o.params.loop&&o.destroyLoop();var b,c=o.activeIndex;if("object"==typeof a&&a.length){for(var d=0;d<a.length;d++)b=a[d],o.slides[b]&&o.slides.eq(b).remove(),c>b&&c--;c=Math.max(c,0)}else b=a,o.slides[b]&&o.slides.eq(b).remove(),c>b&&c--,c=Math.max(c,0);o.params.observer&&o.support.observer||o.update(!0),o.slideTo(c,0,!1)},o.removeAllSlides=function(){for(var a=[],b=0;b<o.slides.length;b++)a.push(b);o.removeSlide(a)},o.effects={fade:{fadeIndex:null,setTranslate:function(){for(var a=0;a<o.slides.length;a++){var b=o.slides.eq(a),c=b[0].swiperSlideOffset,d=-c;o.params.virtualTranslate||(d-=o.translate);var f=0;e()||(f=d,d=0);var g=o.params.fade.crossFade?Math.max(1-Math.abs(b[0].progress),0):1+Math.min(Math.max(b[0].progress,-1),0);g>0&&1>g&&(o.effects.fade.fadeIndex=a),b.css({opacity:g}).transform("translate3d("+d+"px, "+f+"px, 0px)")}},setTransition:function(a){if(o.slides.transition(a),o.params.virtualTranslate&&0!==a){var b=null!==o.effects.fade.fadeIndex?o.effects.fade.fadeIndex:o.activeIndex;o.slides.eq(b).transitionEnd(function(){for(var a=["webkitTransitionEnd","transitionend","oTransitionEnd","MSTransitionEnd","msTransitionEnd"],b=0;b<a.length;b++)o.wrapper.trigger(a[b])})}}},cube:{setTranslate:function(){var b,c=0;o.params.cube.shadow&&(e()?(b=o.wrapper.find(".swiper-cube-shadow"),0===b.length&&(b=a('<div class="swiper-cube-shadow"></div>'),o.wrapper.append(b)),b.css({height:o.width+"px"})):(b=o.container.find(".swiper-cube-shadow"),0===b.length&&(b=a('<div class="swiper-cube-shadow"></div>'),o.container.append(b))));for(var d=0;d<o.slides.length;d++){var f=o.slides.eq(d),g=90*d,h=Math.floor(g/360);o.rtl&&(g=-g,h=Math.floor(-g/360));var i=Math.max(Math.min(f[0].progress,1),-1),j=0,k=0,l=0;d%4===0?(j=4*-h*o.size,l=0):(d-1)%4===0?(j=0,l=4*-h*o.size):(d-2)%4===0?(j=o.size+4*h*o.size,l=o.size):(d-3)%4===0&&(j=-o.size,l=3*o.size+4*o.size*h),o.rtl&&(j=-j),e()||(k=j,j=0);var m="rotateX("+(e()?0:-g)+"deg) rotateY("+(e()?g:0)+"deg) translate3d("+j+"px, "+k+"px, "+l+"px)";if(1>=i&&i>-1&&(c=90*d+90*i,o.rtl&&(c=90*-d-90*i)),f.transform(m),o.params.cube.slideShadows){var n=e()?f.find(".swiper-slide-shadow-left"):f.find(".swiper-slide-shadow-top"),p=e()?f.find(".swiper-slide-shadow-right"):f.find(".swiper-slide-shadow-bottom");0===n.length&&(n=a('<div class="swiper-slide-shadow-'+(e()?"left":"top")+'"></div>'),f.append(n)),0===p.length&&(p=a('<div class="swiper-slide-shadow-'+(e()?"right":"bottom")+'"></div>'),f.append(p)),n.length&&(n[0].style.opacity=-f[0].progress),p.length&&(p[0].style.opacity=f[0].progress)}}if(o.wrapper.css({"-webkit-transform-origin":"50% 50% -"+o.size/2+"px","-moz-transform-origin":"50% 50% -"+o.size/2+"px","-ms-transform-origin":"50% 50% -"+o.size/2+"px",
 "transform-origin":"50% 50% -"+o.size/2+"px"}),o.params.cube.shadow)if(e())b.transform("translate3d(0px, "+(o.width/2+o.params.cube.shadowOffset)+"px, "+-o.width/2+"px) rotateX(90deg) rotateZ(0deg) scale("+o.params.cube.shadowScale+")");else{var q=Math.abs(c)-90*Math.floor(Math.abs(c)/90),r=1.5-(Math.sin(2*q*Math.PI/360)/2+Math.cos(2*q*Math.PI/360)/2),s=o.params.cube.shadowScale,t=o.params.cube.shadowScale/r,u=o.params.cube.shadowOffset;b.transform("scale3d("+s+", 1, "+t+") translate3d(0px, "+(o.height/2+u)+"px, "+-o.height/2/t+"px) rotateX(-90deg)")}var v=o.isSafari||o.isUiWebView?-o.size/2:0;o.wrapper.transform("translate3d(0px,0,"+v+"px) rotateX("+(e()?0:c)+"deg) rotateY("+(e()?-c:0)+"deg)")},setTransition:function(a){o.slides.transition(a).find(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").transition(a),o.params.cube.shadow&&!e()&&o.container.find(".swiper-cube-shadow").transition(a)}},coverflow:{setTranslate:function(){for(var b=o.translate,c=e()?-b+o.width/2:-b+o.height/2,d=e()?o.params.coverflow.rotate:-o.params.coverflow.rotate,f=o.params.coverflow.depth,g=0,h=o.slides.length;h>g;g++){var i=o.slides.eq(g),j=o.slidesSizesGrid[g],k=i[0].swiperSlideOffset,l=(c-k-j/2)/j*o.params.coverflow.modifier,m=e()?d*l:0,n=e()?0:d*l,p=-f*Math.abs(l),q=e()?0:o.params.coverflow.stretch*l,r=e()?o.params.coverflow.stretch*l:0;Math.abs(r)<.001&&(r=0),Math.abs(q)<.001&&(q=0),Math.abs(p)<.001&&(p=0),Math.abs(m)<.001&&(m=0),Math.abs(n)<.001&&(n=0);var s="translate3d("+r+"px,"+q+"px,"+p+"px)  rotateX("+n+"deg) rotateY("+m+"deg)";if(i.transform(s),i[0].style.zIndex=-Math.abs(Math.round(l))+1,o.params.coverflow.slideShadows){var t=e()?i.find(".swiper-slide-shadow-left"):i.find(".swiper-slide-shadow-top"),u=e()?i.find(".swiper-slide-shadow-right"):i.find(".swiper-slide-shadow-bottom");0===t.length&&(t=a('<div class="swiper-slide-shadow-'+(e()?"left":"top")+'"></div>'),i.append(t)),0===u.length&&(u=a('<div class="swiper-slide-shadow-'+(e()?"right":"bottom")+'"></div>'),i.append(u)),t.length&&(t[0].style.opacity=l>0?l:0),u.length&&(u[0].style.opacity=-l>0?-l:0)}}if(o.browser.ie){var v=o.wrapper[0].style;v.perspectiveOrigin=c+"px 50%"}},setTransition:function(a){o.slides.transition(a).find(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").transition(a)}}},o.lazy={initialImageLoaded:!1,loadImageInSlide:function(b){if("undefined"!=typeof b&&0!==o.slides.length){var c=o.slides.eq(b),d=c.find("img.swiper-lazy:not(.swiper-lazy-loaded):not(.swiper-lazy-loading)");0!==d.length&&d.each(function(){var b=a(this);b.addClass("swiper-lazy-loading");var d=b.attr("data-src");o.loadImage(b[0],d,!1,function(){b.attr("src",d),b.removeAttr("data-src"),b.addClass("swiper-lazy-loaded").removeClass("swiper-lazy-loading"),c.find(".swiper-lazy-preloader, .preloader").remove(),o.emit("onLazyImageReady",o,c[0],b[0])}),o.emit("onLazyImageLoad",o,c[0],b[0])})}},load:function(){if(o.params.watchSlidesVisibility)o.wrapper.children("."+o.params.slideVisibleClass).each(function(){o.lazy.loadImageInSlide(a(this).index())});else if(o.params.slidesPerView>1)for(var b=o.activeIndex;b<o.activeIndex+o.params.slidesPerView;b++)o.slides[b]&&o.lazy.loadImageInSlide(b);else o.lazy.loadImageInSlide(o.activeIndex);if(o.params.lazyLoadingInPrevNext){var c=o.wrapper.children("."+o.params.slideNextClass);c.length>0&&o.lazy.loadImageInSlide(c.index());var d=o.wrapper.children("."+o.params.slidePrevClass);d.length>0&&o.lazy.loadImageInSlide(d.index())}},onTransitionStart:function(){o.params.lazyLoading&&(o.params.lazyLoadingOnTransitionStart||!o.params.lazyLoadingOnTransitionStart&&!o.lazy.initialImageLoaded)&&(o.lazy.initialImageLoaded=!0,o.lazy.load())},onTransitionEnd:function(){o.params.lazyLoading&&!o.params.lazyLoadingOnTransitionStart&&o.lazy.load()}},o.scrollbar={set:function(){if(o.params.scrollbar){var b=o.scrollbar;b.track=a(o.params.scrollbar),b.drag=b.track.find(".swiper-scrollbar-drag"),0===b.drag.length&&(b.drag=a('<div class="swiper-scrollbar-drag"></div>'),b.track.append(b.drag)),b.drag[0].style.width="",b.drag[0].style.height="",b.trackSize=e()?b.track[0].offsetWidth:b.track[0].offsetHeight,b.divider=o.size/o.virtualSize,b.moveDivider=b.divider*(b.trackSize/o.size),b.dragSize=b.trackSize*b.divider,e()?b.drag[0].style.width=b.dragSize+"px":b.drag[0].style.height=b.dragSize+"px",b.divider>=1?b.track[0].style.display="none":b.track[0].style.display="",o.params.scrollbarHide&&(b.track[0].style.opacity=0)}},setTranslate:function(){if(o.params.scrollbar){var a,b=o.scrollbar,c=b.dragSize;a=(b.trackSize-b.dragSize)*o.progress,o.rtl&&e()?(a=-a,a>0?(c=b.dragSize-a,a=0):-a+b.dragSize>b.trackSize&&(c=b.trackSize+a)):0>a?(c=b.dragSize+a,a=0):a+b.dragSize>b.trackSize&&(c=b.trackSize-a),e()?(o.support.transforms3d?b.drag.transform("translate3d("+a+"px, 0, 0)"):b.drag.transform("translateX("+a+"px)"),b.drag[0].style.width=c+"px"):(o.support.transforms3d?b.drag.transform("translate3d(0px, "+a+"px, 0)"):b.drag.transform("translateY("+a+"px)"),b.drag[0].style.height=c+"px"),o.params.scrollbarHide&&(clearTimeout(b.timeout),b.track[0].style.opacity=1,b.timeout=setTimeout(function(){b.track[0].style.opacity=0,b.track.transition(400)},1e3))}},setTransition:function(a){o.params.scrollbar&&o.scrollbar.drag.transition(a)}},o.controller={setTranslate:function(a,c){var d,e,f=o.params.control;if(o.isArray(f))for(var g=0;g<f.length;g++)f[g]!==c&&f[g]instanceof b&&(a=f[g].rtl&&"horizontal"===f[g].params.direction?-o.translate:o.translate,d=(f[g].maxTranslate()-f[g].minTranslate())/(o.maxTranslate()-o.minTranslate()),e=(a-o.minTranslate())*d+f[g].minTranslate(),o.params.controlInverse&&(e=f[g].maxTranslate()-e),f[g].updateProgress(e),f[g].setWrapperTranslate(e,!1,o),f[g].updateActiveIndex());else f instanceof b&&c!==f&&(a=f.rtl&&"horizontal"===f.params.direction?-o.translate:o.translate,d=(f.maxTranslate()-f.minTranslate())/(o.maxTranslate()-o.minTranslate()),e=(a-o.minTranslate())*d+f.minTranslate(),o.params.controlInverse&&(e=f.maxTranslate()-e),f.updateProgress(e),f.setWrapperTranslate(e,!1,o),f.updateActiveIndex())},setTransition:function(a,c){var d=o.params.control;if(o.isArray(d))for(var e=0;e<d.length;e++)d[e]!==c&&d[e]instanceof b&&d[e].setWrapperTransition(a,o);else d instanceof b&&c!==d&&d.setWrapperTransition(a,o)}},o.parallax={setTranslate:function(){o.container.children("[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]").each(function(){i(this,o.progress)}),o.slides.each(function(){var b=a(this);b.find("[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]").each(function(){var a=Math.min(Math.max(b[0].progress,-1),1);i(this,a)})})},setTransition:function(b){"undefined"==typeof b&&(b=o.params.speed),o.container.find("[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]").each(function(){var c=a(this),d=parseInt(c.attr("data-swiper-parallax-duration"),10)||b;0===b&&(d=0),c.transition(d)})}},o._plugins=[];for(var E in o.plugins)if(o.plugins.hasOwnProperty(E)){var F=o.plugins[E](o,o.params[E]);F&&o._plugins.push(F)}return o.callPlugins=function(a){for(var b=0;b<o._plugins.length;b++)a in o._plugins[b]&&o._plugins[b][a](arguments[1],arguments[2],arguments[3],arguments[4],arguments[5])},o.emitterEventListeners={},o.emit=function(a){o.params[a]&&o.params[a](arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]);var b;if(o){if(o.emitterEventListeners[a])for(b=0;b<o.emitterEventListeners[a].length;b++)o.emitterEventListeners[a][b](arguments[1],arguments[2],arguments[3],arguments[4],arguments[5]);o.callPlugins&&o.callPlugins(a,arguments[1],arguments[2],arguments[3],arguments[4],arguments[5])}},o.on=function(a,b){return a=j(a),o.emitterEventListeners[a]||(o.emitterEventListeners[a]=[]),o.emitterEventListeners[a].push(b),o},o.off=function(a,b){var c;if(a=j(a),"undefined"==typeof b)return o.emitterEventListeners[a]=[],o;if(o.emitterEventListeners[a]&&0!==o.emitterEventListeners[a].length){for(c=0;c<o.emitterEventListeners[a].length;c++)o.emitterEventListeners[a][c]===b&&o.emitterEventListeners[a].splice(c,1);return o}},o.once=function(a,b){a=j(a);var c=function(){b(arguments[0],arguments[1],arguments[2],arguments[3],arguments[4]),o.off(a,c)};return o.on(a,c),o},o.a11y={makeFocusable:function(a){return a[0].tabIndex="0",a},addRole:function(a,b){return a.attr("role",b),a},addLabel:function(a,b){return a.attr("aria-label",b),a},disable:function(a){return a.attr("aria-disabled",!0),a},enable:function(a){return a.attr("aria-disabled",!1),a},onEnterKey:function(b){13===b.keyCode&&(a(b.target).is(o.params.nextButton)?(o.onClickNext(b),o.isEnd?o.a11y.notify(o.params.lastSlideMsg):o.a11y.notify(o.params.nextSlideMsg)):a(b.target).is(o.params.prevButton)&&(o.onClickPrev(b),o.isBeginning?o.a11y.notify(o.params.firstSlideMsg):o.a11y.notify(o.params.prevSlideMsg)))},liveRegion:a('<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>'),notify:function(a){var b=o.a11y.liveRegion;0!==b.length&&(b.html(""),b.html(a))},init:function(){if(o.params.nextButton){var b=a(o.params.nextButton);o.a11y.makeFocusable(b),o.a11y.addRole(b,"button"),o.a11y.addLabel(b,o.params.nextSlideMsg)}if(o.params.prevButton){var c=a(o.params.prevButton);o.a11y.makeFocusable(c),o.a11y.addRole(c,"button"),o.a11y.addLabel(c,o.params.prevSlideMsg)}a(o.container).append(o.a11y.liveRegion)},destroy:function(){o.a11y.liveRegion&&o.a11y.liveRegion.length>0&&o.a11y.liveRegion.remove()}},o.init=function(){o.params.loop&&o.createLoop(),o.updateContainerSize(),o.updateSlidesSize(),o.updatePagination(),o.params.scrollbar&&o.scrollbar&&o.scrollbar.set(),"slide"!==o.params.effect&&o.effects[o.params.effect]&&(o.params.loop||o.updateProgress(),o.effects[o.params.effect].setTranslate()),o.params.loop?o.slideTo(o.params.initialSlide+o.loopedSlides,0,o.params.runCallbacksOnInit):(o.slideTo(o.params.initialSlide,0,o.params.runCallbacksOnInit),0===o.params.initialSlide&&(o.parallax&&o.params.parallax&&o.parallax.setTranslate(),o.lazy&&o.params.lazyLoading&&o.lazy.load())),o.attachEvents(),o.params.observer&&o.support.observer&&o.initObservers(),o.params.preloadImages&&!o.params.lazyLoading&&o.preloadImages(),o.params.autoplay&&o.startAutoplay(),o.params.keyboardControl&&o.enableKeyboardControl&&o.enableKeyboardControl(),o.params.mousewheelControl&&o.enableMousewheelControl&&o.enableMousewheelControl(),o.params.hashnav&&o.hashnav&&o.hashnav.init(),o.params.a11y&&o.a11y&&o.a11y.init(),o.emit("onInit",o)},o.cleanupStyles=function(){o.container.removeClass(o.classNames.join(" ")).removeAttr("style"),o.wrapper.removeAttr("style"),o.slides&&o.slides.length&&o.slides.removeClass([o.params.slideVisibleClass,o.params.slideActiveClass,o.params.slideNextClass,o.params.slidePrevClass].join(" ")).removeAttr("style").removeAttr("data-swiper-column").removeAttr("data-swiper-row"),o.paginationContainer&&o.paginationContainer.length&&o.paginationContainer.removeClass(o.params.paginationHiddenClass),o.bullets&&o.bullets.length&&o.bullets.removeClass(o.params.bulletActiveClass),o.params.prevButton&&a(o.params.prevButton).removeClass(o.params.buttonDisabledClass),o.params.nextButton&&a(o.params.nextButton).removeClass(o.params.buttonDisabledClass),o.params.scrollbar&&o.scrollbar&&(o.scrollbar.track&&o.scrollbar.track.length&&o.scrollbar.track.removeAttr("style"),o.scrollbar.drag&&o.scrollbar.drag.length&&o.scrollbar.drag.removeAttr("style"))},o.destroy=function(a,b){o.detachEvents(),o.stopAutoplay(),o.params.loop&&o.destroyLoop(),b&&o.cleanupStyles(),o.disconnectObservers(),o.params.keyboardControl&&o.disableKeyboardControl&&o.disableKeyboardControl(),o.params.mousewheelControl&&o.disableMousewheelControl&&o.disableMousewheelControl(),o.params.a11y&&o.a11y&&o.a11y.destroy(),o.emit("onDestroy"),a!==!1&&(o=null)},o.init(),o}};b.prototype={defaults:{direction:"horizontal",touchEventsTarget:"container",initialSlide:0,speed:300,autoplay:!1,autoplayDisableOnInteraction:!0,freeMode:!1,freeModeMomentum:!0,freeModeMomentumRatio:1,freeModeMomentumBounce:!0,freeModeMomentumBounceRatio:1,setWrapperSize:!1,virtualTranslate:!1,effect:"slide",coverflow:{rotate:50,stretch:0,depth:100,modifier:1,slideShadows:!0},cube:{slideShadows:!0,shadow:!0,shadowOffset:20,shadowScale:.94},fade:{crossFade:!1},parallax:!1,scrollbar:null,scrollbarHide:!0,keyboardControl:!1,mousewheelControl:!1,mousewheelForceToAxis:!1,hashnav:!1,spaceBetween:0,slidesPerView:1,slidesPerColumn:1,slidesPerColumnFill:"column",slidesPerGroup:1,centeredSlides:!1,touchRatio:1,touchAngle:45,simulateTouch:!0,shortSwipes:!0,longSwipes:!0,longSwipesRatio:.5,longSwipesMs:300,followFinger:!0,onlyExternal:!1,threshold:0,touchMoveStopPropagation:!0,pagination:null,paginationClickable:!1,paginationHide:!1,paginationBulletRender:null,resistance:!0,resistanceRatio:.85,nextButton:null,prevButton:null,watchSlidesProgress:!1,watchSlidesVisibility:!1,grabCursor:!1,preventClicks:!0,preventClicksPropagation:!0,slideToClickedSlide:!1,lazyLoading:!1,lazyLoadingInPrevNext:!1,lazyLoadingOnTransitionStart:!1,preloadImages:!0,updateOnImagesReady:!0,loop:!1,loopAdditionalSlides:0,loopedSlides:null,control:void 0,controlInverse:!1,allowSwipeToPrev:!0,allowSwipeToNext:!0,swipeHandler:null,noSwiping:!0,noSwipingClass:"swiper-no-swiping",slideClass:"swiper-slide",slideActiveClass:"swiper-slide-active",slideVisibleClass:"swiper-slide-visible",slideDuplicateClass:"swiper-slide-duplicate",slideNextClass:"swiper-slide-next",slidePrevClass:"swiper-slide-prev",wrapperClass:"swiper-wrapper",bulletClass:"swiper-pagination-bullet",bulletActiveClass:"swiper-pagination-bullet-active",buttonDisabledClass:"swiper-button-disabled",paginationHiddenClass:"swiper-pagination-hidden",observer:!1,observeParents:!1,a11y:!1,prevSlideMessage:"Previous slide",nextSlideMessage:"Next slide",firstSlideMessage:"This is the first slide",lastSlideMessage:"This is the last slide",runCallbacksOnInit:!0},isSafari:function(){var a=navigator.userAgent.toLowerCase();return a.indexOf("safari")>=0&&a.indexOf("chrome")<0&&a.indexOf("android")<0}(),isUiWebView:/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent),isArray:function(a){return"[object Array]"===Object.prototype.toString.apply(a)},browser:{ie:window.navigator.pointerEnabled||window.navigator.msPointerEnabled,ieTouch:window.navigator.msPointerEnabled&&window.navigator.msMaxTouchPoints>1||window.navigator.pointerEnabled&&window.navigator.maxTouchPoints>1},device:function(){var a=navigator.userAgent,b=a.match(/(Android);?[\s\/]+([\d.]+)?/),c=a.match(/(iPad).*OS\s([\d_]+)/),d=!c&&a.match(/(iPhone\sOS)\s([\d_]+)/);return{ios:c||d||c,android:b}}(),support:{touch:window.Modernizr&&Modernizr.touch===!0||function(){return!!("ontouchstart"in window||window.DocumentTouch&&document instanceof DocumentTouch)}(),transforms3d:window.Modernizr&&Modernizr.csstransforms3d===!0||function(){var a=document.createElement("div").style;return"webkitPerspective"in a||"MozPerspective"in a||"OPerspective"in a||"MsPerspective"in a||"perspective"in a}(),flexbox:function(){for(var a=document.createElement("div").style,b="alignItems webkitAlignItems webkitBoxAlign msFlexAlign mozBoxAlign webkitFlexDirection msFlexDirection mozBoxDirection mozBoxOrient webkitBoxDirection webkitBoxOrient".split(" "),c=0;c<b.length;c++)if(b[c]in a)return!0}(),observer:function(){return"MutationObserver"in window||"WebkitMutationObserver"in window}()},plugins:{}},a.Swiper=b}(Zepto),+function(a){"use strict";a.Swiper.prototype.defaults.pagination=".page-current .swiper-pagination",a.swiper=function(b,c){return new a.Swiper(b,c)},a.fn.swiper=function(b){return new a.Swiper(this,b)},a.initSwiper=function(b){function c(a){function b(){a.destroy(),d.off("pageBeforeRemove",b)}d.on("pageBeforeRemove",b)}var d=a(b||document.body),e=d.find(".swiper-container");if(0!==e.length)for(var f=0;f<e.length;f++){var g,h=e.eq(f);if(h.data("swiper"))h.data("swiper").update(!0);else{g=h.dataset();var i=a.swiper(h[0],g);c(i)}}},a.reinitSwiper=function(b){var c=a(b||".page-current"),d=c.find(".swiper-container");if(0!==d.length)for(var e=0;e<d.length;e++){var f=d[0].swiper;f&&f.update(!0)}}}(Zepto),+function(a){"use strict";var b=function(b){var c,d=this,e=this.defaults;b=b||{};for(var f in e)"undefined"==typeof b[f]&&(b[f]=e[f]);d.params=b;var g=d.params.navbarTemplate||'<header class="bar bar-nav"><a class="icon icon-left pull-left photo-browser-close-link'+("popup"===d.params.type?" close-popup":"")+'"></a><h1 class="title"><div class="center sliding"><span class="photo-browser-current"></span> <span class="photo-browser-of">'+d.params.ofText+'</span> <span class="photo-browser-total"></span></div></h1></header>',h=d.params.toolbarTemplate||'<nav class="bar bar-tab"><a class="tab-item photo-browser-prev" href="#"><i class="icon icon-prev"></i></a><a class="tab-item photo-browser-next" href="#"><i class="icon icon-next"></i></a></nav>',i=d.params.template||'<div class="photo-browser photo-browser-'+d.params.theme+'">{{navbar}}{{toolbar}}<div data-page="photo-browser-slides" class="content">{{captions}}<div class="photo-browser-swiper-container swiper-container"><div class="photo-browser-swiper-wrapper swiper-wrapper">{{photos}}</div></div></div></div>',j=d.params.lazyLoading?d.params.photoLazyTemplate||'<div class="photo-browser-slide photo-browser-slide-lazy swiper-slide"><div class="preloader'+("dark"===d.params.theme?" preloader-white":"")+'"></div><span class="photo-browser-zoom-container"><img data-src="{{url}}" class="swiper-lazy"></span></div>':d.params.photoTemplate||'<div class="photo-browser-slide swiper-slide"><span class="photo-browser-zoom-container"><img src="{{url}}"></span></div>',k=d.params.captionsTheme||d.params.theme,l=d.params.captionsTemplate||'<div class="photo-browser-captions photo-browser-captions-'+k+'">{{captions}}</div>',m=d.params.captionTemplate||'<div class="photo-browser-caption" data-caption-index="{{captionIndex}}">{{caption}}</div>',n=d.params.objectTemplate||'<div class="photo-browser-slide photo-browser-object-slide swiper-slide">{{html}}</div>',o="",p="";for(c=0;c<d.params.photos.length;c++){var q=d.params.photos[c],r="";"string"==typeof q||q instanceof String?r=q.indexOf("<")>=0||q.indexOf(">")>=0?n.replace(/{{html}}/g,q):j.replace(/{{url}}/g,q):"object"==typeof q&&(q.hasOwnProperty("html")&&q.html.length>0?r=n.replace(/{{html}}/g,q.html):q.hasOwnProperty("url")&&q.url.length>0&&(r=j.replace(/{{url}}/g,q.url)),q.hasOwnProperty("caption")&&q.caption.length>0?p+=m.replace(/{{caption}}/g,q.caption).replace(/{{captionIndex}}/g,c):r=r.replace(/{{caption}}/g,"")),o+=r}var s=i.replace("{{navbar}}",d.params.navbar?g:"").replace("{{noNavbar}}",d.params.navbar?"":"no-navbar").replace("{{photos}}",o).replace("{{captions}}",l.replace(/{{captions}}/g,p)).replace("{{toolbar}}",d.params.toolbar?h:"");d.activeIndex=d.params.initialSlide,d.openIndex=d.activeIndex,d.opened=!1,d.open=function(b){return"undefined"==typeof b&&(b=d.activeIndex),b=parseInt(b,10),d.opened&&d.swiper?void d.swiper.slideTo(b):(d.opened=!0,d.openIndex=b,"standalone"===d.params.type&&a(d.params.container).append(s),"popup"===d.params.type&&(d.popup=a.popup('<div class="popup photo-browser-popup">'+s+"</div>"),a(d.popup).on("closed",d.onPopupClose)),"page"===d.params.type?(a(document).on("pageBeforeInit",d.onPageBeforeInit),a(document).on("pageBeforeRemove",d.onPageBeforeRemove),d.params.view||(d.params.view=a.mainView),void d.params.view.loadContent(s)):(d.layout(d.openIndex),void(d.params.onOpen&&d.params.onOpen(d))))},d.close=function(){d.opened=!1,d.swiperContainer&&0!==d.swiperContainer.length&&(d.params.onClose&&d.params.onClose(d),d.attachEvents(!0),"standalone"===d.params.type&&d.container.removeClass("photo-browser-in").addClass("photo-browser-out").transitionEnd(function(){d.container.remove()}),d.swiper.destroy(),d.swiper=d.swiperContainer=d.swiperWrapper=d.slides=t=u=v=void 0)},d.onPopupClose=function(){d.close(),a(d.popup).off("pageBeforeInit",d.onPopupClose)},d.onPageBeforeInit=function(b){"photo-browser-slides"===b.detail.page.name&&d.layout(d.openIndex),a(document).off("pageBeforeInit",d.onPageBeforeInit)},d.onPageBeforeRemove=function(b){"photo-browser-slides"===b.detail.page.name&&d.close(),a(document).off("pageBeforeRemove",d.onPageBeforeRemove)},d.onSliderTransitionStart=function(b){d.activeIndex=b.activeIndex;var c=b.activeIndex+1,e=b.slides.length;if(d.params.loop&&(e-=2,c-=b.loopedSlides,1>c&&(c=e+c),c>e&&(c-=e)),d.container.find(".photo-browser-current").text(c),d.container.find(".photo-browser-total").text(e),a(".photo-browser-prev, .photo-browser-next").removeClass("photo-browser-link-inactive"),b.isBeginning&&!d.params.loop&&a(".photo-browser-prev").addClass("photo-browser-link-inactive"),b.isEnd&&!d.params.loop&&a(".photo-browser-next").addClass("photo-browser-link-inactive"),d.captions.length>0){d.captionsContainer.find(".photo-browser-caption-active").removeClass("photo-browser-caption-active");var f=d.params.loop?b.slides.eq(b.activeIndex).attr("data-swiper-slide-index"):d.activeIndex;d.captionsContainer.find('[data-caption-index="'+f+'"]').addClass("photo-browser-caption-active")}var g=b.slides.eq(b.previousIndex).find("video");g.length>0&&"pause"in g[0]&&g[0].pause(),d.params.onSlideChangeStart&&d.params.onSlideChangeStart(b)},d.onSliderTransitionEnd=function(a){d.params.zoom&&t&&a.previousIndex!==a.activeIndex&&(u.transform("translate3d(0,0,0) scale(1)"),v.transform("translate3d(0,0,0)"),t=u=v=void 0,w=x=1),d.params.onSlideChangeEnd&&d.params.onSlideChangeEnd(a)},d.layout=function(b){"page"===d.params.type?d.container=a(".photo-browser-swiper-container").parents(".view"):d.container=a(".photo-browser"),"standalone"===d.params.type&&d.container.addClass("photo-browser-in"),d.swiperContainer=d.container.find(".photo-browser-swiper-container"),d.swiperWrapper=d.container.find(".photo-browser-swiper-wrapper"),d.slides=d.container.find(".photo-browser-slide"),d.captionsContainer=d.container.find(".photo-browser-captions"),d.captions=d.container.find(".photo-browser-caption");var c={nextButton:d.params.nextButton||".photo-browser-next",prevButton:d.params.prevButton||".photo-browser-prev",indexButton:d.params.indexButton,initialSlide:b,spaceBetween:d.params.spaceBetween,speed:d.params.speed,loop:d.params.loop,lazyLoading:d.params.lazyLoading,lazyLoadingInPrevNext:d.params.lazyLoadingInPrevNext,lazyLoadingOnTransitionStart:d.params.lazyLoadingOnTransitionStart,preloadImages:d.params.lazyLoading?!1:!0,onTap:function(a,b){d.params.onTap&&d.params.onTap(a,b)},onClick:function(a,b){d.params.exposition&&d.toggleExposition(),d.params.onClick&&d.params.onClick(a,b)},onDoubleTap:function(b,c){d.toggleZoom(a(c.target).parents(".photo-browser-slide")),d.params.onDoubleTap&&d.params.onDoubleTap(b,c)},onTransitionStart:function(a){d.onSliderTransitionStart(a)},onTransitionEnd:function(a){d.onSliderTransitionEnd(a)},onLazyImageLoad:function(a,b,c){d.params.onLazyImageLoad&&d.params.onLazyImageLoad(d,b,c)},onLazyImageReady:function(b,c,e){a(c).removeClass("photo-browser-slide-lazy"),d.params.onLazyImageReady&&d.params.onLazyImageReady(d,c,e)}};d.params.swipeToClose&&"page"!==d.params.type&&(c.onTouchStart=d.swipeCloseTouchStart,c.onTouchMoveOpposite=d.swipeCloseTouchMove,c.onTouchEnd=d.swipeCloseTouchEnd),d.swiper=a.swiper(d.swiperContainer,c),0===b&&d.onSliderTransitionStart(d.swiper),d.attachEvents()},d.attachEvents=function(a){var b=a?"off":"on";if(d.params.zoom){var c=d.params.loop?d.swiper.slides:d.slides;c[b]("gesturestart",d.onSlideGestureStart),c[b]("gesturechange",d.onSlideGestureChange),c[b]("gestureend",d.onSlideGestureEnd),c[b]("touchstart",d.onSlideTouchStart),c[b]("touchmove",d.onSlideTouchMove),c[b]("touchend",d.onSlideTouchEnd)}d.container.find(".photo-browser-close-link")[b]("click",d.close)},d.exposed=!1,d.toggleExposition=function(){d.container&&d.container.toggleClass("photo-browser-exposed"),d.params.expositionHideCaptions&&d.captionsContainer.toggleClass("photo-browser-captions-exposed"),d.exposed=!d.exposed},d.enableExposition=function(){d.container&&d.container.addClass("photo-browser-exposed"),d.params.expositionHideCaptions&&d.captionsContainer.addClass("photo-browser-captions-exposed"),d.exposed=!0},d.disableExposition=function(){d.container&&d.container.removeClass("photo-browser-exposed"),d.params.expositionHideCaptions&&d.captionsContainer.removeClass("photo-browser-captions-exposed"),d.exposed=!1};var t,u,v,w=1,x=1,y=!1;d.onSlideGestureStart=function(){return t||(t=a(this),u=t.find("img, svg, canvas"),v=u.parent(".photo-browser-zoom-container"),0!==v.length)?(u.transition(0),void(y=!0)):void(u=void 0)},d.onSlideGestureChange=function(a){u&&0!==u.length&&(w=a.scale*x,w>d.params.maxZoom&&(w=d.params.maxZoom-1+Math.pow(w-d.params.maxZoom+1,.5)),w<d.params.minZoom&&(w=d.params.minZoom+1-Math.pow(d.params.minZoom-w+1,.5)),u.transform("translate3d(0,0,0) scale("+w+")"))},d.onSlideGestureEnd=function(){u&&0!==u.length&&(w=Math.max(Math.min(w,d.params.maxZoom),d.params.minZoom),u.transition(d.params.speed).transform("translate3d(0,0,0) scale("+w+")"),x=w,y=!1,1===w&&(t=void 0))},d.toggleZoom=function(){t||(t=d.swiper.slides.eq(d.swiper.activeIndex),u=t.find("img, svg, canvas"),v=u.parent(".photo-browser-zoom-container")),u&&0!==u.length&&(v.transition(300).transform("translate3d(0,0,0)"),w&&1!==w?(w=x=1,u.transition(300).transform("translate3d(0,0,0) scale(1)"),t=void 0):(w=x=d.params.maxZoom,u.transition(300).transform("translate3d(0,0,0) scale("+w+")")))};var z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q={},R={};d.onSlideTouchStart=function(b){u&&0!==u.length&&(z||("android"===a.device.os&&b.preventDefault(),z=!0,Q.x="touchstart"===b.type?b.targetTouches[0].pageX:b.pageX,Q.y="touchstart"===b.type?b.targetTouches[0].pageY:b.pageY))},d.onSlideTouchMove=function(b){if(u&&0!==u.length&&(d.swiper.allowClick=!1,z&&t)){A||(H=u[0].offsetWidth,I=u[0].offsetHeight,J=a.getTranslate(v[0],"x")||0,K=a.getTranslate(v[0],"y")||0,v.transition(0));var c=H*w,e=I*w;if(!(c<d.swiper.width&&e<d.swiper.height)){if(D=Math.min(d.swiper.width/2-c/2,0),F=-D,E=Math.min(d.swiper.height/2-e/2,0),G=-E,R.x="touchmove"===b.type?b.targetTouches[0].pageX:b.pageX,R.y="touchmove"===b.type?b.targetTouches[0].pageY:b.pageY,!A&&!y&&(Math.floor(D)===Math.floor(J)&&R.x<Q.x||Math.floor(F)===Math.floor(J)&&R.x>Q.x))return void(z=!1);b.preventDefault(),b.stopPropagation(),A=!0,B=R.x-Q.x+J,C=R.y-Q.y+K,D>B&&(B=D+1-Math.pow(D-B+1,.8)),B>F&&(B=F-1+Math.pow(B-F+1,.8)),E>C&&(C=E+1-Math.pow(E-C+1,.8)),C>G&&(C=G-1+Math.pow(C-G+1,.8)),L||(L=R.x),O||(O=R.y),M||(M=Date.now()),N=(R.x-L)/(Date.now()-M)/2,P=(R.y-O)/(Date.now()-M)/2,Math.abs(R.x-L)<2&&(N=0),Math.abs(R.y-O)<2&&(P=0),L=R.x,O=R.y,M=Date.now(),v.transform("translate3d("+B+"px, "+C+"px,0)")}}},d.onSlideTouchEnd=function(){if(u&&0!==u.length){if(!z||!A)return z=!1,void(A=!1);z=!1,A=!1;var a=300,b=300,c=N*a,e=B+c,f=P*b,g=C+f;0!==N&&(a=Math.abs((e-B)/N)),0!==P&&(b=Math.abs((g-C)/P));var h=Math.max(a,b);B=e,C=g;var i=H*w,j=I*w;D=Math.min(d.swiper.width/2-i/2,0),F=-D,E=Math.min(d.swiper.height/2-j/2,0),G=-E,B=Math.max(Math.min(B,F),D),C=Math.max(Math.min(C,G),E),v.transition(h).transform("translate3d("+B+"px, "+C+"px,0)")}};var S,T,U,V,W,X=!1,Y=!0,Z=!1;return d.swipeCloseTouchStart=function(){Y&&(X=!0)},d.swipeCloseTouchMove=function(a,b){if(X){Z||(Z=!0,T="touchmove"===b.type?b.targetTouches[0].pageY:b.pageY,V=d.swiper.slides.eq(d.swiper.activeIndex),W=(new Date).getTime()),b.preventDefault(),U="touchmove"===b.type?b.targetTouches[0].pageY:b.pageY,S=T-U;var c=1-Math.abs(S)/300;V.transform("translate3d(0,"+-S+"px,0)"),d.swiper.container.css("opacity",c).transition(0)}},d.swipeCloseTouchEnd=function(){if(X=!1,!Z)return void(Z=!1);Z=!1,Y=!1;var b=Math.abs(S),c=(new Date).getTime()-W;return 300>c&&b>20||c>=300&&b>100?void setTimeout(function(){"standalone"===d.params.type&&d.close(),"popup"===d.params.type&&a.closeModal(d.popup),d.params.onSwipeToClose&&d.params.onSwipeToClose(d),Y=!0},0):(0!==b?V.addClass("transitioning").transitionEnd(function(){Y=!0,V.removeClass("transitioning")}):Y=!0,d.swiper.container.css("opacity","").transition(""),void V.transform(""))},d};b.prototype={defaults:{photos:[],container:"body",initialSlide:0,spaceBetween:20,speed:300,zoom:!0,maxZoom:3,minZoom:1,exposition:!0,expositionHideCaptions:!1,type:"standalone",navbar:!0,toolbar:!0,theme:"light",swipeToClose:!0,backLinkText:"Close",ofText:"of",loop:!1,lazyLoading:!1,lazyLoadingInPrevNext:!1,lazyLoadingOnTransitionStart:!1}},a.photoBrowser=function(c){return a.extend(c,a.photoBrowser.prototype.defaults),new b(c)},a.photoBrowser.prototype={defaults:{}}}(Zepto);(function defineMustache(global,factory){if(typeof exports==="object"&&exports&&typeof exports.nodeName!=="string"){factory(exports)}else if(typeof define==="function"&&define.amd){define(["exports"],factory)}else{global.Mustache={};factory(global.Mustache)}})(this,function mustacheFactory(mustache){var objectToString=Object.prototype.toString;var isArray=Array.isArray||function isArrayPolyfill(object){return objectToString.call(object)==="[object Array]"};function isFunction(object){return typeof object==="function"}function typeStr(obj){return isArray(obj)?"array":typeof obj}function escapeRegExp(string){return string.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g,"\\$&")}function hasProperty(obj,propName){return obj!=null&&typeof obj==="object"&&propName in obj}var regExpTest=RegExp.prototype.test;function testRegExp(re,string){return regExpTest.call(re,string)}var nonSpaceRe=/\S/;function isWhitespace(string){return!testRegExp(nonSpaceRe,string)}var entityMap={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","/":"&#x2F;","`":"&#x60;","=":"&#x3D;"};function escapeHtml(string){return String(string).replace(/[&<>"'`=\/]/g,function fromEntityMap(s){return entityMap[s]})}var whiteRe=/\s*/;var spaceRe=/\s+/;var equalsRe=/\s*=/;var curlyRe=/\s*\}/;var tagRe=/#|\^|\/|>|\{|&|=|!/;function parseTemplate(template,tags){if(!template)return[];var sections=[];var tokens=[];var spaces=[];var hasTag=false;var nonSpace=false;function stripSpace(){if(hasTag&&!nonSpace){while(spaces.length)delete tokens[spaces.pop()]}else{spaces=[]}hasTag=false;nonSpace=false}var openingTagRe,closingTagRe,closingCurlyRe;function compileTags(tagsToCompile){if(typeof tagsToCompile==="string")tagsToCompile=tagsToCompile.split(spaceRe,2);if(!isArray(tagsToCompile)||tagsToCompile.length!==2)throw new Error("Invalid tags: "+tagsToCompile);openingTagRe=new RegExp(escapeRegExp(tagsToCompile[0])+"\\s*");closingTagRe=new RegExp("\\s*"+escapeRegExp(tagsToCompile[1]));closingCurlyRe=new RegExp("\\s*"+escapeRegExp("}"+tagsToCompile[1]))}compileTags(tags||mustache.tags);var scanner=new Scanner(template);var start,type,value,chr,token,openSection;while(!scanner.eos()){start=scanner.pos;value=scanner.scanUntil(openingTagRe);if(value){for(var i=0,valueLength=value.length;i<valueLength;++i){chr=value.charAt(i);if(isWhitespace(chr)){spaces.push(tokens.length)}else{nonSpace=true}tokens.push(["text",chr,start,start+1]);start+=1;if(chr==="\n")stripSpace()}}if(!scanner.scan(openingTagRe))break;hasTag=true;type=scanner.scan(tagRe)||"name";scanner.scan(whiteRe);if(type==="="){value=scanner.scanUntil(equalsRe);scanner.scan(equalsRe);scanner.scanUntil(closingTagRe)}else if(type==="{"){value=scanner.scanUntil(closingCurlyRe);scanner.scan(curlyRe);scanner.scanUntil(closingTagRe);type="&"}else{value=scanner.scanUntil(closingTagRe)}if(!scanner.scan(closingTagRe))throw new Error("Unclosed tag at "+scanner.pos);token=[type,value,start,scanner.pos];tokens.push(token);if(type==="#"||type==="^"){sections.push(token)}else if(type==="/"){openSection=sections.pop();if(!openSection)throw new Error('Unopened section "'+value+'" at '+start);if(openSection[1]!==value)throw new Error('Unclosed section "'+openSection[1]+'" at '+start)}else if(type==="name"||type==="{"||type==="&"){nonSpace=true}else if(type==="="){compileTags(value)}}openSection=sections.pop();if(openSection)throw new Error('Unclosed section "'+openSection[1]+'" at '+scanner.pos);return nestTokens(squashTokens(tokens))}function squashTokens(tokens){var squashedTokens=[];var token,lastToken;for(var i=0,numTokens=tokens.length;i<numTokens;++i){token=tokens[i];if(token){if(token[0]==="text"&&lastToken&&lastToken[0]==="text"){lastToken[1]+=token[1];lastToken[3]=token[3]}else{squashedTokens.push(token);lastToken=token}}}return squashedTokens}function nestTokens(tokens){var nestedTokens=[];var collector=nestedTokens;var sections=[];var token,section;for(var i=0,numTokens=tokens.length;i<numTokens;++i){token=tokens[i];switch(token[0]){case"#":case"^":collector.push(token);sections.push(token);collector=token[4]=[];break;case"/":section=sections.pop();section[5]=token[2];collector=sections.length>0?sections[sections.length-1][4]:nestedTokens;break;default:collector.push(token)}}return nestedTokens}function Scanner(string){this.string=string;this.tail=string;this.pos=0}Scanner.prototype.eos=function eos(){return this.tail===""};Scanner.prototype.scan=function scan(re){var match=this.tail.match(re);if(!match||match.index!==0)return"";var string=match[0];this.tail=this.tail.substring(string.length);this.pos+=string.length;return string};Scanner.prototype.scanUntil=function scanUntil(re){var index=this.tail.search(re),match;switch(index){case-1:match=this.tail;this.tail="";break;case 0:match="";break;default:match=this.tail.substring(0,index);this.tail=this.tail.substring(index)}this.pos+=match.length;return match};function Context(view,parentContext){this.view=view;this.cache={".":this.view};this.parent=parentContext}Context.prototype.push=function push(view){return new Context(view,this)};Context.prototype.lookup=function lookup(name){var cache=this.cache;var value;if(cache.hasOwnProperty(name)){value=cache[name]}else{var context=this,names,index,lookupHit=false;while(context){if(name.indexOf(".")>0){value=context.view;names=name.split(".");index=0;while(value!=null&&index<names.length){if(index===names.length-1)lookupHit=hasProperty(value,names[index]);value=value[names[index++]]}}else{value=context.view[name];lookupHit=hasProperty(context.view,name)}if(lookupHit)break;context=context.parent}cache[name]=value}if(isFunction(value))value=value.call(this.view);return value};function Writer(){this.cache={}}Writer.prototype.clearCache=function clearCache(){this.cache={}};Writer.prototype.parse=function parse(template,tags){var cache=this.cache;var tokens=cache[template];if(tokens==null)tokens=cache[template]=parseTemplate(template,tags);return tokens};Writer.prototype.render=function render(template,view,partials){var tokens=this.parse(template);var context=view instanceof Context?view:new Context(view);return this.renderTokens(tokens,context,partials,template)};Writer.prototype.renderTokens=function renderTokens(tokens,context,partials,originalTemplate){var buffer="";var token,symbol,value;for(var i=0,numTokens=tokens.length;i<numTokens;++i){value=undefined;token=tokens[i];symbol=token[0];if(symbol==="#")value=this.renderSection(token,context,partials,originalTemplate);else if(symbol==="^")value=this.renderInverted(token,context,partials,originalTemplate);else if(symbol===">")value=this.renderPartial(token,context,partials,originalTemplate);else if(symbol==="&")value=this.unescapedValue(token,context);else if(symbol==="name")value=this.escapedValue(token,context);else if(symbol==="text")value=this.rawValue(token);if(value!==undefined)buffer+=value}return buffer};Writer.prototype.renderSection=function renderSection(token,context,partials,originalTemplate){var self=this;var buffer="";var value=context.lookup(token[1]);function subRender(template){return self.render(template,context,partials)}if(!value)return;if(isArray(value)){for(var j=0,valueLength=value.length;j<valueLength;++j){buffer+=this.renderTokens(token[4],context.push(value[j]),partials,originalTemplate)}}else if(typeof value==="object"||typeof value==="string"||typeof value==="number"){buffer+=this.renderTokens(token[4],context.push(value),partials,originalTemplate)}else if(isFunction(value)){if(typeof originalTemplate!=="string")throw new Error("Cannot use higher-order sections without the original template");value=value.call(context.view,originalTemplate.slice(token[3],token[5]),subRender);if(value!=null)buffer+=value}else{buffer+=this.renderTokens(token[4],context,partials,originalTemplate)}return buffer};Writer.prototype.renderInverted=function renderInverted(token,context,partials,originalTemplate){var value=context.lookup(token[1]);if(!value||isArray(value)&&value.length===0)return this.renderTokens(token[4],context,partials,originalTemplate)};Writer.prototype.renderPartial=function renderPartial(token,context,partials){if(!partials)return;var value=isFunction(partials)?partials(token[1]):partials[token[1]];if(value!=null)return this.renderTokens(this.parse(value),context,partials,value)};Writer.prototype.unescapedValue=function unescapedValue(token,context){var value=context.lookup(token[1]);if(value!=null)return value};Writer.prototype.escapedValue=function escapedValue(token,context){var value=context.lookup(token[1]);if(value!=null)return mustache.escape(value)};Writer.prototype.rawValue=function rawValue(token){return token[1]};mustache.name="mustache.js";mustache.version="2.3.0";mustache.tags=["{{","}}"];var defaultWriter=new Writer;mustache.clearCache=function clearCache(){return defaultWriter.clearCache()};mustache.parse=function parse(template,tags){return defaultWriter.parse(template,tags)};mustache.render=function render(template,view,partials){if(typeof template!=="string"){throw new TypeError('Invalid template! Template should be a "string" '+'but "'+typeStr(template)+'" was given as the first '+"argument for mustache#render(template, view, partials)")}return defaultWriter.render(template,view,partials)};mustache.to_html=function to_html(template,view,partials,send){var result=mustache.render(template,view,partials);if(isFunction(send)){send(result)}else{return result}};mustache.escape=escapeHtml;mustache.Scanner=Scanner;mustache.Context=Context;mustache.Writer=Writer;return mustache});
 /**
- * Created by zhujinyu on 2018/2/7.
- */
-//var BASE_URL = '/app';
-//Aman工作室修改//
-var BASE_URL = 'http://118.190.152.119/app';
-
-/**渲染模板*/
-function getRenderTmpl(tmpl, data_set) {
-    var template = $(tmpl).html();
-    Mustache.parse(template);
-    var rendered = Mustache.render(template, data_set);
-    return rendered;
-}
-/*模板加载*/
-function addItem(tmpl, data_set, obj) {
-    var reg = /demo/;
-    if (reg.test(obj)) {
-        data_set.list.map(function (currentValue) {
-            currentValue.star = new Array();
-            currentValue.star.length = currentValue.starNum;
-            return currentValue;
-        });
-    }
-    var rendered = getRenderTmpl(tmpl, data_set);
-    $(obj).append(rendered);
-}
-
-/*获取经纬度*/
-function getLngLat(callback,error) {
-    if(window.hasOwnProperty("AMap")){
-        var map = new AMap.Map("mapContainer", {
-            resizeEnable: true
-        });
-        map.plugin('AMap.Geolocation', function () {
-            geolocation = new AMap.Geolocation({
-                enableHighAccuracy: true,//是否使用高精度定位，默认:true
-                timeout: 10000,          //超过10秒后停止定位，默认：无穷大
-                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-            });
-            geolocation.getCurrentPosition(function (status,result) {
-                if (status == "complete" ||status == "ok") {
-                    var str = [];
-                    str.push(result.position.lng);
-                    str.push(result.position.lat);
-                    str = GCJ2WGS(str);
-                    callback && callback(str);
-                }else{
-                    error && error();
-                    console.log("定位失败");
-                }
-            });
-        });
-    }else{
-        var str = [];
-        str.push('116.40717');
-        str.push('39.90469');
-        callback && callback(str);
-    }
-}
-/**跳转到地图*/
-$(document).on('click', '.navigation', function () {
-    var location_end = $(this).attr("data-end").split(",");
-    var userName = $(this).attr("data-userName");
-    getAPPMethod(function () {
-        if(window.gasstation){
-           var  location = {
-               lng:location_end[0],
-               lat:location_end[1],
-               venderName:userName
-           }
-            var newLocation = JSON.stringify(location);
-            window.gasstation.mapLocation(newLocation);
-        }else{
-            getLngLat(function (data) {
-                GoDestination(data, location_end);
-            })
-        }
-    },function () {
-        if(window.webkit){
-            window.webkit.messageHandlers.mapLocation.postMessage({
-                Lng: location_end[0],
-                lat: location_end[1]
-            });
-        }else {
-            getLngLat(function (data) {
-                GoDestination(data, location_end);
-            })
-        }
-    },function () {
-        getLngLat(function (data) {
-            GoDestination(data, location_end);
-        })
-    });
-})
-/**地图导航*/
-function GoDestination(currentlocation, endLocation) {
-    var map = new AMap.Map("mapContainer");
-    AMap.plugin(["AMap.Driving"], function () {
-        var drivingOption = {
-            policy: AMap.DrivingPolicy.LEAST_TIME,
-            map: map
-        };
-        var driving = new AMap.Driving(drivingOption); //构造驾车导航类
-        console.log(currentlocation, endLocation);
-        driving.search(currentlocation, endLocation, function (status, result) {
-            driving.searchOnAMAP({
-                origin: result.origin,
-                destination: result.destination
-            });
-        });
-    });
-}
-
-/**ajax请求封装*/
-function ajaxRequest(params) {
-    var token = getCookie("token");
-    var pathname = window.location.pathname;
-    var reg = [/register/,/login/,/forgetPassword/,/fastRegister/,/forget-password/,/find/];
-    var result = [];
-    for (var i = 0; i < reg.length; i++) {
-        if(reg[i].test(pathname)){
-            result.push('true');
-        }else{
-            result.push('false');
-        }
-    }
-    if (!token) {
-        if (result.indexOf('true') == -1) {
-            pageGo("login");
-        }
-    }
-
-    $.ajax({
-        headers: {
-            Accept: "application/json; charset=utf-8",
-            token:token
-        },
-        url: BASE_URL + params.url,
-        type: params.type,
-        timeout : 10000,
-        dataType: 'json',
-        data: JSON.stringify(params.data),
-        contentType: 'application/json',
-        async: params.async || true,
-        success: function (response) {
-            if(response.retCode === '1000'){
-                pageGo("login");
-            }else{
-                params.callback && params.callback(response);
-            }
-        },
-        complete : function(XMLHttpRequest,status){
-            if(status=='timeout'){
-                $.alert("请求超时,请重新刷新页面", '',function () {
-                    window.location.reload();
-                });
-            }
-        }
-    })
-}
-/**新ajax请求封装*/
-function ajaxRequests(url,type,data,callback,errorBack) {
-    console.time('请求计时');
-    var token = getCookie("token");
-    var pathname = window.location.pathname;
-    var reg = [/register/,/login/,/forgetPassword/,/fastRegister/,/forget-password/,/find/];
-    var result = [];
-    for (var i = 0; i < reg.length; i++) {
-        if(reg[i].test(pathname)){
-            result.push('true');
-        }else{
-            result.push('false');
-        }
-    }
-    if (!token) {
-        if (result.indexOf('true') == -1) {
-            pageGo("login");
-        }
-    }
-    if (type == 'get') {
-        $.ajax({
-            headers: {
-                Accept: "application/json; charset=utf-8",
-                token: token
-            },
-            url: BASE_URL + url,
-            type: type,
-            timeout : 10000,
-            dataType: 'json',
-            contentType: 'application/json',
-            async: true,
-            success: function (response) {
-                if(response.retCode === '1000'){
-                    pageGo("login");
-                }else{
-                    callback && callback(response);
-                }
-                console.timeEnd('请求计时');
-            },
-            error: function (xhr, errorType, error) {
-                errorBack && errorBack();
-            },
-            complete : function(XMLHttpRequest,status){
-                if(status=='timeout'){
-                    $.alert("请求超时,请重新刷新页面", '',function () {
-                        window.location.reload();
-                    });
-                }
-            }
-        })
-    } else {
-        $.ajax({
-            headers: {
-                Accept: "application/json; charset=utf-8",
-                token: token
-            },
-            url: BASE_URL + url,
-            type: type,
-            timeout : 10000,
-            dataType: 'json',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            async: true,
-            success: function (response) {
-                if(response.retCode === '1000'){
-                    pageGo("login");
-                }else{
-                    callback && callback(response);
-                }
-                console.timeEnd('请求计时');
-            },
-            error: function () {
-                errorBack && errorBack();
-            },
-            complete : function(XMLHttpRequest,status){
-                if(status=='timeout'){
-                    $.alert("请求超时,请重新刷新页面", '',function () {
-                        window.location.reload();
-                    });
-                }
-            }
-        })
-    }
-}
-/**完整ajax请求*/
-function ajaxCompleteRequests(url,type,data,callback,beforeSend,complete) {
-    console.time('请求计时');
-    var token = getCookie("token");
-    $.ajax({
-        headers: {
-            Accept: "application/json; charset=utf-8",
-            token: token
-        },
-        url: BASE_URL + url,
-        type: type,
-        timeout : 10000,
-        dataType: 'json',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        async: false,
-        success: function (response) {
-            callback && callback(response);
-            console.timeEnd('请求计时');
-        },
-        beforeSend:function () {
-            console.log("请求之前：")
-            beforeSend && beforeSend();
-        },
-        complete : function(XMLHttpRequest,status){
-            console.log("请求完成");
-            if(status=='timeout'){
-                $.alert("请求超时,重新刷新页面", '',function () {
-                    window.location.reload();
-                });
-            }else{
-                complete && complete();
-            }
-        }
-    })
-}
-var t;
-/**验证码倒计时*/
-function Time(obj, times) {
-    times = parseInt(times);
-    t = setInterval(function () {
-        times -= 1;
-        obj.html(times + "秒");
-        if (times === 0) {
-            obj.attr("data-end", 1);
-            obj.html("重新获取验证码");
-            obj.css("background", "#f00");
-            obj.css("color", "#fff");
-            clearInterval(t);
-        }
-    }, 1000)
-}
-
-/**上传图片*/
-function fromImgRequest(params,obj) {
-    if(!obj){
-        var fileUpload = document.getElementById("uploadForm");
-        var data = new FormData(fileUpload);
-    }else{
-        var data = new FormData(obj);
-    }
-    var type = data.get('file').type;
-    var size = data.get('file').size;
-    var maxSize = 100 * 1024 * 1024;
-    var reg = /image/;
-    if (!reg.test(type)) {
-        $.toast("请上传图片", 3000);
-        return;
-    } else if (size > maxSize) {
-        $.toast("图片大小不能超过100M", 3000);
-        return;
-    }
-    $.ajax({
-        url: BASE_URL + params.url,
-        headers: {
-            'Lairen-X-Requested-With': 'H5/5.3.2 (OS 100; iPhone 100s)'
-        },
-        type: 'post',
-        async: true,
-        data: data,
-        cache: true,
-        contentType: false,
-        processData: false,
-        dataType: "multipart/form-data",
-        success: function (response) {
-            params.callback && params.callback(JSON.parse(response));
-        },
-        error: function () {
-            $.toast("上传失败", 3000);
-        }
-    });
-}
-
-function getQueryString(name) {
-
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-
-    var r = window.location.search.substr(1).match(reg);
-
-    if (r != null) {
-
-        return unescape(r[2]);
-
-    }
-
-    return null;
-
-}
-
-/*筛选可服务列表*/
-function filter(datas) {
-    if (!datas) {
-        return;
-    }
-    var list = datas.split(",");
-    var supportServices = config.supportServices;
-    var support = [];
-    list.forEach(function (value) {
-        supportServices.forEach(function (v) {
-            if(value == v.id){
-                support.push(v);
-                return;
-            }
-        })
-    })
-    return support;
-}
-
-/*获取商家类型*/
-function getType(companyTpe) {
-    var siteInfo = {
-        isFillingStation: false,
-        isGAS: false,
-        isLogisticsProviders: false,
-        isFillingStation: false,
-        title: ''
-    }
-    switch (parseInt(companyTpe)) {
-        case 1:
-            siteInfo.isFillingStation = true;
-            siteInfo.title = "加油站";
-            siteInfo.btnName = '一键加油';
-            break;
-        case 2:
-            siteInfo.isGAS = true;
-            siteInfo.title = "加气站";
-            siteInfo.btnName = '一键加气';
-            break;
-        case 3:
-            siteInfo.isLogisticsProviders = true;
-            siteInfo.title = "物流商";
-            break;
-        case 4:
-            siteInfo.isbusinesses = true;
-            siteInfo.title = "其他商家";
-            break;
-    }
-    return siteInfo;
-}
-/*货物类型过滤*/
-function filterGoodsTypes(type) {
-    var typeName = '';
-    switch (type){
-        case 1:
-            typeName = '汽油';
-            break;
-        case 2:
-            typeName = '柴油';
-            break;
-        case 3:
-            typeName = '天然气';
-            break;
-        case 4:
-            typeName = '液化气';
-            break;
-        case 5:
-            typeName = '信息发布';
-            break;
-    }
-    return typeName;
-}
-/*信息货物类型*/
-function filterInfoGoodsTypes(type) {
-    var typeName = '';
-    var goodsType  = config.goods_type;
-    goodsType.forEach(function (v) {
-        if(v.type == type){
-            typeName = v.name;
-        }
-    })
-    return typeName;
-}
-/*银行卡筛选*/
-function filterBankName(type) {
-    var typeName = '';
-    var bank_type  = config.bank_type;
-    console.log("type1:"+type);
-    bank_type.forEach(function (v) {
-        if(v.type == type){
-            console.log("type:"+v.type);
-            console.log("type1:"+type);
-            typeName = v.name;
-        }
-    })
-    return typeName;
-}
-/*油气类型过滤*/
-function filterOilAndGasType(typeGrade) {
-    var typeName = '';
-    var vender_resource = config.vender_resource;
-    var subclassAll = [];
-    vender_resource.forEach(function (v) {
-        subclassAll = subclassAll.concat(v.subclass);
-    })
-    subclassAll.forEach(function (v) {
-        if (v.type == typeGrade) {
-            typeName = v.name;
-        }
-    })
-    return typeName;
-}
-/*站点资源审核状态结果返回*/
-function filterAuditStatus(status) {
-    var typeStr = '';
-    switch (status){
-        case 1:
-            typeStr = "待审核";
-            break;
-        case 2:
-            typeStr = "审核通过";
-            break;
-        case 3:
-            typeStr = "审核不通过";
-            break;
-        case 4:
-            typeStr = "申请价格变更";
-            break;
-    }
-    return typeStr;
-}
-/*资源类型过滤*/
-function filterResourceType(type) {
-    var typeName = '';
-    switch (type){
-        case 1:
-            typeName = '汽油';
-            break;
-        case 2:
-            typeName = '柴油';
-            break;
-        case 3:
-            typeName = '天然气';
-            break;
-        case 4:
-            typeName = '液化气';
-            break;
-        case 5:
-            typeName = '信息发布';
-            break;
-    }
-    return typeName;
-}
-/*车辆类型过滤*/
-function filterInfoCarTypes(type) {
-    var typeName = '';
-    var vehicle_type  = config.vehicle_type;
-    vehicle_type.forEach(function (v) {
-        if(v.type == type){
-            typeName = v.name;
-        }
-    })
-    return typeName;
-}
-/*商家类型过滤*/
-function filterCompanyTypes(type) {
-    var typeName = '';
-    switch (type){
-        case 1:
-            typeName = '加油站';
-            break;
-        case 2:
-            typeName = '加气站';
-            break;
-    }
-    return typeName;
-}
-/*时间戳转化为日期*/
-function timestampToTime(timestamp) {
-    var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-    Y = date.getFullYear() + '-';
-    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
-    D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
-    h = (date.getHours() < 10 ? "0"+date.getHours() : date.getHours()) + ':';
-    m = (date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes()) + ':';
-    s = (date.getSeconds() < 10 ? "0"+date.getSeconds() : date.getSeconds());
-    return Y+M+D+h+m+s;
-}
-//设置cookies
-/*function setCookie(name,value){
-    var Days = 30;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/";
-}
-
-//读取cookies
-function getCookie(name){
-    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-    if(arr=document.cookie.match(reg))
-
-        return unescape(arr[2]);
-    else
-        return null;
-}
-
-//删除cookies
-function delCookie(name){
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
-}*/
-
-//Aman工作室修改//
-function setCookie(name, value){
-    var storage = window.localStorage;
-    storage.setItem(name, value);
-}
-
-function getCookie(name){
-    var storage = window.localStorage;
-    return storage.getItem(name);
-}
-
-function delCookie(name){
-    var storage = window.localStorage;
-    storage.removeItem(name);
-}
-
-//判断是否为空
-function isNUll(param) {
-    if (param == "" || typeof(param) == "undefined") {
-        return true;
-    } else {
-        return false;
-    }
-}
-//获取select选中值
-function selectedDOM(obj) {
-    return $(obj).find("option").not(function(){ return !this.selected });
-}
-/*三级联动*/
-function ProvinceCityDistrict(range) {
-    function addIndex(data){
-        for(var i=0;i<data.children.length;i++){
-            data.children[i].index=i;
-        }
-        return data;
-    }
-    var addressData='';
-    $.getJSON('../../static/js/lib/address.json',function (data) {
-        addressData = {children: data};
-        var datas = {children: data};
-        addItem("#option",addIndex(datas),range+".province-box");
-    })
-    function resetSelect(obj) {
-        selectedDOM(obj).text("请选择");
-        selectedDOM(obj).val("");
-    }
-    $(document).on("change",range+".address",function () {
-        var _this = $(this);
-        var type = _this.attr("data-type");
-        switch (type){
-            case 'province':
-                $(range+".city-box").html("");
-                $(range+".county-box").html("");
-                var val = selectedDOM(_this).attr("data-id");
-                $(this).attr("current-index",val);
-                addItem("#option",addIndex(addressData.children[val].children[0]),range+".county-box");
-                addItem("#option",addIndex(addressData.children[val]),range+".city-box");
-                resetSelect(_this.parents(".address-box").find(".county"));
-                break;
-            case 'city':
-                $(range+".county-box").html("");
-                var val = selectedDOM(range+".province-box").attr("data-id");
-                var vals = selectedDOM(_this).attr("data-id");
-                $(this).attr("current-index",vals);
-                addItem("#option",addIndex(addressData.children[val].children[vals]),range+".county-box");
-                break;
-        }
-    })
-}
-//消费类别
-function consumType(type) {
-    // 1:加油，2:加气,4:维修,5：信息发布,6:邮寄费
-    var contentType = '';
-    switch (type) {
-        case 1:
-            contentType = '加油';
-            break;
-        case 2:
-            contentType = '加气';
-            break;
-        case 4:
-            contentType = '维修';
-            break;
-        case 5:
-            contentType = '信息发布';
-            break;
-        case 6:
-            contentType = '邮寄费';
-            break;
-    }
-    return contentType;
-}
-//检验参数是否为空
-function checkParam(params) {
-    var isTrue = true;
-    for (var i in params) {
-        if (isNUll(params[i])) {
-            isTrue = false;
-            switch (i) {
-                case 'mobile':
-                    $.alert('手机号不能为空');
-                    break;
-                case 'validateCode':
-                    $.alert('手机验证码不能为空');
-                    break;
-                case 'idCard':
-                    $.alert('身份证号不能为空');
-                    break;
-                case 'loginPwd':
-                    $.alert('密码不能为空');
-                    break;
-                case 'payPwd':
-                    $.alert('支付密码不能为空');
-                    break;
-                case 'rePwd':
-                    $.alert('确认密码不能为空');
-                    break;
-                case 'userName':
-                    $.alert('用户名不能为空');
-                    break;
-                case 'carNum':
-                    $.alert('车牌号不能为空');
-                    break;
-                case 'carType':
-                    $.alert('请选择汽车类型');
-                    break;
-                case 'receiveUserName':
-                    $.alert('对方姓名不能为空');
-                    break;
-                case 'receiveUserMobile':
-                    $.alert('对方手机号不能为空');
-                    break;
-                case 'amount':
-                    $.alert('金额不能为空');
-                    break;
-            }
-            return false;
-        } else {
-            switch (i) {
-                case 'mobile':
-                case 'receiveUserMobile':
-                    var reg = /^1[3|4|5|7|8][0-9]\d{4,8}$/;//判断手机号的正则
-                    if (reg.test(params[i]) && params[i].length === 11) {
-                        isTrue = true;
-                    } else {
-                        $.alert('手机号输入格式不正确');
-                        isTrue = false;
-                        return false;
-                    }
-                    break;
-                case 'validateCode':
-                    if (params[i].length === 6) {
-                        isTrue = true;
-                    } else {
-                        $.alert('手机验证码输入格式不正确');
-                        isTrue = false;
-                        return false;
-                    }
-                    break;
-                case 'idCard':
-                    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;//判断身份证号是否合法
-                    if (reg.test(params[i])) {
-                        isTrue = true;
-                    } else {
-                        $.alert('身份证输入不合法');
-                        isTrue = false;
-                        return false;
-                    }
-                    break;
-                case 'loginPwd':
-                case 'rePwd':
-                case 'payPwd':
-                    if (params[i].length === 6) {
-                        isTrue = true;
-                    } else {
-                        $.alert('请输入6位密码');
-                        isTrue = false;
-                        return false;
-                    }
-                    break;
-
-            }
-            isTrue = true;
-        }
-    }
-    return isTrue;
-}
-//充值方式判断
-function getRechargeMethod(type) {
-    var rechargeMethod = '';
-    switch (type) {
-        case 1:
-            rechargeMethod = '微信充值';
-            break;
-        case 2:
-            rechargeMethod = '支付宝充值';
-            break;
-        case 3:
-            rechargeMethod = '银行转账充值';
-            break;
-        case 4:
-            rechargeMethod = '银行转账充值';
-            break;
-    }
-    return rechargeMethod;
-}
-//获取发票状态
-function getInvoiceApplyStatus(type) {
-    var invoiceApplyStatus = '';
-    switch (type) {
-        case 1:
-            invoiceApplyStatus = '待审核';
-            break;
-        case 2:
-            invoiceApplyStatus = '开具发票完成';
-            break;
-        case 3:
-            invoiceApplyStatus = '无效申请';
-            break;
-    }
-    return invoiceApplyStatus;
-}
-//设置数据不存在时的展示内容
-function setNoDataContent() {
-    $(".content").html("<div class='noneData'>暂无内容</div>");
-}
-/*验证输入框是否为空*/
-$("input").blur(function () {
-    var _this = $(this);
-    var $error_tip = _this.siblings(".error-tip");
-    var $check_icon = _this.siblings(".check-icon");
-    if(_this.attr("data-isCheck")=='yes'){
-        if (_this.val() === "") {
-            $error_tip.html("*不可为空");
-            $check_icon.css("display", "none");
-        } else {
-            $error_tip.html("");
-            $check_icon.css("display", "block");
-        }
-    }
-});
-/*页面跳转*/
-function pageGo(url,params) {
-    if(params){
-        location.href=url+'.html'+params;
-    }else{
-        location.href=url+'.html';
-    }
-}
-/*页面跳转*/
-function pageReload() {
-   window.location.reload();
-}
-/*返回*/
-function pageBack() {
-    window.history.back();
-}
-//判断审核状态
-function setStatus(type) {
-    var statusContent = '';
-    switch (type) {
-        case 0:
-            statusContent = '待审核';
-            break;
-        case 1:
-            statusContent = '审核通过';
-            break;
-        case 2:
-            statusContent = '审核不通过';
-            break;
-    }
-    return statusContent;
-}
-//判断充值状态
-function setRechargeStatus(type) {
-    var statusContent = '';
-    switch (type) {
-        case 0:
-            statusContent = '申请中';
-            break;
-        case 1:
-            statusContent = '充值完成';
-            break;
-        case 2:
-            statusContent = '充值失败';
-            break;
-    }
-    return statusContent;
-}
-status
-//订单状态
-function setOrderStatus(type) {
-    var orderStatus = '';
-    switch (parseInt(type)) {
-        case 0:
-            orderStatus = '银行处理中';
-            break;
-        case 1:
-            orderStatus = '提现完成';
-            break;
-        case 2:
-            orderStatus = '提现失败';
-            break;
-    }
-    return orderStatus;
-}
-/*发送验证码*/
-$(".getcode").on("click", function () {
-    var _this = $(this);
-    var type = $(this).attr("data-type");
-    var $mobile = $("#mobile");
-    var CheckResult = true;
-    if (_this.attr("data-isCheck") == "yes") {
-        if($mobile.attr("data-checkMobile")=="1"){
-            CheckResult = true;
-        }else{
-            CheckResult = false;
-        }
-    }
-    if(CheckResult){
-        if (_this.attr("data-end") === "1") {
-            //判断倒计时是否结束
-            var data = {
-                mobile: $mobile.val()
-            };
-            if (checkParam(data)) {
-                var times = _this.attr("data-timeout");
-                _this.attr("data-end", 2);
-                _this.css("background", "#ccc");
-                ajaxRequests('/common/sms/sendValidateCode/'+type+'/'+data.mobile,'get','',function (response) {
-                    if (response.retCode === '0') {
-                        Time(_this, times);
-                    }else{
-                        $.alert(response.retMsg || '验证码发送失败');
-                    }
-                })
-            }
-        }
-    }
-})
-function bankType(type) {
-    var bank_type = config.bank_type;
-    var result;
-    for (var i in bank_type) {
-        var item = bank_type[i];
-        for (var j in item) {
-            if (item[j] == type) {
-                result = item;
-                break;
-            }
-        }
-    }
-    return result;
-}
-/*保留3位小数*/
-function setNumFixed2(num) {
-    return parseFloat(num).toFixed(3);
-    // return Number(num.toString().match(/^\d+(?:\.\d{0,2})?/));
-}
-/*保留2位小数*/
-function setNumFixed_2(num) {
-    return parseFloat(num).toFixed(2);
-    // return Number(num.toString().match(/^\d+(?:\.\d{0,2})?/));
-}
-/*try catch*/
-function tryCatch(success, error) {
-    try {
-        success();
-    }
-    catch (err) {
-        error();
-    }
-}
-/*判断终端*/
-var browser={
-    versions:function(){
-        var u = navigator.userAgent, app = navigator.appVersion;
-        return {
-            trident: u.indexOf('Trident') > -1, //IE内核
-            presto: u.indexOf('Presto') > -1, //opera内核
-            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
-            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-            android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
-            iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
-            iPad: u.indexOf('iPad') > -1, //是否iPad
-            webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-            weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
-            qq: u.match(/\sQQ/i) == " qq" //是否QQ
-        };
-    }(),
-    language:(navigator.browserLanguage || navigator.language).toLowerCase()
-}
-/*信息状态判断*/
-/*货物类型过滤*/
-function messageStatus(type) {
-    var typeName = '';
-    switch (type){
-        case 3:
-            typeName = '已到期';
-            break;
-        case 4:
-            typeName = '已删除';
-            break;
-
-    }
-    return typeName;
-}
-/*调取app方法*/
-function getAPPMethod(androidFun,iosFun,pcFun) {
-    if (browser.versions.ios) {
-        iosFun && iosFun();
-    }else if(browser.versions.android){
-        androidFun && androidFun();
-    }else{
-        pcFun && pcFun();
-    }
-}
-/*设置空列表*/
-function setListNone(obj) {
-    obj.html("<div style='font-size: .6rem;color: #999;padding: 2rem 0;text-align: center'>暂无数据(⊙o⊙)</div>");
-}
-/*分页数据加载为空*/
-function setListPageNone(obj) {
-    obj.find(".list-block").append("<div style='font-size: .6rem;color: #999;text-align: center'>没有了(⊙o⊙)</div>");
-}
-/*司机自动登录*/
-function automaticLogin(loginName,loginPwd) {
-    ajaxRequests('/driver/login','post',{
-        "body": {
-            loginName: loginName,
-            loginPwd: loginPwd
-        }
-    },function (response) {
-        if (response.retCode === '0') {
-            setCookie("id",response.data.id);
-            setCookie("token",response.data.token);
-            pageGo("index");
-        }else{
-            $.alert(response.retMsg||'登录失败');
-        }
-    })
-}
-/*商家自动登录*/
-function venderAutomaticLogin(loginName,loginPwd) {
-    ajaxRequests('/vender/login','post',{
-        "body": {
-            loginName: loginName,
-            loginPwd: loginPwd
-        }
-    },function (response) {
-        if (response.retCode === '0') {
-            setCookie("companyType", response.data.companyType);
-            setCookie("id", response.data.id);
-            setCookie("token", response.data.token);
-            setCookie("status", response.data.status);
-            pageGo("index");
-        } else {
-            $.alert(response.retMsg || '登录失败');
-        }
-    })
-}
-/*省市区三级联动*/
-function setAddressChoose(obj,text) {
-    $(obj).cityPicker({
-        toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker">确定</button>\
-    <h1 class="title">'+text+'</h1>\
-    </header>'
-    });
-}
-/*获取城市id*/
-function addressId(obj) {
-    var cityJson,pid,sid,qid,pname,sname,qname;
-    function jiequ(str,name) {
-        var n=(str.split(name)).length-1;
-        if(n>1){
-            var _len = name.length;
-            var newStr =str.substr(_len,str.length);
-            return newStr;
-        }else{
-            str = str.split(name);
-            str = str.join('');
-            return str;
-        }
-    }
-    $.getJSON('../../static/js/lib/address.json',function (data) {
-        cityJson = data;
-        var val = obj.val();
-        for(var i in cityJson){
-            if (val.indexOf(cityJson[i].name) != -1) {
-                pid = cityJson[i].code;
-                pname = cityJson[i].name;
-                var second = cityJson[i].children;
-                val = jiequ(val,pname);
-                console.log(val);
-                for (var j in second) {
-                    if (val.indexOf(second[j].name) != -1) {
-                        sid = second[j].code;
-                        sname = second[j].name;
-                        var three = second[j].children;
-                        val = jiequ(val,sname);
-                        for (var m in three) {
-                            if (val.indexOf(three[m].name) != -1) {
-                                qid = three[m].code;
-                                qname =  three[m].name;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        obj.attr("data-provinceId",pid);
-        obj.attr("data-provinceName",pname);
-        obj.attr("data-cityId",sid);
-        obj.attr("data-cityName",sname);
-        obj.attr("data-countyId",qid);
-        obj.attr("data-countyName",qname);
-    })
-}
-/**
- * 空闲控制 返回函数连续调用时，空闲时间必须大于或等于 idle，action 才会执行
- * @param idle   {number}    空闲时间，单位毫秒
- * @param action {function}  请求关联函数，实际应用需要调用的函数
- * @return {function}    返回客户调用函数
- */
-var debounce = function(idle, action){
-    var last
-    return function(){
-        var ctx = this, args = arguments
-        clearTimeout(last)
-        last = setTimeout(function(){
-            action.apply(ctx, args)
-        }, idle)
-    }
-};
-/*高德转为gps*/
-function GCJ2WGS(location) {
-    var lon = location[0];
-    var lat = location[1];
-    var a = 6378245.0;
-    var ee = 0.00669342162296594626;
-    var PI = 3.14159265358979324;
-    var x = lon - 105.0;
-    var y = lat - 35.0;
-    //经度
-    var dLon = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x));
-    dLon += (20.0 * Math.sin(6.0 * x * PI) + 20.0 * Math.sin(2.0 * x * PI)) * 2.0 / 3.0;
-    dLon += (20.0 * Math.sin(x * PI) + 40.0 * Math.sin(x / 3.0 * PI)) * 2.0 / 3.0;
-    dLon += (150.0 * Math.sin(x / 12.0 * PI) + 300.0 * Math.sin(x / 30.0 * PI)) * 2.0 / 3.0;
-    //纬度
-    var dLat = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
-    dLat += (20.0 * Math.sin(6.0 * x * PI) + 20.0 * Math.sin(2.0 * x * PI)) * 2.0 / 3.0;
-    dLat += (20.0 * Math.sin(y * PI) + 40.0 * Math.sin(y / 3.0 * PI)) * 2.0 / 3.0;
-    dLat += (160.0 * Math.sin(y / 12.0 * PI) + 320 * Math.sin(y * PI / 30.0)) * 2.0 / 3.0;
-    var radLat = lat / 180.0 * PI;
-    var magic = Math.sin(radLat);
-    magic = 1 - ee * magic * magic;
-    var sqrtMagic = Math.sqrt(magic)
-    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * PI);
-    dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * PI);
-    var wgsLon = lon - dLon;
-    var wgsLat = lat - dLat;
-    return [wgsLon,wgsLat];
-}
-/*获取当前时分秒*/
-function getCurrentTime() {
-    var myDate = new Date();
-    var year = myDate.getFullYear();
-    var month = myDate.getMonth()+1;
-    var date = myDate.getDate();
-    var h = myDate.getHours();
-    var min = myDate.getMinutes();
-    function timeFormat(a) {
-        var b = a;
-        if (a <= 9) {
-            b = "0" + a;
-        }
-        return b;
-    }
-    month = timeFormat(month);
-    date = timeFormat(date);
-    h = timeFormat(h);
-    min = timeFormat(min);
-    return [year,month,date,h,min];
-
-}
-/*银行卡校验*/
-function checkBankNO(bankno) {
-    var reg = /^\d{11,}$/;
-    if(reg.test(bankno)){
-        return true;
-    }else{
-        return false;
-    }
-}
-/*获取转账比例*/
-function getTransfer(type1, type2,data) {
-    var rate;
-    if (type1 == 1 && type2 == 2) {
-        rate = data.oilGasArriveRatio;
-    }
-    if (type1 == 1 && type2 == 1) {
-        rate = data.oilOilArriveRatio;
-    }
-    if (type1 == 2 && type2 == 1) {
-        rate = data.gasOilArriveRatio;
-    }
-    if (type1 == 2 && type2 == 2) {
-        rate = data.gasGasArriveRatio;
-    }
-    return rate;
-}
-/*充值状态审核*/
-function rechargeStatus(status) {
-    var status_txt;
-    switch (status){
-        case 0:
-            status_txt = "充值审核中";
-        case 1:
-            status_txt = "充值已完成";
-        case 2:
-            status_txt = "充值失败";
-    }
-    return status_txt;
-}
-/*获取轮播图*/
-function setBanner(type,callback) {
-    ajaxRequests("/common/getSlideshow/"+type,'get','',function (response) {
-        if (response.retCode === '0') {
-            callback && callback(response);
-        }
-    })
-};/**
  * Created by zhujinyu on 2018/2/6.
  */
 var config = {
@@ -4092,7 +2888,3555 @@ var config = {
         { 'type':'4401',name:'广州'},
         { 'type':'4403',name:'深圳'}
         ]
-};$(function () {
+};/*
+ * Aman JavaScript Library
+ * Version: 0.3.0.20170419.1411
+ */
+(function (global, factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        module.exports = global.document ?
+            factory(global, true) :
+            function (w) {
+                if (!w.document) {
+                    throw new Error("jQuery requires a window with a document");
+                }
+                return factory(w);
+            };
+    } else {
+        factory(global);
+    }
+}(window, function (window, noGlobal) {
+    var $s = {};
+    var s = {$: $s};
+    if (typeof define === "function" && define.amd) {
+        define("summer", [], function () {
+            return s;
+        });
+    }
+    window.$summer = $s;
+    window.summer = s;
+    return s;
+}));
+
+// $summer  API
+;(function () {
+    var u = window.$summer || {};
+    var isAndroid = (/android/gi).test(navigator.appVersion);
+    u.os = (function (env) {
+        var browser = {
+            info: function () {
+                var ua = navigator.userAgent, app = navigator.appVersion;
+                return { //移动终端浏览器版本信息
+                    //trident: ua.indexOf('Trident') > -1, //IE内核
+                    //presto: ua.indexOf('Presto') > -1, //opera内核
+                    webKit: ua.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    //gecko: ua.indexOf('Gecko') > -1 && ua.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!ua.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: ua.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: ua.indexOf('iPad') > -1, //是否iPad
+                    //webApp: ua.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                    platform: navigator.platform
+                };
+            }(),
+            lang: (navigator.browserLanguage || navigator.language).toLowerCase()
+        };
+        if (browser.info.platform.toLowerCase().indexOf("win") >= 0 || browser.info.platform.toLowerCase().indexOf("mac") >= 0) {
+            return "pc";
+        } else if (browser.info.android) {
+            return "android";
+        } else if (browser.info.ios || browser.info.iPhone || browser.info.iPad) {
+            return "ios";
+        } else {
+            return "";
+        }
+    })(u);
+    u.isArray = function (obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    };
+    u.isFunction = function (obj) {
+        return Object.prototype.toString.call(obj) === '[object Function]';
+    };
+    u.isEmptyObject = function (obj) {
+        if (JSON.stringify(obj) === '{}') {
+            return true;
+        }
+        return false;
+    };
+    u.alert = function (msg) {
+        try {
+            if (typeof msg == "string") {
+                alert(msg);
+            } else if (typeof msg == "object") {
+                alert(u.jsonToStr(msg));
+            } else {
+                alert(msg);
+            }
+        } catch (e) {
+            alert(msg);
+        }
+    };
+    //获取随机的唯一id，随机不重复，长度固定
+    u.UUID = function (len) {
+        len = len || 6;
+        len = parseInt(len, 10);
+        len = isNaN(len) ? 6 : len;
+        var seed = '0123456789abcdefghijklmnopqrstubwxyzABCEDFGHIJKLMNOPQRSTUVWXYZ';
+        var seedLen = seed.length - 1;
+        var uid = '';
+        while (len--) {
+            uid += seed[Math.round(Math.random() * seedLen)];
+        }
+        return uid;
+    };
+
+    u.isJSONObject = function (obj) {
+        return Object.prototype.toString.call(obj) === '[object Object]';
+    };
+    u.isJSONArray = function (obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    };
+    u.isFunction = function (obj) {
+        return Object.prototype.toString.call(obj) === '[object Function]';
+    };
+    //是否为空字符串
+    u.isEmpty = function (obj) {
+        if (obj === undefined || obj === null || (obj.toString && obj.toString() === "")) {
+            return true;
+        }
+        return false;
+    };
+    u.check = function (obj, paramNameArray, msg) {
+        for (var i = 0, len = paramNameArray.length; i < len; i++) {
+            if (obj[paramNameArray[i]] === undefined || obj[paramNameArray[i]] === null) {
+                var str = "参数[" + paramNameArray[i] + "]不能为空";
+                alert(msg ? msg + str : str);
+                return false;
+            }
+        }
+        return true;
+    };
+    u.checkIfExist = function (obj, paramNameArray, msg) {
+        for (var i = 0, len = paramNameArray.length; i < len; i++) {
+            var key = paramNameArray[i];
+            if (key in obj && $summer.isEmpty(obj[key])) {
+                var str = "参数[" + paramNameArray[i] + "]不能为空";
+                alert(msg ? msg + str : str);
+                return false;
+            }
+        }
+        return true;
+    };
+    u.isNamespace = function (ns) {
+        if (typeof ns == "undefined" || ns === null) {
+            return false;
+        }
+        if (typeof ns == "string" && ns === "") {
+            return false;
+        }
+
+        if (ns.indexOf(".") < 0 || ns.substring(0, 1) == "." || ns.substring(ns.length - 1) == ".") {
+            alert("包名非法，不包含.或以.开始结束");
+            return false;
+        }
+
+        var nameArr = ns.split(".");
+        for (var i = 0, len = nameArr.length; i < len; i++) {
+            var name = nameArr[i];
+            if (name === "") {
+                alert("非法的包名中连续含有两个.");
+                return false;
+            } else {
+                var pattern = /^[a-z]+([a-zA-Z_][a-zA-Z_0-9]*)*$/;
+                if (!pattern.test(name)) {
+                    alert("非法的包名");
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
+    window.$isJSONObject = u.isJSONObject;
+    window.$isJSONArray = u.isJSONArray;
+    window.$isFunction = u.isFunction;
+    window.$isEmpty = u.isEmpty;
+    window.$summer = window.$summer || u;
+})();
+
+;(function (w) {
+    w.$summer = w.$summer || {};
+    w.summer = w.summer || {};
+    w.api = w.summer;
+    (function () {
+        try {
+            var summerDOMContentLoaded = function () {
+                document.addEventListener('DOMContentLoaded', function () {
+                    summer.trigger("init");
+                    summer.pageParam = window.localStorage;
+                    if (typeof summerready == "function")
+                        summerready();
+                    if (typeof summerReady == "function")
+                        summerReady();
+                    summer.trigger("ready");
+                    summer.trigger("aftershowwin");
+                }, false);
+            }
+
+            if ($summer.os == "pc" || !window.summerBridge) {
+                summer.__debug = true;
+                console.log("run by file:// protocol in debug Mode");
+                summerDOMContentLoaded();
+            } else {
+                var url = "";
+                if (document.location.href.indexOf("http") === 0) {
+                    //1、webapp
+                    var strFullPath = window.document.location.href;
+                    var strPath = window.document.location.pathname;
+                    var pos = strFullPath.indexOf(strPath);
+                    var prePath = strFullPath.substring(0, pos); //domain name
+                    var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1); //site name
+                    w.__$_CORDOVA_PATH = w.__$_CORDOVA_PATH || (prePath + postPath);
+                    if ($summer.os == "android") {
+                        //alert("android");
+                        url = w.__$_CORDOVA_PATH + "/cordova/android/cordova.js";
+                    } else if ($summer.os == "ios") {
+                        //alert("ios");
+                        url = w.__$_CORDOVA_PATH + "/cordova/ios/cordova.js";
+                    } else {
+                        //alert("请在移动设备上访问");
+                    }
+
+                } else {
+                    //2、hybrid app
+                    if (w.__$_CORDOVA_PATH) {
+                        url = w.__$_CORDOVA_PATH + "www/cordova.js";
+                    } else {
+                        url = document.location.pathname.split("www")[0] + "www/cordova.js";
+                    }
+                }
+
+                var _script = document.createElement('script');
+                _script.id = "cordova_js";
+                _script.type = 'text/javascript';
+                _script.charset = 'utf-8';
+                _script.async = true;
+                _script.src = url;
+                _script.onload = function (e) {
+                    w.$summer.cordova = w.cordova;
+                    w.summer.cordova = w.cordova;
+
+                    document.addEventListener('deviceready', function () {
+                        summer.trigger("init");//summer.on('init',function(){})
+
+                        //1、先获取页面参数123
+                        summer.winParam(function (ret) {
+                            //希望返回
+                            var ctx = {
+                                systemType: "android",//"ios"
+                                systemVersion: 7,// ios--> 7    android-->21
+                                iOS7StatusBarAppearance: true,//false
+                                fullScreen: true,
+                                pageParam: {param0: 123, param1: "abc"},
+                                screenWidth: "",
+                                screenHeight: "",
+
+                                winId: "",
+                                winWidth: "",
+                                winHeight: "",
+
+                                frameId: "",
+                                frameWidth: "",
+                                frameHeight: "",
+
+                                appParam: "",
+                            };
+
+                            if (typeof ret == "string") {
+                                ret = JSON.parse(ret);
+
+                            }
+                            summer.pageParam = ret;//put the param in summer
+                            if (summer.autoShowWin !== false) {
+                                summer.showWin({});
+                            }
+                            summer.getOpenWinTime({}, function(ret) {
+                                var APMJSON = {
+                                    "windowid": summer.getSysInfo().winId,
+                                    "startTime": ret,
+                                    "endTime": new Date().getTime(),
+                                    "app_version": summer.getVersion().versionName
+                                };
+                                var APMPARAMS = ["FeLoad", APMJSON];
+                                console.log(APMPARAMS);
+                                cordova.require("summer-plugin-apm.SummerAPM").insertAction(APMPARAMS, function(args) {}, function(args) {})
+                            }, function(ret) {});
+                            if (typeof summerready == "function")
+                                summerready();
+                            else if (typeof summerReady == "function")
+                                summerReady();
+                            summer.trigger("ready");
+
+                            summer.trigger("aftershowwin");
+                        });
+                    }, false);
+
+                };
+                _script.onerror = function (e) {
+                    summer.__debug = true;
+                    console.log("run by http:// protocol in debug Mode");
+                    summerDOMContentLoaded();
+                };
+                //document.currentScript.parentNode.insertBefore(_script, document.currentScript);
+                var fs = document.getElementsByTagName('script')[0];
+                fs.parentNode.insertBefore(_script, fs);
+
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })();
+
+    w.summer.require = function (mdlName) {
+        if (window.$summer["cordova"] != window.cordova) {
+            alert("---------warnning : init cordova is too late!");
+            window.$summer["cordova"] = window.cordova;
+            window.summer["cordova"] = window.cordova;
+        }
+        if (mdlName == "cordova") {
+            return window.summer["cordova"];
+        } else {
+            return window.summer["cordova"].require(mdlName);
+        }
+    };
+    w.summer.canrequire = function () {
+        if (navigator.platform.toLowerCase().indexOf("win") > -1) {
+            return false;
+        }
+        return true;
+    };
+    w.$summer.require = w.summer.require;
+
+    var EventMgr = function () {
+        this._events = {};
+    };
+    EventMgr.prototype.on = function (evtName, handler) {
+        if (this._events[evtName] == undefined) {
+            this._events[evtName] = [];
+        }
+        this._events[evtName].push(handler);
+    };
+    EventMgr.prototype.off = function (evtName, handler) {
+        var handlers = this._events[evtName];
+        if (typeof handler == "undefined") {
+            delete handlers;
+        } else {
+            var index = -1;
+            for (var i = 0, len = handlers.length; i < len; i++) {
+                if (handler == handlers[i]) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index > 0)
+                handlers.remove(index);
+        }
+    };
+    EventMgr.prototype.trigger = function (evtName, sender, args) {
+        try {
+            var handlers = this._events[evtName];
+            if (!handlers) return;
+            var handler;
+            args = args || {};
+            for (var i = 0, len = handlers.length; i < len; i++) {
+                handler = handlers[i];
+                handler(sender, args);
+            }
+        } catch (e) {
+            alert(e);
+        }
+    };
+    var _ems = new EventMgr();
+    w.summer.on = function (eName, fn) {
+        _ems.on(eName, fn);
+    };
+    w.summer.trigger = function (eName) {
+        _ems.trigger(eName);
+    };
+})(window);
+
+//summerBridge 3.0.0.20161031
++function (w, s) {
+    //1、兼容Android
+    if (w.adrinvoker) alert(w.adrinvoker);
+    var adrinvoker = {};
+    if (w.adrinvoker && w.adrinvoker.call2) alert(w.adrinvoker.call2);
+
+    //Asynchronous call run as corodva bridge
+    adrinvoker.call = function (srvName, strJson) {
+        try {
+            if (navigator.platform.toLowerCase().indexOf("win") >= 0) {
+                alert("执行" + srvName + "完毕\n参数是：" + strJson);
+                return;
+            }
+
+            strJson = strJson || '{}';
+            try {
+                return summer.require('summer-plugin-service.XService').call(srvName, JSON.parse(strJson));
+            } catch (e) {
+                if ($summer.__debug)
+                    alert("Excp6.1: 异步调用summer-plugin-service.XService异常:" + e);
+                return;
+            }
+        } catch (e) {
+            alert("Excp6: 异步调用adrinvoker.call异常:" + e);
+        }
+    };
+
+    //Synchronous call as summer bridge
+    adrinvoker.call2 = function (srvName, strJson) {
+        try {
+            if (navigator.platform.toLowerCase().indexOf("win") >= 0) {
+                alert("执行" + srvName + "完毕\n参数是：" + strJson);
+                return;
+            }
+            if (typeof summerBridge != "undefined") {
+                try {
+                    return summerBridge.callSync(srvName, strJson);
+                } catch (e) {
+                    alert("Excp7.1: summerBridge.callSync异常:" + e);
+                }
+            } else {
+                alert("summerBridge is not defined by native successfully!");
+            }
+        } catch (e) {
+            alert("Excp7: 同步调用adrinvoker.call2异常:" + e);
+        }
+    };
+    w.adrinvoker = adrinvoker;
+
+    //2、兼容ios
+    //ios Synchronous
+    if (typeof CurrentEnvironment != "undefined") {
+        if ($summer.os == "ios") {
+            CurrentEnvironment.DeviceType = CurrentEnvironment.DeviceIOS;
+        } else if ($summer.os == "android") {
+            CurrentEnvironment.DeviceType = CurrentEnvironment.DeviceAndroid;
+        } else {
+        }
+    }
+    if (typeof UM_callNativeService == "undefined") {
+        var UM_callNativeService = function (serviceType, strParams) {//同步调用，和安卓统一接口
+            return adrinvoker.call2(serviceType, strParams);
+        };
+    } else {
+        alert("UM_callNativeService is exist! fatal error!");
+        alert(UM_callNativeService);
+    }
+    w.UM_callNativeService = UM_callNativeService;
+
+    //ios Asynchronous
+    if (typeof UM_callNativeServiceNoraml == "undefined") {
+        var UM_callNativeServiceNoraml = function (serviceType, strParams) {//异步调用，和安卓统一接口
+            return adrinvoker.call(serviceType, strParams);
+        };
+    } else {
+        alert("UM_callNativeServiceNoraml is exist! fatal error!");
+        alert(UM_callNativeServiceNoraml);
+    }
+    w.UM_callNativeServiceNoraml = UM_callNativeServiceNoraml;
+
+    //3、
+    s.callSync = function (serivceName, strJson) {
+        var strParam = strJson;
+        if (typeof strJson == "object") {
+            strParam = JSON.stringify(strJson);
+        } else if (typeof strJson != "string") {
+            strParam = strJson.toString();
+        }
+        try {
+            return summerBridge.callSync(serivceName, strParam);
+        } catch (e) {
+            if ($summer.os == "pc") {
+                return strJson;
+            }
+            alert(e);
+        }
+    };
+    //20160815
+    s.callCordova = function (cordovaPlugName, plugFnName, json, successFn, errFn) {
+        if (this.canrequire() && !this.__debug) {
+            var plug = this.cordova.require(cordovaPlugName);
+            if (plug && plug[plugFnName]) {
+                plug[plugFnName](json, successFn, errFn);
+            } else {
+                alert("the cordova plug[" + cordovaPlugName + "]'s method[" + plugFnName + "] not implementation");
+            }
+        } else {
+            console.log("the cordova plug[" + cordovaPlugName + "]'s method[" + plugFnName + "] executed!");
+        }
+    };
+
+}(window, summer);
+
+
+//summer API
++function (w, s) {
+    if (!s) {
+        s = {};
+        w.summer = s;
+    }
+    s.window = {
+        openFrame: function (json, successFn, errFn) {
+            json["animation"] = json["animation"] || {};
+            json["pageParam"] = json["pageParam"] || {};
+
+            if (json["rect"] && !json["position"]) {
+                json["position"] = {};
+                json["position"].left = json["rect"].x;
+                json["position"].top = json["rect"].y;
+                json["position"].width = json["rect"].w;
+                json["position"].height = json["rect"].h;
+
+            }
+            if (json["name"] && !json["id"]) {
+                json["id"] = json["name"];
+            }
+            if (json["alert"]) {
+                $summer.alert(json);
+                delete json["alert"];
+            }
+            return s.callCordova('summer-plugin-frame.XFrame', 'openFrame', json, successFn, errFn);
+        },
+        closeFrame: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'closeFrame', json, successFn, errFn);
+        },
+        openFrameGroup: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'openFrameGroup', json, successFn, errFn);
+        },
+        closeFrameGroup: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'closeFrameGroup', json, successFn, errFn);
+        },
+        setFrameGroupAttr: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'setFrameGroupAttr', json, successFn, errFn);
+        },
+        setFrameGroupIndex: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'setFrameGroupIndex', json, successFn, errFn);
+        },
+        openWin: function (json, successFn, errFn) {
+            if(!json["animation"]){
+                json["animation"]={
+                    type:"push", 
+                    subType:"from_right", 
+                    duration:300 
+                };
+            }
+            return s.callCordova('summer-plugin-frame.XFrame', 'openWin', json, successFn, errFn);
+        },
+        // ios下，退出登录，关闭其他页面
+        initializeWin: function (json, successFn, errFn) {
+            if ($summer.os == "ios") {
+                return s.callCordova('summer-plugin-frame.XFrame', 'initializeWin', json, successFn, errFn);
+            } else if ($summer.os == "android") {
+                if (json.id && json.url && json.toId) {
+                    summer.openWin({"id" : json.id, "url" : json.url, "isKeep" : false});
+                    summer.closeToWin({id : json.toId});
+                }
+            }
+        },
+        // ios下，重新挂载事件监听
+        addEventListener: function (json, successFn, errFn) {
+            if ($summer.os == "ios") {
+                return s.callCordova('summer-plugin-frame.XFrame', 'addEventListener', json, successFn, errFn);
+            } else if ($summer.os == "android") {
+                if (json.event && json.handler) {
+                    var handler = json.handler.replace(/\(|\)/g,'');
+                    document.addEventListener(json.event, eval("("+ handler +")"), false);
+                }
+            }
+        },
+        createWin: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'createWin', json, successFn, errFn);
+        },
+        getOpenWinTime: function (json, successFn, errFn) {
+            return s.callCordova("summer-plugin-frame.XFrame", "getOpenWinTime", json, successFn, errFn)
+        },
+        showWin: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'showWin', json, successFn, errFn);
+        },
+        setWinAttr: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'setWinAttr', json, successFn, errFn);
+        },
+        closeWin: function (json, successFn, errFn) {
+            if (typeof json == "string") {
+                json = {"id": json};
+            } else if (typeof json == "undefined") {
+                json = {}
+            }
+            return s.callCordova('summer-plugin-frame.XFrame', 'closeWin', json, successFn, errFn);
+        },
+        closeToWin: function (json, successFn, errFn) {
+            if (typeof json == "string") {
+                json = {"id": json};
+            } else if (typeof json == "undefined") {
+                json = {};
+            }
+            return s.callCordova('summer-plugin-frame.XFrame', 'closeToWin', json, successFn, errFn);
+        },
+        getSysInfo: function (json, successFn, errFn) {
+            if (typeof json == "string") {
+                json = alert("parameter json is required json object type, but is string type");
+            }
+            var param = json || {
+                systemType: "android",//"ios"
+                systemVersion: 7,// ios--> 7    android-->21
+                statusBarAppearance: true,//false
+                fullScreen: true,
+                pageParam: {param0: 123, param1: "abc"},
+                screenWidth: "",
+                screenHeight: "",
+                winId: "",
+                winWidth: "",
+                winHeight: "",
+                frameId: "",
+                frameWidth: "",
+                frameHeight: "",
+                statusBarHeight: "",
+                statusBarStyle: "",
+                appParam: "",
+            };
+            return JSON.parse(s.callSync('SummerDevice.getSysInfo', param));
+        },
+        setFrameAttr: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').setFrameAttr(json, successFn, errFn);
+        },
+        winParam: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').winParam(json, successFn, errFn);
+        },
+        frameParam: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').frameParam(json, successFn, errFn);
+        },
+        setRefreshHeaderInfo: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').setRefreshHeaderInfo(json, successFn, errFn);
+        },
+        refreshHeaderLoadDone: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').refreshHeaderLoadDone(json, successFn, errFn);
+        },
+        refreshHeaderBegin: function (json, successFn, errFn) {
+            if (s.canrequire()) {
+                return s.cordova.require("summer-plugin-frame.XFrame").refreshHeaderBegin(json, successFn, errFn)
+            }
+        },
+        setRefreshFooterInfo: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').setRefreshFooterInfo(json, successFn, errFn);
+        },
+        refreshFooterLoadDone: function (json, successFn, errFn) {
+            if (s.canrequire())
+                return s.cordova.require('summer-plugin-frame.XFrame').refreshFooterLoadDone(json, successFn, errFn);
+        },
+        refreshFooterBegin: function (json, successFn, errFn) {
+            if (s.canrequire()) {
+                return s.cordova.require("summer-plugin-frame.XFrame").refreshFooterBegin(json, successFn, errFn)
+            }
+        },
+        hideLaunch: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'removeStartPage', json, successFn, errFn);
+        },
+        setTabbarIndex: function (json, successFn, errFn) {
+            return s.callCordova('summer-plugin-frame.XFrame', 'setTabbarItemSelect', json, successFn, errFn);
+        }
+    };
+
+
+    //核心API直接通过 summer.xxx()访问
+    s.openFrame = s.window.openFrame;
+    s.closeFrame = s.window.closeFrame;
+    s.openWin = s.window.openWin;
+    s.initializeWin = s.window.initializeWin;
+    s.addEventListener = s.window.addEventListener;
+    s.setWinAttr = s.window.setWinAttr;
+    s.createWin = s.window.createWin;
+    s.getOpenWinTime = s.window.getOpenWinTime;
+    s.showWin = s.window.showWin;
+    s.closeWin = s.window.closeWin;
+    s.closeToWin = s.window.closeToWin;
+    s.getSysInfo = s.window.getSysInfo;
+    s.winParam = s.window.winParam;
+    s.frameParam = s.window.frameParam;
+    s.setFrameAttr = s.window.setFrameAttr;
+    s.setRefreshHeaderInfo = s.window.setRefreshHeaderInfo;
+    s.refreshHeaderLoadDone = s.window.refreshHeaderLoadDone;
+    s.refreshHeaderBegin = s.window.refreshHeaderBegin;
+    s.setRefreshFooterInfo = s.window.setRefreshFooterInfo;
+    s.refreshFooterLoadDone = s.window.refreshFooterLoadDone;
+    s.refreshFooterBegin = s.window.refreshFooterBegin;
+    s.openFrameGroup = s.window.openFrameGroup;
+    s.closeFrameGroup = s.window.closeFrameGroup;
+    s.setFrameGroupAttr = s.window.setFrameGroupAttr;
+    s.setFrameGroupIndex = s.window.setFrameGroupIndex;
+    s.hideLaunch = s.window.hideLaunch;
+    s.setTabbarIndex = s.window.setTabbarIndex;
+
+    s.showProgress = function (json) {
+        if (!s.canrequire()) return;
+        var invoker = summer.require('summer-plugin-service.XService');
+        json = json || {};
+        invoker.call("UMJS.showLoadingBar", json);
+    };
+    s.hideProgress = function (json) {
+        if (!s.canrequire()) return;
+        var invoker = summer.require('summer-plugin-service.XService');
+        json = json || {};
+        invoker.call("UMJS.hideLoadingBar", json);
+    };
+    s.toast = function (json) {
+        if (!s.canrequire()) return;
+        var invoker = summer.require('summer-plugin-service.XService');
+        json = json || {};
+        invoker.call("UMJS.toast", json);
+    };
+    //upload方法
+    s.upload = function (json, sFn, eFn, headers) {
+        var fileURL = json.fileURL,
+            type = json.type,
+            params = json.params;
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+        options.mimeType = type;
+
+        options.params = params;
+        options.httpMethod = "POST";
+        options.headers = headers || {};
+
+        var ft = new FileTransfer();
+        var SERVER = json.SERVER;
+        ft.upload(fileURL, encodeURI(SERVER), sFn, eFn, options);
+    };
+    //多图多文件批量上传 
+    s.multiUpload= function(json,successFn,errFn){
+        json["callback"]=successFn;
+        json["error"]=errFn;
+        return  s.callService('UMFile.multiUpload', json, false);
+    };
+    s.eval = function (script) {
+        var t = setTimeout("try{eval(" + script + ")}catch(e){alert(e)}", 10);
+    };
+    //仅支持当前Win中的 各个frame和当前win之间的相互执行脚本
+    s.execScript = function (json) {
+        if (typeof json == "object") {
+            //json.execFn = "summer.eval"
+            if (json.script) {
+                json.script = "try{" + json.script + "}catch(e){alert(e)}";
+            } else {
+                alert("the parameter script of the execScript function is " + json.script);
+            }
+        }
+        if (s.canrequire()) {
+            return this.callCordova('summer-plugin-frame.XFrame', 'execScript', json, null, null);
+        }
+    };
+
+    //持久化本地存储
+    var umStorage = function (type) {
+        type = type || "localStorage";
+        if (type == "localStorage") {
+            if (!window.localStorage) {
+                alert('your device do not support the localStorage');
+                return;
+            }
+            return window.localStorage;
+        } else if (type == "sessionStorage") {
+            if (!window.sessionStorage) {
+                alert('your device do not support the sessionStorage');
+                return;
+            }
+            return window.sessionStorage;
+        } else if (type == "application") {
+            return {
+                setItem: function (key, value) {
+                    var json = {
+                        key: key,
+                        value: value
+                    };
+                    return s.callSync("SummerStorage.writeApplicationContext", JSON.stringify(json));
+                },
+                getItem: function (key) {
+                    var json = {
+                        key: key
+                    };
+                    return s.callSync("SummerStorage.readApplicationContext", JSON.stringify(json));
+                }
+            };
+        } else if (type == "configure") {
+            return {
+                setItem: function (key, value) {
+                    var json = {
+                        key: key,
+                        value: typeof value == "string" ? value : JSON.stringify(value)
+                    };
+                    return s.callSync("SummerStorage.writeConfigure", JSON.stringify(json));
+                },
+                getItem: function (key) {
+                    var json = {
+                        key: key
+                    };
+                    return s.callSync("SummerStorage.readConfigure", JSON.stringify(json));
+                }
+            };
+        } else if (type == "window") {
+            return {
+                setItem: function (key, value) {
+                    var json = {
+                        key: key,
+                        value: typeof value == "string" ? value : JSON.stringify(value)
+                    };
+                    return s.callSync("SummerStorage.writeWindowContext", JSON.stringify(json));
+                },
+                getItem: function (key) {
+                    var json = {
+                        key: key
+                    };
+                    return s.callSync("SummerStorage.readWindowContext", JSON.stringify(json));
+                }
+            };
+        }
+    };
+    s.setStorage = function (key, value, storageType) {
+        var v = value;
+        if (storageType != "configure") {
+            if (typeof v == 'object') {
+                v = JSON.stringify(v);
+                v = 'obj-' + v;
+            } else {
+                v = 'str-' + v;
+            }
+        }
+        var ls = umStorage(storageType);
+        if (ls) {
+            ls.setItem(key, v);
+        }
+    };
+    s.getStorage = function (key, storageType) {
+        var ls = umStorage(storageType);
+        if (ls) {
+            var v = ls.getItem(key);
+            if (!v) {
+                return;
+            }
+            if (storageType != "configure") {
+                if (v.indexOf('obj-') === 0) {
+                    v = v.slice(4);
+                    return JSON.parse(v);
+                } else if (v.indexOf('str-') === 0) {
+                    return v.slice(4);
+                } else {
+                    return v;
+                }
+            } else {
+                return v;
+            }
+        }
+    };
+
+    s.setAppStorage = function (key, value) {
+        return s.setStorage(key, value, "application");
+    };
+    s.getAppStorage = function (key) {
+        return s.getStorage(key, "application");
+    };
+    s.setWindowStorage = function (key, value) {
+        return s.setStorage(key, value, "window");
+    };
+    s.getWindowStorage = function (key) {
+        return s.getStorage(key, "window");
+    };
+
+    s.rmStorage = function (key) {
+        var ls = umStorage();
+        if (ls && key) {
+            ls.removeItem(key);
+        }
+    };
+    s.clearStorage = function () {
+        var ls = umStorage();
+        if (ls) {
+            ls.clear();
+        }
+    };
+
+    s.sysInfo = function (json, successFn, errFn) {
+        if (s.canrequire())
+            return s.cordova.require('summer-plugin-frame.XService').sysInfo(json, successFn, errFn);
+    };
+    s.getAppVersion = function (json) {
+        return s.callSync('XUpgrade.getAppVersion', json || {});
+    };
+    s.upgradeApp = function (json, successFn, errFn) {
+        return s.callCordova('summer-plugin-core.XUpgrade', 'upgradeApp', json, successFn, errFn);
+    };
+    s.getVersion = function (json) {
+        var ver = s.callSync('XUpgrade.getVersion', json || {});
+        if (typeof ver == "string") {
+            return JSON.parse(ver);
+        } else {
+            alert("getVersion' return value is not string!");
+            return ver;
+        }
+    };
+    s.upgrade = function (json, successFn, errFn) {
+        return s.callCordova('summer-plugin-core.XUpgrade', 'upgrade', json, successFn, errFn);
+    };
+    //退出
+    s.exitApp = function (json, successFn, errFn) {
+        return s.callCordova('summer-plugin-core.XUpgrade', 'exitApp', json || {}, successFn, errFn);
+    };
+
+    s.collectInfos = function (json) {
+        var APMPARAMS = ["login", json];
+        cordova.require("summer-plugin-apm.SummerAPM").insertAction(APMPARAMS, function (args) {
+        }, function (args) {
+        });
+    };
+    //安卓手动获取权限
+    s.getPermission = function (json, successFn, errFn) {
+        if ($summer.os == 'android') {
+            return s.callCordova('summer-plugin-service.XService', 'getPermission', json, successFn, errFn);
+        }
+    };
+}(window, summer);
+//HTML DOM API
+;(function (window) {
+    var u = window.$summer || {};
+    u.isElement = function (obj) {
+        return !!(obj && obj.nodeType == 1);
+    };
+    u.addEvt = function (el, name, fn, useCapture) {
+        if (!u.isElement(el)) {
+            console.warn('$summer.addEvt Function need el param, el param must be DOM Element');
+            return;
+        }
+        useCapture = useCapture || false;
+        if (el.addEventListener) {
+            el.addEventListener(name, fn, useCapture);
+        }
+    };
+    u.rmEvt = function (el, name, fn, useCapture) {
+        if (!u.isElement(el)) {
+            console.warn('$summer.rmEvt Function need el param, el param must be DOM Element');
+            return;
+        }
+        useCapture = useCapture || false;
+        if (el.removeEventListener) {
+            el.removeEventListener(name, fn, useCapture);
+        }
+    };
+    u.one = function (el, name, fn, useCapture) {
+        if (!u.isElement(el)) {
+            console.warn('$api.one Function need el param, el param must be DOM Element');
+            return;
+        }
+        useCapture = useCapture || false;
+        var that = this;
+        var cb = function () {
+            fn && fn();
+            that.rmEvt(el, name, cb, useCapture);
+        };
+        that.addEvt(el, name, cb, useCapture);
+    };
+    u.dom = function (el, selector) {
+        if (arguments.length === 1 && typeof arguments[0] == 'string') {
+            if (document.querySelector) {
+                return document.querySelector(arguments[0]);
+            }
+        } else if (arguments.length === 2) {
+            if (el.querySelector) {
+                return el.querySelector(selector);
+            }
+        }
+    };
+    u.domAll = function (el, selector) {
+        if (arguments.length === 1 && typeof arguments[0] == 'string') {
+            if (document.querySelectorAll) {
+                return document.querySelectorAll(arguments[0]);
+            }
+        } else if (arguments.length === 2) {
+            if (el.querySelectorAll) {
+                return el.querySelectorAll(selector);
+            }
+        }
+    };
+    u.byId = function (id) {
+        return document.getElementById(id);
+    };
+    u.first = function (el, selector) {
+        if (arguments.length === 1) {
+            if (!u.isElement(el)) {
+                console.warn('$summer.first Function need el param, el param must be DOM Element');
+                return;
+            }
+            return el.children[0];
+        }
+        if (arguments.length === 2) {
+            return this.dom(el, selector + ':first-child');
+        }
+    };
+    u.last = function (el, selector) {
+        if (arguments.length === 1) {
+            if (!u.isElement(el)) {
+                console.warn('$summer.last Function need el param, el param must be DOM Element');
+                return;
+            }
+            var children = el.children;
+            return children[children.length - 1];
+        }
+        if (arguments.length === 2) {
+            return this.dom(el, selector + ':last-child');
+        }
+    };
+    u.eq = function (el, index) {
+        return this.dom(el, ':nth-child(' + index + ')');
+    };
+    u.not = function (el, selector) {
+        return this.domAll(el, ':not(' + selector + ')');
+    };
+    u.prev = function (el) {
+        if (!u.isElement(el)) {
+            console.warn('$api.prev Function need el param, el param must be DOM Element');
+            return;
+        }
+        var node = el.previousSibling;
+        if (node.nodeType && node.nodeType === 3) {
+            node = node.previousSibling;
+            return node;
+        }
+    };
+    u.next = function (el) {
+        if (!u.isElement(el)) {
+            console.warn('$api.next Function need el param, el param must be DOM Element');
+            return;
+        }
+        var node = el.nextSibling;
+        if (node.nodeType && node.nodeType === 3) {
+            node = node.nextSibling;
+            return node;
+        }
+    };
+    u.closest = function (el, selector) {
+        if (!u.isElement(el)) {
+            console.warn('$api.closest Function need el param, el param must be DOM Element');
+            return;
+        }
+        var doms, targetDom;
+        var isSame = function (doms, el) {
+            var i = 0, len = doms.length;
+            for (i; i < len; i++) {
+                if (doms[i].isEqualNode(el)) {
+                    return doms[i];
+                }
+            }
+            return false;
+        };
+        var traversal = function (el, selector) {
+            doms = u.domAll(el.parentNode, selector);
+            targetDom = isSame(doms, el);
+            while (!targetDom) {
+                el = el.parentNode;
+                if (el !== null && el.nodeType == el.DOCUMENT_NODE) {
+                    return false;
+                }
+                traversal(el, selector);
+            }
+
+            return targetDom;
+        };
+
+        return traversal(el, selector);
+    };
+    u.contains = function (parent, el) {
+        var mark = false;
+        if (el === parent) {
+            mark = true;
+            return mark;
+        } else {
+            do {
+                el = el.parentNode;
+                if (el === parent) {
+                    mark = true;
+                    return mark;
+                }
+            } while (el === document.body || el === document.documentElement);
+
+            return mark;
+        }
+
+    };
+    u.remove = function (el) {
+        if (el && el.parentNode) {
+            el.parentNode.removeChild(el);
+        }
+    };
+    u.attr = function (el, name, value) {
+        if (!u.isElement(el)) {
+            console.warn('$api.attr Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (arguments.length == 2) {
+            return el.getAttribute(name);
+        } else if (arguments.length == 3) {
+            el.setAttribute(name, value);
+            return el;
+        }
+    };
+    u.removeAttr = function (el, name) {
+        if (!u.isElement(el)) {
+            console.warn('$api.removeAttr Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (arguments.length === 2) {
+            el.removeAttribute(name);
+        }
+    };
+    u.hasCls = function (el, cls) {
+        if (!u.isElement(el)) {
+            console.warn('$api.hasCls Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (el.className.indexOf(cls) > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    u.addCls = function (el, cls) {
+        if (!u.isElement(el)) {
+            console.warn('$api.addCls Function need el param, el param must be DOM Element');
+            return;
+        }
+        if ('classList' in el) {
+            el.classList.add(cls);
+        } else {
+            var preCls = el.className;
+            var newCls = preCls + ' ' + cls;
+            el.className = newCls;
+        }
+        return el;
+    };
+    u.removeCls = function (el, cls) {
+        if (!u.isElement(el)) {
+            console.warn('$api.removeCls Function need el param, el param must be DOM Element');
+            return;
+        }
+        if ('classList' in el) {
+            el.classList.remove(cls);
+        } else {
+            var preCls = el.className;
+            var newCls = preCls.replace(cls, '');
+            el.className = newCls;
+        }
+        return el;
+    };
+    u.toggleCls = function (el, cls) {
+        if (!u.isElement(el)) {
+            console.warn('$api.toggleCls Function need el param, el param must be DOM Element');
+            return;
+        }
+        if ('classList' in el) {
+            el.classList.toggle(cls);
+        } else {
+            if (u.hasCls(el, cls)) {
+                u.addCls(el, cls);
+            } else {
+                u.removeCls(el, cls);
+            }
+        }
+        return el;
+    };
+    u.val = function (el, val) {
+        if (!u.isElement(el)) {
+            console.warn('$api.val Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (arguments.length === 1) {
+            switch (el.tagName) {
+                case 'SELECT':
+                    var value = el.options[el.selectedIndex].value;
+                    return value;
+                case 'INPUT':
+                    return el.value;
+                case 'TEXTAREA':
+                    return el.value;
+            }
+        }
+        if (arguments.length === 2) {
+            switch (el.tagName) {
+                case 'SELECT':
+                    el.options[el.selectedIndex].value = val;
+                    return el;
+                case 'INPUT':
+                    el.value = val;
+                    return el;
+                case 'TEXTAREA':
+                    el.value = val;
+                    return el;
+            }
+        }
+    };
+    u.prepend = function (el, html) {
+        if (!u.isElement(el)) {
+            console.warn('$api.prepend Function need el param, el param must be DOM Element');
+            return;
+        }
+        el.insertAdjacentHTML('afterbegin', html);
+        return el;
+    };
+    u.append = function (el, html) {
+        if (!u.isElement(el)) {
+            console.warn('$api.append Function need el param, el param must be DOM Element');
+            return;
+        }
+        el.insertAdjacentHTML('beforeend', html);
+        return el;
+    };
+    u.before = function (el, html) {
+        if (!u.isElement(el)) {
+            console.warn('$api.before Function need el param, el param must be DOM Element');
+            return;
+        }
+        el.insertAdjacentHTML('beforebegin', html);
+        return el;
+    };
+    u.after = function (el, html) {
+        if (!u.isElement(el)) {
+            console.warn('$api.after Function need el param, el param must be DOM Element');
+            return;
+        }
+        el.insertAdjacentHTML('afterend', html);
+        return el;
+    };
+    u.html = function (el, html) {
+        if (!u.isElement(el)) {
+            console.warn('$api.html Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (arguments.length === 1) {
+            return el.innerHTML;
+        } else if (arguments.length === 2) {
+            el.innerHTML = html;
+            return el;
+        }
+    };
+    u.text = function (el, txt) {
+        if (!u.isElement(el)) {
+            console.warn('$api.text Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (arguments.length === 1) {
+            return el.textContent;
+        } else if (arguments.length === 2) {
+            el.textContent = txt;
+            return el;
+        }
+    };
+    u.offset = function (el) {
+        if (!u.isElement(el)) {
+            console.warn('$api.offset Function need el param, el param must be DOM Element');
+            return;
+        }
+        var sl, st;
+        if (document.documentElement) {
+            sl = document.documentElement.scrollLeft;
+            st = document.documentElement.scrollTop;
+        } else {
+            sl = document.body.scrollLeft;
+            st = document.body.scrollTop;
+        }
+        var rect = el.getBoundingClientRect();
+        return {
+            l: rect.left + sl,
+            t: rect.top + st,
+            w: el.offsetWidth,
+            h: el.offsetHeight
+        };
+    };
+    u.css = function (el, css) {
+        if (!u.isElement(el)) {
+            console.warn('$api.css Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (typeof css == 'string' && css.indexOf(':') > 0) {
+            el.style && (el.style.cssText += ';' + css);
+        }
+    };
+    u.cssVal = function (el, prop) {
+        if (!u.isElement(el)) {
+            console.warn('$api.cssVal Function need el param, el param must be DOM Element');
+            return;
+        }
+        if (arguments.length === 2) {
+            var computedStyle = window.getComputedStyle(el, null);
+            return computedStyle.getPropertyValue(prop);
+        }
+    };
+    u.jsonToStr = function (json) {
+        if (typeof json === 'object') {
+            return JSON && JSON.stringify(json);
+        } else {
+            alert("$summer.jsonToStr's parameter is not a json, it's typeof is " + typeof json);
+        }
+    };
+    u.strToJson = function (str) {
+        if (typeof str === 'string') {
+            return JSON && JSON.parse(str);
+        } else {
+            alert("$summer.strToJson's parameter is not a string, it's typeof is " + typeof str);
+        }
+    };
+    //gct api
+    u.winWidth = function () {
+        return document.documentElement.offsetWidth || document.body.offsetWidth;
+    };
+    //gct api
+    u.winHeight = function () {
+        return document.documentElement.offsetHeight || document.body.offsetHeight;
+    };
+    /******************** HTML API END ********************/
+
+
+    /******************** Native API BEGIN ********************/
+    u.fixStatusBar = function (el) {
+        if (!u.isElement(el)) {
+            alert('$summer.fixStatusBar Function need el param, el param must be DOM Element');
+            return;
+        }
+
+        var sysInfo = summer.getSysInfo();
+        var strST = sysInfo.systemType;
+        var strSV = sysInfo.systemVersion;
+        var fullScreen = sysInfo.fullScreen;
+        var statusBarAppearance = sysInfo.statusBarAppearance;
+        var statusBarHeight = sysInfo.statusBarHeight;
+        if ((strST == "ios" && fullScreen && statusBarAppearance == '1') || strST == "pc") {
+            el.style.paddingTop = '20px';
+            $(el).children().css("top", "20px");
+        } else if (strST == "android" && fullScreen && statusBarAppearance) {
+            el.style.paddingTop = statusBarHeight + 'px';
+            $(el).children().css("top", statusBarHeight + 'px');
+        }
+    };
+
+    window.$summer = window.$summer || u;
+    window.$api = window.$summer;
+})(window);
+
+//summer native service v3.0.2016092011
++function (w, s) {
+    w.$__cbm = {};
+    if (!s) {
+        s = {};
+        w.summer = s;
+    }
+    //----------------------------------------------------------------------
+    s.UMService = {
+        //统一API，summer.callService(), supported by dsl and summer
+        call: function (serviceType, jsonArgs, isSync) {
+            try {
+                jsonArgs = jsonArgs || {};
+                var serviceparams = "";
+
+                //Setp1: jsonArgs JSON Format
+                if (typeof jsonArgs == "string") {
+                    try {
+                        var json = JSON.parse(jsonArgs);
+                        if (typeof json != "object") {
+                            alert("调用服务[" + serviceType + "]时参数不是一个有效的json字符串。参数是" + jsonArgs);
+                            return;
+                        }
+                        jsonArgs = json;
+                    } catch (e) {
+                        alert("调用服务[" + serviceType + "]时参数不是一个有效的json字符串。参数是" + jsonArgs);
+                        alert(e);
+                        return;
+                    }
+                }
+
+
+                if (typeof jsonArgs == "object") {
+                    //Setp2: callback proxy
+                    s.UMService._callbackProxy(jsonArgs, "callback");
+
+                    //Setp3: error proxy
+                    s.UMService._callbackProxy(jsonArgs, "error");
+
+                    try {
+                        serviceparams = $summer.jsonToStr(jsonArgs);
+                        if (typeof serviceparams == "object") {
+                            //转string后仍然为json，则报错，规定：调用服务的参数如果是字符串，必须是能转为json的字符串才行
+                            alert("调用服务[" + serviceType + "]时传递的参数不能标准化为json字符串，请检查参数格式" + jsonArgs);
+                            return;
+                        }
+                    } catch (e) {
+                        alert("Excp4: 校验jsonArgs是否可jsonToStr时异常:" + e);
+                    }
+
+                    if (isSync) {
+                        try {
+                            return adrinvoker.call2(serviceType, serviceparams);
+                        } catch (e) {
+                            alert("Excp5.1: 同步调用adrinvoker.call2异常:" + e);
+                        }
+                    } else {
+                        try {
+                            return adrinvoker.call(serviceType, serviceparams);
+                        } catch (e) {
+                            alert("Excp5.2: 异步调用adrinvoker.call异常:" + e);
+                        }
+                    }
+                } else {
+                    alert("调用$service.call(" + serviceType + ", jsonArgs, " + isSync + ")时不合法,参数jsonArgs类型为" + typeof jsonArgs);
+                    return;
+                }
+
+
+            } catch (e) {
+                var info = "";
+                if (isSync)
+                    info = "Excp601:调用$service.call(\"" + serviceType + "\", jsonArgs, " + isSync + ")时发生异常,请检查!";
+                else
+                    info = "Excp602:调用$service.call(\"" + serviceType + "\", jsonArgs)时发生异常,请检查!";
+                console.log(info);
+                alert(info + ", 更多请使用chrome inspect调试查看console日志;\n错误堆栈信息e为:\n" + e);
+            }
+        },
+        _callbackProxy: function (jsonArgs, callback_KEY) {
+            try {
+                if (!jsonArgs[callback_KEY])
+                    return true;
+                if (typeof(jsonArgs[callback_KEY]) == "string") {
+                    var cbName = "";
+                    try {
+                        cbName = jsonArgs[callback_KEY].substring(0, jsonArgs[callback_KEY].indexOf("("));
+                        var cbFn = window[cbName];
+                        if (typeof cbFn != "function") {
+                            alert("Excpt2.91:" + cbName + " is not a function, and must be a global function!\nit's typeof is " + typeof cbFn);
+                            return false;
+                        }
+                        jsonArgs[callback_KEY] = cbFn;
+                    } catch (e) {
+                        alert("Excpt2.96: callback define error!\n" + cbName + " is not a valid global function");
+                        return false;
+                    }
+                }
+
+                if (typeof(jsonArgs[callback_KEY]) == "function") {
+                    var _cbProxy = "__UMCB_" + $summer.UUID(8);
+                    while ($__cbm[_cbProxy]) {
+                        _cbProxy = "__UMCB_" + $summer.UUID(8);
+                    }
+                    $__cbm[_cbProxy] = jsonArgs[callback_KEY];
+
+                    window[_cbProxy] = function (sender, args) {
+                        try {
+                            if (args == undefined) {
+                                args = sender;//compatible
+                            }
+                            $__cbm[_cbProxy](sender, args);
+                        } catch (e) {
+                            alert(e);
+                        } finally {
+                            return;
+                            if (!jsonArgs["__keepCallback"]) {
+                                delete $__cbm[_cbProxy];
+                                delete window[_cbProxy];
+                            }
+                            alert("del after");
+                        }
+                    };
+                    jsonArgs[callback_KEY] = _cbProxy + "()";
+                    return true;
+                }
+                return false;
+            } catch (e) {
+                alert("Excp603: Exception in handling callback proxy:\n" + e);
+                return false;
+            }
+        },
+        openHTTPS: function (json) {
+            if ($summer.isJSONObject(json)) {
+                if (!json.ishttps) {
+                    alert("请输入true或者false");
+                    return;
+                }
+                return s.callService("UMService.openHTTPS", json, false);
+            } else {
+                alert("参数不是有效的JSONObject");
+            }
+        },
+        writeConfig: function (key, val) {
+            //1、准备参数
+            var args = {};
+            if (arguments.length == 1 && typeof arguments[0] == "object") {
+                args = key;
+            } else if (arguments.length == 2) {
+                args[key] = val;
+            } else {
+                alert("writeConfig时,参数不合法");
+                return;
+            }
+            //2、调用服务
+            return s.callService("UMService.writeConfigure", args, false);
+        },
+        readConfig: function (name) {
+            //1、准备参数
+            var args = {};
+            if (typeof name == "string")
+                args[name] = name;
+            else {
+                alert("readConfig时，不支持参数[name]的参数类型为" + typeof name);
+                return;
+            }
+            //2、调用服务
+            return s.callService("UMService.readConfigure", args, false);
+        },
+        setAppContext: function (ret) {
+            //1、准备参数
+            var args = {};
+            if (arguments.length == 1 && typeof arguments[0] == "object") {
+                for (var key in ret) {
+                    if (key == "version") {
+                        args["versionname"] = ret[key];
+                        args["appversion"] = ret[key];
+                    } else if (key == "userid") {
+                        args["userid"] = ret[key];
+                        args["user"] = ret[key];
+                    } else {
+                        args[key] = ret[key];
+                    }
+                }
+            } else {
+                alert("setAppContext时,参数不合法");
+                return;
+            }
+            //2、调用服务
+            return s.callService("UMCtx.setAppValue", args, false);
+        },
+        callAction: function (controllerName, actionName, params, isDataCollect, callbackActionID, contextmapping, customArgs) {
+            if (arguments.length == 1 && typeof arguments[0] == "object") {
+                var args = {};
+                args = controllerName;
+                return s.callService("UMService.callAction", args, false);
+            } else {
+                var args = {};
+                args["viewid"] = controllerName;
+                args["action"] = actionName;
+                args["params"] = params;
+                args["isDataCollect"] = isDataCollect;
+                args["callback"] = callbackActionID;
+                args["contextmapping"] = contextmapping;
+                if (customArgs) {//处理自定义参数，用于该服务的参数扩展
+                    for (var key in customArgs) {
+                        args[key] = customArgs[key];
+                    }
+                }
+                return s.callService("UMService.callAction", args);
+            }
+        },
+        get: function (json) {
+            if ($summer.isJSONObject(json)) {
+                if (!json.url) {
+                    alert("请输入请求的url");
+                    return;
+                }
+                return s.callService("UMService.get", json, false);
+            } else {
+                alert("参数不是有效的JSONObject");
+            }
+        },
+        post: function (json) {
+            if ($summer.isJSONObject(json)) {
+                if (!json.url) {
+                    alert("请输入请求的url");
+                    return;
+                }
+                return s.callService("UMService.post", json, false);
+            } else {
+                alert("参数不是有效的JSONObject");
+            }
+        }
+    };
+    s.callServiceEx = function (json, successFn, errFn) {
+        if (!json.params) {
+            json.params = {}
+        }
+        if(successFn){
+            json.params["callback"] = successFn;
+            s.UMService._callbackProxy(json.params, "callback");
+        }
+        if(errFn){
+            json.params["error"] = errFn;
+            s.UMService._callbackProxy(json.params, "error");
+        }
+        return s.callCordova('summer-plugin-service.XService', 'callSync', json, null, null);
+    };
+
+    s.UMDevice = {
+        _deviceInfo_Screen: null,
+        getTimeZoneID: function () {
+            return s.callService("UMDevice.getTimeZoneID", "", true);
+        },
+        getTimeZoneDisplayName: function () {
+            return s.callService("UMDevice.getTimeZoneDisplayName", {}, true); //无参调用统一使用{}
+        },
+        openAddressBook: function () {
+            return s.callService("UMDevice.openAddressBook", {});
+        },
+        getInternalMemoryInfo: function () {
+            return s.callService("UMDevice.getInternalMemoryInfo", {}, true);
+        },
+        getExternalStorageInfo: function () {
+            return s.callService("UMDevice.getExternalStorageInfo", {}, true);
+        },
+        getMemoryInfo: function () {
+            return s.callService("UMDevice.getMemoryInfo", {}, true);
+        },
+        openWebView: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用gotoMapView服务时，参数不是一个有效的JSONObject");
+            }
+            return s.callService("UMDevice.openWebView", args);
+        },
+        screenShot: function (args) {
+
+            return s.callService("UMDevice.screenshot", args, true);
+        },
+        notify: function (args) {
+            s.callService("UMService.localNotification", args);
+        },
+        getDeviceInfo: function (jsonArgs) {
+            var result = "";
+            if (jsonArgs) {
+                result = s.callService("UMDevice.getDeviceInfo", $summer.jsonToStr(jsonArgs), false);
+            } else {
+                result = s.callService("UMDevice.getDeviceInfo", "", true);
+            }
+            return JSON.parse(result);
+        },
+        getScreenWidth: function () {
+            if (!this._deviceInfo_Screen) {
+                var strd_info = this.getDeviceInfo();
+                var info = JSON.parse(strd_info);
+                this._deviceInfo_Screen = info.screen;
+            }
+            if (this._deviceInfo_Screen) {
+                return this._deviceInfo_Screen.width;
+            } else {
+                alert("未能获取到该设备的屏幕信息");
+            }
+        },
+        getScreenHeight: function () {
+            if (!this._deviceInfo_Screen) {
+                var strd_info = this.getDeviceInfo();
+                var info = JSON.parse(strd_info);
+                this._deviceInfo_Screen = info.screen;
+            }
+            if (this._deviceInfo_Screen) {
+                return this._deviceInfo_Screen.height;
+            } else {
+                alert("未能获取到该设备的屏幕信息");
+            }
+        },
+        getScreenDensity: function () {
+            if (!this._deviceInfo_Screen) {
+                var strd_info = this.getDeviceInfo();
+                var info = JSON.parse(strd_info);
+                this._deviceInfo_Screen = info.screen;
+            }
+            if (this._deviceInfo_Screen) {
+                return this._deviceInfo_Screen.density;
+            } else {
+                alert("未能获取到该设备的屏幕信息");
+            }
+        },
+        currentOrientation: function () {
+            return s.callService("UMDevice.currentOrientation", {}, true);
+        },
+        capturePhoto: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用capturePhoto服务时，参数不是一个有效的JSONObject");
+            }
+            s.callService("UMDevice.capturePhoto", args);
+        },
+        getAlbumPath: function (args) {
+            return s.callService("UMDevice.getAlbumPath", typeof args == "undefined" ? {} : args, true);
+        },
+        getAppAlbumPath: function (jsonArgs) {
+            if (jsonArgs) {
+                if (!$summer.isJSONObject(jsonArgs)) {
+                    alert("调用 getAppAlbumPath 服务时，参数不是一个有效的JSONObject");
+                    return;
+                }
+            } else {
+                jsonArgs = {};
+            }
+            return s.callService("UMDevice.getAppAlbumPath", jsonArgs, true);
+        },
+        getContacts: function () {
+            return s.callService("UMDevice.getContactPerson", {}, true);
+        },
+        saveContact: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用saveContact服务时，参数不是一个有效的JSONObject");
+            }
+            s.callService("UMDevice.saveContact", args);
+        },
+        popupKeyboard: function () {
+            return s.callService("UMDevice.popupKeyboard", {}, true);
+        },
+        listenGravitySensor: function (json) {
+            json = json || {};
+            json["__keepCallback"] = true;
+            return s.callService("UMDevice.listenGravitySensor", json, false);
+        },
+        closeGravitySensor: function (json) {
+            json = json || {};
+            return s.callService("UMDevice.closeGravitySensor", json, false);
+        },
+        openApp: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用openApp服务时，参数不是一个有效的JSONObject");
+            }
+            return s.callService("UMDevice.openApp", args);
+        },
+        getLocationInfo: function () {
+            return s.callService("UMDevice.getLocationInfo", {}, true);
+        },
+        addCalendarEvent: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用addCalendarEvent服务时，参数不是一个有效的JSONObject");
+            }
+            return s.callService("UMDevice.addCalendarEvent", args, false);
+        },
+        systemShare: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用systemShare服务时，参数不是一个有效的JSONObject");
+            }
+            return s.callService("UMDevice.systemShare", args, false);
+        }
+    };
+    s.UMFile = {
+        remove: function (args) {
+            return s.callService("UMFile.remove", args, false);//默认异步
+        },
+        compressImage: function (args) {
+            return s.callService("UMFile.compressImg", args, false);//默认异步
+        },
+        //涂鸦
+        doodle: function (args) {
+            return s.callService("UMFile.startDraw", args, false);//默认异步
+        },
+        saveImageToAlbum: function (args) {
+            return s.callService("UMFile.saveImageToAlbum", args, false);//默认异步
+        },
+        exists: function (args) {
+            return s.callService("UMFile.exists", args, true);
+        },
+        //获取安卓手机app内文件路径
+        getStorageDirectory : function(args){
+            if($summer.os=="android"){
+                return s.callService("UMFile.getStorageDirectory", args, true);
+            }
+        },
+        download: function (jsonArgs) {
+            if ($summer.isEmpty(jsonArgs.url)) {
+                alert("参数url不能为空");
+            }
+            if ($summer.isEmpty(jsonArgs.filename)) {
+                alert("参数filename不能为空");
+            }
+            if ($summer.isEmpty(jsonArgs.locate)) {
+                alert("参数locate不能为空");
+            }
+            if ($summer.isEmpty(jsonArgs.override)) {
+                alert("参数override不能为空");
+            }
+            if ($summer.isEmpty(jsonArgs.callback)) {
+                alert("参数callback不能为空 ");
+            }
+            jsonArgs["__keepCallback"] = true;
+            return s.callService("UMFile.download", jsonArgs);//默认异步
+        },
+        open: function (args) {
+            if (!$summer.isJSONObject(args)) {
+                alert("调用$file.open方法时，参数不是一个有效的JSONObject");
+            }
+            return s.callService("UMDevice.openFile", args, false);//调用的是UMDevice的方法
+        },
+        getFileInfo: function (args) {
+            var json = args;
+            if (typeof args == "string") {
+                json = {"path": args};
+            }
+            return s.callService("UMFile.getFileInfo", json, true);
+        },
+        openFileSelector: function (args) {
+            return s.callService("UMFile.openFileSelector", args);
+        },
+        fileToBase64: function (args) {
+            var json = args;
+            if (typeof args == "string") {
+                json = {"path": args};
+            }
+            return s.callService("UMFile.fileToBase64", json, false);
+        },
+        base64ToFile: function (args) {
+            var json = args;
+            if (typeof args == "string") {
+                json = {"path": args};
+            }
+            return s.callService("UMFile.base64ToFile", json, false);
+        },
+        compressImg: function (json) {
+            return s.callService("UMFile.compressImg", json)
+        }
+
+    };
+    s.UMTel = {
+        call: function (tel) {
+            if ($summer.os == 'android' || $summer.os == 'ios') {
+                s.callService("UMDevice.callPhone", '{"tel":"' + tel + '"}');
+            } else {
+                alert("Not implementate UMP$Services$Telephone$call in $summer.os == " + $summer.os);
+            }
+        },
+        sendMsg: function (tel, body) {
+            if (arguments.length == 1 && $summer.isJSONObject(arguments[0])) {
+                var args = tel;
+                if ($summer.os == 'android' || $summer.os == 'ios') {
+                    return s.callService("UMDevice.sendMsg", args);
+                }
+            } else {
+                if ($summer.os == 'android' || $summer.os == 'ios') {
+                    //$service.call("UMDevice.sendMessage", "{recevie:'"+tel+"',message:'"+body+"'}");
+                    s.callService("UMDevice.sendMsg", "{tel:'" + tel + "',body:'" + body + "'}");
+                }
+            }
+        },
+        sendMail: function (receive, title, content) {
+            var args = {};
+            if (arguments.length == 1 && $summer.isJSONObject(arguments[0])) {
+                args = receive;
+            } else {
+                args["receive"] = receive;
+                args["title"] = title;
+                args["content"] = content;
+            }
+            return s.callService("UMDevice.sendMail", args);
+        }
+
+    };
+    s.UMCamera = {
+        open: function (args) {
+            if ($summer.checkIfExist(args, ["bindfield", "callback", "compressionRatio"]))
+                return s.callService("UMDevice.openCamera", args, false);
+        },
+        openPhotoAlbum: function (json) {
+            if (!json) return;
+            return s.callService("UMDevice.openPhotoAlbum", json, false);//异步调用服务
+        }
+    };
+    s.UMScanner = {
+        open: function (jsonArgs) {
+            var result = "";
+            if (jsonArgs) {
+                if (jsonArgs["frameclose"] == null || jsonArgs["frameclose"] == undefined) {
+                    jsonArgs["frameclose"] = "true";//默认扫描后关闭
+                }
+                result = s.callService("UMDevice.captureTwodcode", jsonArgs, false);
+            } else {
+                result = s.callService("UMDevice.captureTwodcode", "", true);
+            }
+        },
+        generateQRCode: function (jsonArgs) {
+            if ($summer.isJSONObject(jsonArgs)) {
+                if (typeof jsonArgs["size"] != "undefined") {
+                    jsonArgs["twocode-size"] = jsonArgs["size"];
+                }
+                if (typeof jsonArgs["content"] != "undefined") {
+                    jsonArgs["twocode-content"] = jsonArgs["content"];
+                }
+                if (typeof jsonArgs["twocode-size"] == "undefined") {
+                    jsonArgs["twocode-size"] = "180";
+                }
+                if (typeof jsonArgs["twocode-content"] == "undefined") {
+                    alert("参数twocode-content不能为空，此参数用来标识扫描二维码后的返回值");
+                    return;
+                }
+            } else {
+                alert("generateQRCode方法的参数不是一个有效的JSONObject!");
+                return;
+            }
+
+            return s.callService("UMDevice.createTwocodeImage", jsonArgs, true);
+        },
+    };
+    s.UMNet = {
+        available: function () {
+            var result = false;
+            if ($summer.os == 'android' || $summer.os == 'ios') {
+                result = s.callService("UMNetwork.isAvailable", {}, true);
+            }
+            if (result != null && result.toString().toLowerCase() == "true") {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        getNetworkInfo: function () {
+            var result = s.callService("UMNetwork.getNetworkInfo", {}, true);//同步
+            if (typeof result == "string") {
+                return JSON.parse(result);
+            } else {
+                return result;
+            }
+        }
+    };
+    s.UMCache = {
+        writeFile: function (filePath, content) {
+            var args = {};
+            if (filePath)
+                args["path"] = filePath;
+            if (content)
+                args["content"] = content;
+            return s.callService("UMFile.write", args, false);
+        },
+        readFile: function (filePath) {
+            var strContent = "";
+            var args = {};
+            if (filePath)
+                args["path"] = filePath;
+            strContent = s.callService("UMFile.read", args, true);
+
+            //苹果安卓统一返回处理结果
+            if (strContent && strContent != "") {
+                try {
+                    return strContent;
+                } catch (e) {
+                    return strContent;
+                }
+            } else {
+                return null;
+            }
+        }
+    };
+    /*service*/
+    s.openHTTPS = s.UMService.openHTTPS;
+    s.callService = s.UMService.call;
+    s.callAction = s.UMService.callAction;
+    s.writeConfig = s.UMService.writeConfig;
+    s.readConfig = s.UMService.readConfig;
+    s.setAppContext = s.UMService.setAppContext;
+
+    /*device*/
+    s.getTimeZoneID = s.UMDevice.getTimeZoneID;
+    s.getTimeZoneDisplayName = s.UMDevice.getTimeZoneDisplayName;
+    s.openAddressBook = s.UMDevice.openAddressBook;
+    s.getInternalMemoryInfo = s.UMDevice.getInternalMemoryInfo;
+    s.getExternalStorageInfo = s.UMDevice.getExternalStorageInfo;
+    s.getMemoryInfo = s.UMDevice.getMemoryInfo;
+    s.openWebView = s.UMDevice.openWebView;
+    s.screenShot = s.UMDevice.screenShot;
+    s.notify = s.UMDevice.notify;
+    s.getDeviceInfo = s.UMDevice.getDeviceInfo;
+    s.getScreenWidth = s.UMDevice.getScreenWidth;
+    s.getScreenHeight = s.UMDevice.getScreenHeight;
+    s.getScreenDensity = s.UMDevice.getScreenDensity;
+    s.currentOrientation = s.UMDevice.currentOrientation;
+    s.capturePhoto = s.UMDevice.capturePhoto;
+    s.getAlbumPath = s.UMDevice.getAlbumPath;
+    s.getAppAlbumPath = s.UMDevice.getAppAlbumPath;
+    s.getContacts = s.UMDevice.getContacts;
+    s.saveContact = s.UMDevice.saveContact;
+    s.popupKeyboard = s.UMDevice.popupKeyboard;
+    s.listenGravitySensor = s.UMDevice.listenGravitySensor;
+    s.closeGravitySensor = s.UMDevice.closeGravitySensor;
+    s.openApp = s.UMDevice.openApp;
+    s.getLocationInfo = s.UMDevice.getLocationInfo;
+    s.addCalendarEvent = s.UMDevice.addCalendarEvent;
+    s.systemShare = s.UMDevice.systemShare;
+    /*file*/
+    s.removeFile = s.UMFile.remove;
+    s.compressImage = s.UMFile.compressImage;
+    s.doodle = s.UMFile.doodle;
+    s.saveImageToAlbum = s.UMFile.saveImageToAlbum;
+    s.exists = s.UMFile.exists;
+    s.getStorageDirectory=s.UMFile.getStorageDirectory;
+    s.download = s.UMFile.download;
+    s.openFile = s.UMFile.open;
+    s.getFileInfo = s.UMFile.getFileInfo;
+    s.openFileSelector = s.UMFile.openFileSelector;
+    s.fileToBase64 = s.UMFile.fileToBase64;
+    s.base64ToFile = s.UMFile.base64ToFile;
+    s.compressImg = s.UMFile.compressImg;
+    /*tel*/
+    s.callPhone = s.UMTel.call;
+    s.sendMsg = s.UMTel.sendMsg;
+    s.sendMail = s.UMTel.sendMail;
+    /*cache*/
+    s.writeFile = s.UMCache.writeFile;
+    s.readFile = s.UMCache.readFile;
+    /*camera*/
+    s.openCamera = s.UMCamera.open;
+    s.openPhotoAlbum = s.UMCamera.openPhotoAlbum;
+    /*scanner*/
+    s.openScanner = s.UMScanner.open;
+    s.generateQRCode = s.UMScanner.generateQRCode;
+    /*net*/
+    s.netAvailable = s.UMNet.available;
+    s.getNetworkInfo = s.UMNet.getNetworkInfo;
+
+    s.ajax = function(json, successFn, errFn){
+        if(json.type.toLowerCase() == "get"){
+            return summer.get(json.url || "", json.param || {}, json.header || {}, successFn, errFn);
+        }else if(json.type.toLowerCase() == "post"){
+            if($summer.os == "android" && $ && json.header && json.header["Content-Type"] == "application/json"){
+                var jsonAjax = {};
+                    jsonAjax["type"] = 'post';
+                    jsonAjax["url"] = json.url;
+                    if(json.param)
+                        jsonAjax["data"] = JSON.stringify(json.param);//后端得到json字符串
+                    if(json.header && json.header["Content-Type"])
+                        jsonAjax["contentType"] = json.header["Content-Type"];
+                    jsonAjax["processData"] = true;
+                    if(json.dataType)
+                        jsonAjax["dataType"] = json.dataType;//当服务器返回json,jquery返回的是json还是jsonstring
+                    if(json.header){
+                        jsonAjax["beforeSend"] =  function(request){
+                            for(var key in json.header){
+                                if(key == "Content-Type") continue;
+                                request.setRequestHeader(key, json.header[key]);
+                            }
+                        }
+                    }
+                    jsonAjax["success"] = function(data){
+                        if(successFn)
+                            successFn({data:data});
+                    };
+                    jsonAjax["error"] = function(data){
+                        if(errFn)
+                            errFn({data:data});
+                    };
+                
+                return $.ajax(jsonAjax);
+            }else{
+                return summer.post(json.url || "", json.param || {}, json.header || {}, successFn, errFn);
+            }
+        }
+    };
+    s.get = function (url, param, header, successFn, errFn) {
+        var startTime = new Date().getTime();
+        return cordovaHTTP.get(url || "", param || {}, header || {}, function(data){
+            var APMJSON = {
+                "type": "get",
+                "startTime": startTime,
+                "endTime": new Date().getTime(),
+                "url": url
+            };
+            var APMPARAMS = ["FeLoad", APMJSON];
+            cordova.require("summer-plugin-apm.SummerAPM").insertAction(APMPARAMS, function(args) {}, function(args) {})
+            successFn(data);
+        }, errFn);
+    };
+    s.post = function (url, param, header, successFn, errFn) {
+        var startTime = new Date().getTime();
+        return cordovaHTTP.post(url || "", param || {}, header || {}, function(data){
+            var APMJSON = {
+                "type": "get",
+                "startTime": startTime,
+                "endTime": new Date().getTime(),
+                "url": url
+            };
+            var APMPARAMS = ["FeLoad", APMJSON];
+            cordova.require("summer-plugin-apm.SummerAPM").insertAction(APMPARAMS, function(args) {}, function(args) {})
+            successFn(data);
+        }, errFn);
+    };
+    s.getLocation = function (successFn, errFn) {
+        return navigator.geolocation.getCurrentPosition(successFn, errFn);
+    };
+    s.getNativeLocation = function (json,successFn, errFn) {
+        if(!json){return}
+        if($summer.os=="android"){
+            return s.cordova.require("cordova-plugin-amap.AMap").getLocation(json,successFn, errFn);
+        }else{
+            json["callback"] = successFn;
+            json["error"] = errFn;
+            return s.callService("UMDevice.getLocation", json, false);
+        }
+        return navigator.geolocation.getCurrentPosition(successFn, errFn);
+    };
+
+}(window, summer);
+
+(function (w, s, $s, prefix) {
+    //构建函数,用作实例化
+    s.umRef = function () {
+    };
+    //储值对象，用作判断重复性
+    var refManager = {
+        refs: {},
+        exec: function (id, data) {
+            this.refs[id].callback(data);
+            delete this.refs[id];
+        }
+    };
+    //summer追加的方法，用作公用    
+    s.openRef = function (json, fn) {
+        var ref = new s.umRef();
+        var info = s.getSysInfo();
+        ref.param = {
+            ref_id: "Fn" + $s.UUID(),//Fn_CA12BA
+            ref_winId: info.winId,
+            ref_frameId: info.frameId,
+            ref_callBack: prefix + ".refCallBack"
+        };
+        ref.callback = fn;
+        refManager.refs[ref.param.ref_id] = ref;
+        json.pageParam = json.pageParam || {};
+        json.pageParam.refParam = ref.param;
+        s.openWin(json);
+    };
+    // summer的回调方法，用作下个页面的调用
+    s.refCallBack = function (id, data) {
+        refManager.exec(id, data);
+    };
+
+    s.comleteRef = function (json) {
+        var str = json;
+        if (typeof json == "object") {
+            str = JSON.stringify(json);
+        } else if (typeof json == "string") {
+            str = "'" + json + "'";
+        }
+        var param = {};
+        param.um_refId = s.pageParam.refParam.ref_id;
+        param.um_winId = s.pageParam.refParam.ref_winId;
+        param.um_frameId = s.pageParam.refParam.ref_frameId;
+        param.um_callBack = s.pageParam.refParam.ref_callBack;// summer.refcallBack({})
+        s.execScript({
+            winId: param.um_winId,
+            frameId: param.um_frameId,
+            script: param.um_callBack + "('" + param.um_refId + "'," + str + ");"//  xxx({z:1})  xxx(zzzz)
+        });
+        s.closeWin();
+    };
+})(window, summer, $summer, "summer");
+//summer debug
++function (w, s) {
+    w.$summer.__debug = false;//debug
+}(window, summer);
+
+/**
+ * Created by zhujinyu on 2018/2/7.
+ */
+//var BASE_URL = '/app';
+//测试环境
+//var BASE_URL = 'http://118.190.152.119/app';
+//正式环境
+var BASE_URL = 'https://m.zhongxinnengyuan.cn/app';
+
+/**渲染模板*/
+function getRenderTmpl(tmpl, data_set) {
+    var template = $(tmpl).html();
+    Mustache.parse(template);
+    var rendered = Mustache.render(template, data_set);
+    return rendered;
+}
+/*模板加载*/
+function addItem(tmpl, data_set, obj) {
+    var reg = /demo/;
+    if (reg.test(obj)) {
+        data_set.list.map(function (currentValue) {
+            currentValue.star = new Array();
+            currentValue.star.length = currentValue.starNum;
+            return currentValue;
+        });
+    }
+    var rendered = getRenderTmpl(tmpl, data_set);
+    $(obj).append(rendered);
+}
+
+/*获取经纬度*/
+function getLngLat(callback,error) {
+    if($summer.os=="android"){
+        if(window.hasOwnProperty("AMap")){
+	        var map = new AMap.Map("mapContainer", {
+	            resizeEnable: true
+	        });
+	        map.plugin('AMap.Geolocation', function () {
+	            geolocation = new AMap.Geolocation({
+	                enableHighAccuracy: true,//是否使用高精度定位，默认:true
+	                timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+	                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+	            });
+	          
+	            geolocation.getCurrentPosition(function (status,result) {
+	                if (status == "complete" ||status == "ok") {
+	                    var str = [];
+	                    str.push(result.position.lng);
+	                    str.push(result.position.lat);
+	                    str = GCJ2WGS(str);
+	                    callback && callback(str);
+	                }else{
+	                    error && error();
+	                    console.log("定位失败");
+	                }
+	            });
+	        });
+	    }else{
+	        var str = [];
+	        str.push('116.40717');
+	        str.push('39.90469');
+	        callback && callback(str);
+	    }
+    }else{
+    	summer.getNativeLocation({
+		    "single" : "true"
+		},function(result){
+			 var str = [];
+            str.push(result.longitude);
+            str.push(result.latitude);
+            str = GCJ2WGS(str);
+            callback && callback(str);
+		},function(args) {
+			 error && error();
+	         console.log("定位失败");
+
+		});
+    }
+
+}
+/**跳转到地图*/
+$(document).on('click', '.navigation', function () {
+    var location_end = $(this).attr("data-end").split(",");
+    var userName = $(this).attr("data-userName");
+    if($summer.os == "ios") {
+        summer.openWin({
+            "id" : "mapLink",
+            "url" :"html/driver/mapLink.html",
+            "create" : "false",
+    		"type" : "actionBar",
+            "actionBar" : {
+    			title : "导航",
+    			titleColor: "#3d4145", //注意必须是6位数的颜色值。（3位数颜色值会不正常）
+    		    backgroundColor: "#f7f7f8",
+    		    bottomLineColor: "#f7f7f8",
+    			leftItem : {
+    				image : "static/img/back.png",
+    				method : ""
+    			}
+    		},
+            "pageParam" : {
+                "location_end": location_end,
+                "userName": userName
+            }
+        });
+    } else {
+        getAPPMethod(function () {
+            if(window.gasstation){
+               var  location = {
+                   lng:location_end[0],
+                   lat:location_end[1],
+                   venderName:userName
+               }
+                var newLocation = JSON.stringify(location);
+                window.gasstation.mapLocation(newLocation);
+            }else{
+                getLngLat(function (data) {
+                    GoDestination(data, location_end);
+                })
+            }
+        },function () {
+            getLngLat(function (data) {
+                GoDestination(data, location_end);
+            })
+        },function () {
+            getLngLat(function (data) {
+                GoDestination(data, location_end);
+            })
+        });
+    }
+})
+/**地图导航*/
+function GoDestination(currentlocation, endLocation) {
+    var map = new AMap.Map("mapContainer");
+    AMap.plugin(["AMap.Driving"], function () {
+        var drivingOption = {
+            policy: AMap.DrivingPolicy.LEAST_TIME,
+            map: map
+        };
+        var driving = new AMap.Driving(drivingOption); //构造驾车导航类
+        console.log(currentlocation, endLocation);
+        driving.search(currentlocation, endLocation, function (status, result) {
+            driving.searchOnAMAP({
+                origin: result.origin,
+                destination: result.destination
+            });
+        });
+    });
+}
+
+/**ajax请求封装*/
+function ajaxRequest(params) {
+    var token = getCookie("token");
+    var pathname = window.location.pathname;
+    var reg = [/register/,/login/,/forgetPassword/,/fastRegister/,/forget-password/,/find/];
+    var result = [];
+    for (var i = 0; i < reg.length; i++) {
+        if(reg[i].test(pathname)){
+            result.push('true');
+        }else{
+            result.push('false');
+        }
+    }
+    if (!token) {
+        if (result.indexOf('true') == -1) {
+            pageGo("login");
+        }
+    }
+	/*改造成summer.ajax 
+	   zhoulei修改
+	 */
+	//设置超时
+	window.cordovaHTTP.settings = {
+		timeout: 10000
+	};
+	summer.ajax({
+		type: params.type,
+		url: BASE_URL + params.url,
+		param:  params.data,
+		header: {
+		"Content-Type": "application/json",
+		 "token":token
+		}
+	}, function (response) {
+		if (Object.prototype.toString.call(response.data) === '[object String]') {
+			response.data = JSON.parse(response.data);
+		}
+		response = response.data;
+ 		if(response.retCode === '1000'){
+                pageGo("login");
+            }else{
+                params.callback && params.callback(response);
+            }
+	}, function (status) {
+			console.log(status);
+ 		      if(status=='timeout'){
+                $.alert("请求超时,请重新刷新页面", '',function () {
+                    window.location.reload();
+                });
+            }
+	});
+
+  /*  $.ajax({
+        headers: {
+            Accept: "application/json; charset=utf-8",
+            token:token
+        },
+        url: BASE_URL + params.url,
+        type: params.type,
+        timeout : 10000,
+        dataType: 'json',
+        data: JSON.stringify(params.data),
+        contentType: 'application/json',
+        async: params.async || true,
+        success: function (response) {
+            if(response.retCode === '1000'){
+                pageGo("login");
+            }else{
+                params.callback && params.callback(response);
+            }
+        },
+        complete : function(XMLHttpRequest,status){
+            if(status=='timeout'){
+                $.alert("请求超时,请重新刷新页面", '',function () {
+                    window.location.reload();
+                });
+            }
+        }
+    })*/
+   
+}
+/**新ajax请求封装*/
+function ajaxRequests(url,type,data,callback,errorBack) {
+    console.time('请求计时');
+    var token = getCookie("token");
+    var pathname = window.location.pathname;
+    var reg = [/register/,/login/,/forgetPassword/,/fastRegister/,/forget-password/,/find/];
+    var result = [];
+    for (var i = 0; i < reg.length; i++) {
+        if(reg[i].test(pathname)){
+            result.push('true');
+        }else{
+            result.push('false');
+        }
+    }
+    if (!token) {
+        if (result.indexOf('true') == -1) {
+            pageGo("login");
+        }
+    }
+    if (type == 'get') {
+    		window.cordovaHTTP.settings = {
+				timeout: 10000
+			};
+
+			summer.ajax({
+				type: type,
+				url: BASE_URL + url,
+				param: {},
+			header: {
+				"Content-Type": "application/json",
+				 "token":token
+				}
+			}, function (response) {
+				if (Object.prototype.toString.call(response.data) === '[object String]') {
+					response.data = JSON.parse(response.data);
+				}
+				response = response.data;
+		 		  if(response.retCode === '1000'){
+                    pageGo("login");
+                }else{
+                    callback && callback(response);
+                }
+                console.timeEnd('请求计时');
+			}, function (status) {
+					console.log(status);
+ 					  if(status=='timeout'){
+		                    $.alert("请求超时,请重新刷新页面", '',function () {
+		                        window.location.reload();
+		                    });
+		                }
+			});
+    /*    $.ajax({
+            headers: {
+                Accept: "application/json; charset=utf-8",
+                token: token
+            },
+            url: BASE_URL + url,
+            type: type,
+            timeout : 10000,
+            dataType: 'json',
+            contentType: 'application/json',
+            async: true,
+            success: function (response) {
+                if(response.retCode === '1000'){
+                    pageGo("login");
+                }else{
+                    callback && callback(response);
+                }
+                console.timeEnd('请求计时');
+            },
+            error: function (xhr, errorType, error) {
+                errorBack && errorBack();
+            },
+            complete : function(XMLHttpRequest,status){
+                if(status=='timeout'){
+                    $.alert("请求超时,请重新刷新页面", '',function () {
+                        window.location.reload();
+                    });
+                }
+            }
+        })*/
+    } else {
+    		window.cordovaHTTP.settings = {
+				timeout: 10000
+			};
+			summer.ajax({
+				type: type,
+				url: BASE_URL + url,
+				param: data,
+			header: {
+				"Content-Type": "application/json",
+				 "token":token
+				}
+			}, function (response) {
+ 				if (Object.prototype.toString.call(response.data) === '[object String]') {
+					response.data = JSON.parse(response.data);
+				}
+				response = response.data;
+                if(response.retCode === '1000'){
+                    pageGo("login");
+                }else{
+                    callback && callback(response);
+                }
+                console.timeEnd('请求计时');
+			}, function (status) {
+					console.log(status);
+ 					  if(status=='timeout'){
+		                    $.alert("请求超时,请重新刷新页面", '',function () {
+		                        window.location.reload();
+		                    });
+		                }
+			});
+       /* $.ajax({
+            headers: {
+                Accept: "application/json; charset=utf-8",
+                token: token
+            },
+            url: BASE_URL + url,
+            type: type,
+            timeout : 10000,
+            dataType: 'json',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            async: true,
+            success: function (response) {
+                if(response.retCode === '1000'){
+                    pageGo("login");
+                }else{
+                    callback && callback(response);
+                }
+                console.timeEnd('请求计时');
+            },
+            error: function () {
+                errorBack && errorBack();
+            },
+            complete : function(XMLHttpRequest,status){
+                if(status=='timeout'){
+                    $.alert("请求超时,请重新刷新页面", '',function () {
+                        window.location.reload();
+                    });
+                }
+            }
+        })*/
+    }
+}
+/**完整ajax请求*/
+function ajaxCompleteRequests(url,type,data,callback,beforeSend,complete) {
+    console.time('请求计时');
+    var token = getCookie("token");
+        	   window.cordovaHTTP.settings = {
+				timeout: 10000
+			};
+			summer.ajax({
+				type: type,
+				url: BASE_URL + url,
+				param:  data,
+			header: {
+				"Content-Type": "application/json",
+				 "token":token
+				}
+			}, function (response) {
+				if (Object.prototype.toString.call(response.data) === '[object String]') {
+			response.data = JSON.parse(response.data);
+		}
+				response = response.data;
+ 				callback && callback(response);
+           		 console.timeEnd('请求计时');
+			}, function (status) {
+				 console.log("请求完成");
+	            if(status=='timeout'){
+	                $.alert("请求超时,重新刷新页面", '',function () {
+	                    window.location.reload();
+	                });
+	            }else{
+	                complete && complete();
+	            }
+			});
+    /*$.ajax({
+        headers: {
+            Accept: "application/json; charset=utf-8",
+            token: token
+        },
+        url: BASE_URL + url,
+        type: type,
+        timeout : 10000,
+        dataType: 'json',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        async: false,
+        success: function (response) {
+            callback && callback(response);
+            console.timeEnd('请求计时');
+        },
+        beforeSend:function () {
+            console.log("请求之前：")
+            beforeSend && beforeSend();
+        },
+        complete : function(XMLHttpRequest,status){
+            console.log("请求完成");
+            if(status=='timeout'){
+                $.alert("请求超时,重新刷新页面", '',function () {
+                    window.location.reload();
+                });
+            }else{
+                complete && complete();
+            }
+        }
+    })*/
+}
+var t;
+/**验证码倒计时*/
+function Time(obj, times) {
+    times = parseInt(times);
+    t = setInterval(function () {
+        times -= 1;
+        obj.html(times + "秒");
+        if (times === 0) {
+            obj.attr("data-end", 1);
+            obj.html("重新获取验证码");
+            obj.css("background", "#f00");
+            obj.css("color", "#fff");
+            clearInterval(t);
+        }
+    }, 1000)
+}
+
+/**上传图片*/
+function fromImgRequest(params,obj) {
+    if(!obj){
+        var fileUpload = document.getElementById("uploadForm");
+        var data = new FormData(fileUpload);
+    }else{
+        var data = new FormData(obj);
+    }
+    var type = data.get('file').type;
+    var size = data.get('file').size;
+    var maxSize = 100 * 1024 * 1024;
+    var reg = /image/;
+    if (!reg.test(type)) {
+        $.toast("请上传图片", 3000);
+        return;
+    } else if (size > maxSize) {
+        $.toast("图片大小不能超过100M", 3000);
+        return;
+    }
+    $.ajax({
+        url: BASE_URL + params.url,
+        headers: {
+            'Lairen-X-Requested-With': 'H5/5.3.2 (OS 100; iPhone 100s)'
+        },
+        type: 'post',
+        async: true,
+        data: data,
+        cache: true,
+        contentType: false,
+        processData: false,
+        dataType: "multipart/form-data",
+        success: function (response) {
+            params.callback && params.callback(JSON.parse(response));
+        },
+        error: function () {
+            $.toast("上传失败", 3000);
+        }
+    });
+}
+
+function getQueryString(name) {
+
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+
+    var r = window.location.search.substr(1).match(reg);
+
+    if (r != null) {
+
+        return unescape(r[2]);
+
+    }
+
+    return null;
+
+}
+
+/*筛选可服务列表*/
+function filter(datas) {
+    if (!datas) {
+        return;
+    }
+    var list = datas.split(",");
+    var supportServices = config.supportServices;
+    var support = [];
+    list.forEach(function (value) {
+        supportServices.forEach(function (v) {
+            if(value == v.id){
+                support.push(v);
+                return;
+            }
+        })
+    })
+    return support;
+}
+
+/*获取商家类型*/
+function getType(companyTpe) {
+    var siteInfo = {
+        isFillingStation: false,
+        isGAS: false,
+        isLogisticsProviders: false,
+        isFillingStation: false,
+        title: ''
+    }
+    switch (parseInt(companyTpe)) {
+        case 1:
+            siteInfo.isFillingStation = true;
+            siteInfo.title = "加油站";
+            siteInfo.btnName = '一键加油';
+            break;
+        case 2:
+            siteInfo.isGAS = true;
+            siteInfo.title = "加气站";
+            siteInfo.btnName = '一键加气';
+            break;
+        case 3:
+            siteInfo.isLogisticsProviders = true;
+            siteInfo.title = "物流商";
+            break;
+        case 4:
+            siteInfo.isbusinesses = true;
+            siteInfo.title = "其他商家";
+            break;
+    }
+    return siteInfo;
+}
+/*货物类型过滤*/
+function filterGoodsTypes(type) {
+    var typeName = '';
+    switch (type){
+        case 1:
+            typeName = '汽油';
+            break;
+        case 2:
+            typeName = '柴油';
+            break;
+        case 3:
+            typeName = '天然气';
+            break;
+        case 4:
+            typeName = '液化气';
+            break;
+        case 5:
+            typeName = '信息发布';
+            break;
+    }
+    return typeName;
+}
+/*信息货物类型*/
+function filterInfoGoodsTypes(type) {
+    var typeName = '';
+    var goodsType  = config.goods_type;
+    goodsType.forEach(function (v) {
+        if(v.type == type){
+            typeName = v.name;
+        }
+    })
+    return typeName;
+}
+/*银行卡筛选*/
+function filterBankName(type) {
+    var typeName = '';
+    var bank_type  = config.bank_type;
+    console.log("type1:"+type);
+    bank_type.forEach(function (v) {
+        if(v.type == type){
+            console.log("type:"+v.type);
+            console.log("type1:"+type);
+            typeName = v.name;
+        }
+    })
+    return typeName;
+}
+/*油气类型过滤*/
+function filterOilAndGasType(typeGrade) {
+    var typeName = '';
+    var vender_resource = config.vender_resource;
+    var subclassAll = [];
+    vender_resource.forEach(function (v) {
+        subclassAll = subclassAll.concat(v.subclass);
+    })
+    subclassAll.forEach(function (v) {
+        if (v.type == typeGrade) {
+            typeName = v.name;
+        }
+    })
+    return typeName;
+}
+/*站点资源审核状态结果返回*/
+function filterAuditStatus(status) {
+    var typeStr = '';
+    switch (status){
+        case 1:
+            typeStr = "待审核";
+            break;
+        case 2:
+            typeStr = "审核通过";
+            break;
+        case 3:
+            typeStr = "审核不通过";
+            break;
+        case 4:
+            typeStr = "申请价格变更";
+            break;
+    }
+    return typeStr;
+}
+/*资源类型过滤*/
+function filterResourceType(type) {
+    var typeName = '';
+    switch (type){
+        case 1:
+            typeName = '汽油';
+            break;
+        case 2:
+            typeName = '柴油';
+            break;
+        case 3:
+            typeName = '天然气';
+            break;
+        case 4:
+            typeName = '液化气';
+            break;
+        case 5:
+            typeName = '信息发布';
+            break;
+    }
+    return typeName;
+}
+/*车辆类型过滤*/
+function filterInfoCarTypes(type) {
+    var typeName = '';
+    var vehicle_type  = config.vehicle_type;
+    vehicle_type.forEach(function (v) {
+        if(v.type == type){
+            typeName = v.name;
+        }
+    })
+    return typeName;
+}
+/*商家类型过滤*/
+function filterCompanyTypes(type) {
+    var typeName = '';
+    switch (type){
+        case 1:
+            typeName = '加油站';
+            break;
+        case 2:
+            typeName = '加气站';
+            break;
+    }
+    return typeName;
+}
+/*时间戳转化为日期*/
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
+    h = (date.getHours() < 10 ? "0"+date.getHours() : date.getHours()) + ':';
+    m = (date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes()) + ':';
+    s = (date.getSeconds() < 10 ? "0"+date.getSeconds() : date.getSeconds());
+    return Y+M+D+h+m+s;
+}
+//设置cookies
+/*function setCookie(name,value){
+    var Days = 30;
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/";
+}
+
+//读取cookies
+function getCookie(name){
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+    if(arr=document.cookie.match(reg))
+
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+//删除cookies
+function delCookie(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null)
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
+}*/
+
+//Aman工作室修改//
+function setCookie(name, value){
+    summer.setStorage(name, value);
+    var loginTime = new Date().getTime();
+    summer.setStorage("loginTime",loginTime);
+}
+
+function getCookie(name){
+    var loginTime = summer.getStorage("loginTime");
+    if(loginTime){
+    	if((new Date().getTime()-parseInt(loginTime))>30*24*60*60*1000){
+    		summer.rmStorage(name);
+    	}
+    }
+ 	return summer.getStorage(name);
+}
+
+function delCookie(name){
+    summer.rmStorage(name);
+}
+
+//判断是否为空
+function isNUll(param) {
+    if (param == "" || typeof(param) == "undefined") {
+        return true;
+    } else {
+        return false;
+    }
+}
+//获取select选中值
+function selectedDOM(obj) {
+    return $(obj).find("option").not(function(){ return !this.selected });
+}
+/*三级联动*/
+function ProvinceCityDistrict(range) {
+    function addIndex(data){
+        for(var i=0;i<data.children.length;i++){
+            data.children[i].index=i;
+        }
+        return data;
+    }
+    var addressData='';
+    $.getJSON('../../static/js/lib/address.json',function (data) {
+        addressData = {children: data};
+        var datas = {children: data};
+        addItem("#option",addIndex(datas),range+".province-box");
+    })
+    function resetSelect(obj) {
+        selectedDOM(obj).text("请选择");
+        selectedDOM(obj).val("");
+    }
+    $(document).on("change",range+".address",function () {
+        var _this = $(this);
+        var type = _this.attr("data-type");
+        switch (type){
+            case 'province':
+                $(range+".city-box").html("");
+                $(range+".county-box").html("");
+                var val = selectedDOM(_this).attr("data-id");
+                $(this).attr("current-index",val);
+                addItem("#option",addIndex(addressData.children[val].children[0]),range+".county-box");
+                addItem("#option",addIndex(addressData.children[val]),range+".city-box");
+                resetSelect(_this.parents(".address-box").find(".county"));
+                break;
+            case 'city':
+                $(range+".county-box").html("");
+                var val = selectedDOM(range+".province-box").attr("data-id");
+                var vals = selectedDOM(_this).attr("data-id");
+                $(this).attr("current-index",vals);
+                addItem("#option",addIndex(addressData.children[val].children[vals]),range+".county-box");
+                break;
+        }
+    })
+}
+//消费类别
+function consumType(type) {
+    // 1:加油，2:加气,4:维修,5：信息发布,6:邮寄费
+    var contentType = '';
+    switch (type) {
+        case 1:
+            contentType = '加油';
+            break;
+        case 2:
+            contentType = '加气';
+            break;
+        case 4:
+            contentType = '维修';
+            break;
+        case 5:
+            contentType = '信息发布';
+            break;
+        case 6:
+            contentType = '邮寄费';
+            break;
+    }
+    return contentType;
+}
+//检验参数是否为空
+function checkParam(params) {
+    var isTrue = true;
+    for (var i in params) {
+        if (isNUll(params[i])) {
+            isTrue = false;
+            switch (i) {
+                case 'mobile':
+                    $.alert('手机号不能为空');
+                    break;
+                case 'validateCode':
+                    $.alert('手机验证码不能为空');
+                    break;
+                case 'idCard':
+                    $.alert('身份证号不能为空');
+                    break;
+                case 'loginPwd':
+                    $.alert('密码不能为空');
+                    break;
+                case 'payPwd':
+                    $.alert('支付密码不能为空');
+                    break;
+                case 'rePwd':
+                    $.alert('确认密码不能为空');
+                    break;
+                case 'userName':
+                    $.alert('用户名不能为空');
+                    break;
+                case 'carNum':
+                    $.alert('车牌号不能为空');
+                    break;
+                case 'carType':
+                    $.alert('请选择汽车类型');
+                    break;
+                case 'receiveUserName':
+                    $.alert('对方姓名不能为空');
+                    break;
+                case 'receiveUserMobile':
+                    $.alert('对方手机号不能为空');
+                    break;
+                case 'amount':
+                    $.alert('金额不能为空');
+                    break;
+            }
+            return false;
+        } else {
+            switch (i) {
+                case 'mobile':
+                case 'receiveUserMobile':
+                    var reg = /^1[3|4|5|7|8][0-9]\d{4,8}$/;//判断手机号的正则
+                    if (reg.test(params[i]) && params[i].length === 11) {
+                        isTrue = true;
+                    } else {
+                        $.alert('手机号输入格式不正确');
+                        isTrue = false;
+                        return false;
+                    }
+                    break;
+                case 'validateCode':
+                    if (params[i].length === 6) {
+                        isTrue = true;
+                    } else {
+                        $.alert('手机验证码输入格式不正确');
+                        isTrue = false;
+                        return false;
+                    }
+                    break;
+                case 'idCard':
+                    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;//判断身份证号是否合法
+                    if (reg.test(params[i])) {
+                        isTrue = true;
+                    } else {
+                        $.alert('身份证输入不合法');
+                        isTrue = false;
+                        return false;
+                    }
+                    break;
+                case 'loginPwd':
+                case 'rePwd':
+                case 'payPwd':
+                    if (params[i].length === 6) {
+                        isTrue = true;
+                    } else {
+                        $.alert('请输入6位密码');
+                        isTrue = false;
+                        return false;
+                    }
+                    break;
+
+            }
+            isTrue = true;
+        }
+    }
+    return isTrue;
+}
+//充值方式判断
+function getRechargeMethod(type) {
+    var rechargeMethod = '';
+    switch (type) {
+        case 1:
+            rechargeMethod = '微信充值';
+            break;
+        case 2:
+            rechargeMethod = '支付宝充值';
+            break;
+        case 3:
+            rechargeMethod = '银行转账充值';
+            break;
+        case 4:
+            rechargeMethod = '银行转账充值';
+            break;
+    }
+    return rechargeMethod;
+}
+//获取发票状态
+function getInvoiceApplyStatus(type) {
+    var invoiceApplyStatus = '';
+    switch (type) {
+        case 1:
+            invoiceApplyStatus = '待审核';
+            break;
+        case 2:
+            invoiceApplyStatus = '开具发票完成';
+            break;
+        case 3:
+            invoiceApplyStatus = '无效申请';
+            break;
+    }
+    return invoiceApplyStatus;
+}
+//设置数据不存在时的展示内容
+function setNoDataContent() {
+    $(".content").html("<div class='noneData'>暂无内容</div>");
+}
+/*验证输入框是否为空*/
+$("input").blur(function () {
+    var _this = $(this);
+    var $error_tip = _this.siblings(".error-tip");
+    var $check_icon = _this.siblings(".check-icon");
+    if(_this.attr("data-isCheck")=='yes'){
+        if (_this.val() === "") {
+            $error_tip.html("*不可为空");
+            $check_icon.css("display", "none");
+        } else {
+            $error_tip.html("");
+            $check_icon.css("display", "block");
+        }
+    }
+});
+/*页面跳转*/
+function pageGo(url,params) {
+    if(params){
+        location.href=url+'.html'+params;
+    }else{
+        location.href=url+'.html';
+    }
+}
+/*页面跳转*/
+function pageReload() {
+   window.location.reload();
+}
+/*返回*/
+function pageBack() {
+    window.history.back();
+}
+//判断审核状态
+function setStatus(type) {
+    var statusContent = '';
+    switch (type) {
+        case 0:
+            statusContent = '待审核';
+            break;
+        case 1:
+            statusContent = '审核通过';
+            break;
+        case 2:
+            statusContent = '审核不通过';
+            break;
+    }
+    return statusContent;
+}
+//判断充值状态
+function setRechargeStatus(type) {
+    var statusContent = '';
+    switch (type) {
+        case 0:
+            statusContent = '申请中';
+            break;
+        case 1:
+            statusContent = '充值完成';
+            break;
+        case 2:
+            statusContent = '充值失败';
+            break;
+    }
+    return statusContent;
+}
+status
+//订单状态
+function setOrderStatus(type) {
+    var orderStatus = '';
+    switch (parseInt(type)) {
+        case 0:
+            orderStatus = '银行处理中';
+            break;
+        case 1:
+            orderStatus = '提现完成';
+            break;
+        case 2:
+            orderStatus = '提现失败';
+            break;
+    }
+    return orderStatus;
+}
+/*发送验证码*/
+$(".getcode").on("click", function () {
+    var _this = $(this);
+    var type = $(this).attr("data-type");
+    var $mobile = $("#mobile");
+    var CheckResult = true;
+    if (_this.attr("data-isCheck") == "yes") {
+        if($mobile.attr("data-checkMobile")=="1"){
+            CheckResult = true;
+        }else{
+            CheckResult = false;
+        }
+    }
+    if(CheckResult){
+        if (_this.attr("data-end") === "1") {
+            //判断倒计时是否结束
+            var data = {
+                mobile: $mobile.val()
+            };
+            if (checkParam(data)) {
+                var times = _this.attr("data-timeout");
+                _this.attr("data-end", 2);
+                _this.css("background", "#ccc");
+                ajaxRequests('/common/sms/sendValidateCode/'+type+'/'+data.mobile,'get','',function (response) {
+                    if (response.retCode === '0') {
+                        Time(_this, times);
+                    }else{
+                        $.alert(response.retMsg || '验证码发送失败');
+                    }
+                })
+            }
+        }
+    }
+})
+function bankType(type) {
+    var bank_type = config.bank_type;
+    var result;
+    for (var i in bank_type) {
+        var item = bank_type[i];
+        for (var j in item) {
+            if (item[j] == type) {
+                result = item;
+                break;
+            }
+        }
+    }
+    return result;
+}
+/*保留3位小数*/
+function setNumFixed2(num) {
+    return parseFloat(num).toFixed(3);
+    // return Number(num.toString().match(/^\d+(?:\.\d{0,2})?/));
+}
+/*保留2位小数*/
+function setNumFixed_2(num) {
+    return parseFloat(num).toFixed(2);
+    // return Number(num.toString().match(/^\d+(?:\.\d{0,2})?/));
+}
+/*try catch*/
+function tryCatch(success, error) {
+    try {
+        success();
+    }
+    catch (err) {
+        error();
+    }
+}
+/*判断终端*/
+var browser={
+    versions:function(){
+        var u = navigator.userAgent, app = navigator.appVersion;
+        return {
+            trident: u.indexOf('Trident') > -1, //IE内核
+            presto: u.indexOf('Presto') > -1, //opera内核
+            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+            iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+            iPad: u.indexOf('iPad') > -1, //是否iPad
+            webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+            weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+            qq: u.match(/\sQQ/i) == " qq" //是否QQ
+        };
+    }(),
+    language:(navigator.browserLanguage || navigator.language).toLowerCase()
+}
+/*信息状态判断*/
+/*货物类型过滤*/
+function messageStatus(type) {
+    var typeName = '';
+    switch (type){
+        case 3:
+            typeName = '已到期';
+            break;
+        case 4:
+            typeName = '已删除';
+            break;
+
+    }
+    return typeName;
+}
+/*调取app方法*/
+function getAPPMethod(androidFun,iosFun,pcFun) {
+    if (browser.versions.ios) {
+        iosFun && iosFun();
+    }else if(browser.versions.android){
+        androidFun && androidFun();
+    }else{
+        pcFun && pcFun();
+    }
+}
+/*设置空列表*/
+function setListNone(obj) {
+    obj.html("<div style='font-size: .6rem;color: #999;padding: 2rem 0;text-align: center'>暂无数据(⊙o⊙)</div>");
+}
+/*分页数据加载为空*/
+function setListPageNone(obj) {
+    obj.find(".list-block").append("<div style='font-size: .6rem;color: #999;text-align: center'>没有了(⊙o⊙)</div>");
+}
+/*司机自动登录*/
+function automaticLogin(loginName,loginPwd) {
+    ajaxRequests('/driver/login','post',{
+        "body": {
+            loginName: loginName,
+            loginPwd: loginPwd
+        }
+    },function (response) {
+        if (response.retCode === '0') {
+            setCookie("id",response.data.id);
+            setCookie("token",response.data.token);
+            pageGo("index");
+        }else{
+            $.alert(response.retMsg||'登录失败');
+        }
+    })
+}
+/*商家自动登录*/
+function venderAutomaticLogin(loginName,loginPwd) {
+    ajaxRequests('/vender/login','post',{
+        "body": {
+            loginName: loginName,
+            loginPwd: loginPwd
+        }
+    },function (response) {
+        if (response.retCode === '0') {
+            setCookie("companyType", response.data.companyType);
+            setCookie("id", response.data.id);
+            setCookie("token", response.data.token);
+            setCookie("status", response.data.status);
+            pageGo("index");
+        } else {
+            $.alert(response.retMsg || '登录失败');
+        }
+    })
+}
+/*省市区三级联动*/
+function setAddressChoose(obj,text) {
+    $(obj).cityPicker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">'+text+'</h1>\
+    </header>'
+    });
+}
+/*获取城市id*/
+function addressId(obj) {
+    var cityJson,pid,sid,qid,pname,sname,qname;
+    function jiequ(str,name) {
+        var n=(str.split(name)).length-1;
+        if(n>1){
+            var _len = name.length;
+            var newStr =str.substr(_len,str.length);
+            return newStr;
+        }else{
+            str = str.split(name);
+            str = str.join('');
+            return str;
+        }
+    }
+    $.getJSON('../../static/js/lib/address.json',function (data) {
+        cityJson = data;
+        var val = obj.val();
+        /* for(var i in cityJson){
+            if (val.indexOf(cityJson[i].name) != -1) {
+                pid = cityJson[i].code;
+                pname = cityJson[i].name;
+                var second = cityJson[i].children;
+                val = jiequ(val,pname);
+                console.log(val);
+                for (var j in second) {
+                    if (val.indexOf(second[j].name) != -1) {
+                        sid = second[j].code;
+                        sname = second[j].name;
+                        var three = second[j].children;
+                        val = jiequ(val,sname);
+                        for (var m in three) {
+                            if (val.indexOf(three[m].name) != -1) {
+                                qid = three[m].code;
+                                qname =  three[m].name;
+                            }
+                        }
+                    }
+                }
+            }
+        } */
+        cityJson.forEach(function (e, i) {
+            if (val.indexOf(e.name) != -1) {
+                pid = e.code;
+                pname = e.name;
+                var second = e.children;
+                val = jiequ(val,pname);
+                console.log(val);
+                second.forEach(function (e, i) {
+                    if (val.indexOf(e.name) != -1) {
+                        sid = e.code;
+                        sname = e.name;
+                        var three = e.children;
+                        val = jiequ(val,sname);
+                        three.forEach(function (e, i) {
+                            if (val.indexOf(e.name) != -1) {
+                                qid = e.code;
+                                qname =  e.name;
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        obj.attr("data-provinceId",pid);
+        obj.attr("data-provinceName",pname);
+        obj.attr("data-cityId",sid);
+        obj.attr("data-cityName",sname);
+        obj.attr("data-countyId",qid);
+        obj.attr("data-countyName",qname);
+    })
+}
+/**
+ * 空闲控制 返回函数连续调用时，空闲时间必须大于或等于 idle，action 才会执行
+ * @param idle   {number}    空闲时间，单位毫秒
+ * @param action {function}  请求关联函数，实际应用需要调用的函数
+ * @return {function}    返回客户调用函数
+ */
+var debounce = function(idle, action){
+    var last
+    return function(){
+        var ctx = this, args = arguments
+        clearTimeout(last)
+        last = setTimeout(function(){
+            action.apply(ctx, args)
+        }, idle)
+    }
+};
+/*高德转为gps*/
+function GCJ2WGS(location) {
+    var lon = location[0];
+    var lat = location[1];
+    var a = 6378245.0;
+    var ee = 0.00669342162296594626;
+    var PI = 3.14159265358979324;
+    var x = lon - 105.0;
+    var y = lat - 35.0;
+    //经度
+    var dLon = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x));
+    dLon += (20.0 * Math.sin(6.0 * x * PI) + 20.0 * Math.sin(2.0 * x * PI)) * 2.0 / 3.0;
+    dLon += (20.0 * Math.sin(x * PI) + 40.0 * Math.sin(x / 3.0 * PI)) * 2.0 / 3.0;
+    dLon += (150.0 * Math.sin(x / 12.0 * PI) + 300.0 * Math.sin(x / 30.0 * PI)) * 2.0 / 3.0;
+    //纬度
+    var dLat = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
+    dLat += (20.0 * Math.sin(6.0 * x * PI) + 20.0 * Math.sin(2.0 * x * PI)) * 2.0 / 3.0;
+    dLat += (20.0 * Math.sin(y * PI) + 40.0 * Math.sin(y / 3.0 * PI)) * 2.0 / 3.0;
+    dLat += (160.0 * Math.sin(y / 12.0 * PI) + 320 * Math.sin(y * PI / 30.0)) * 2.0 / 3.0;
+    var radLat = lat / 180.0 * PI;
+    var magic = Math.sin(radLat);
+    magic = 1 - ee * magic * magic;
+    var sqrtMagic = Math.sqrt(magic)
+    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * PI);
+    dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * PI);
+    var wgsLon = lon - dLon;
+    var wgsLat = lat - dLat;
+    return [wgsLon,wgsLat];
+}
+/*获取当前时分秒*/
+function getCurrentTime() {
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth()+1;
+    var date = myDate.getDate();
+    var h = myDate.getHours();
+    var min = myDate.getMinutes();
+    function timeFormat(a) {
+        var b = a;
+        if (a <= 9) {
+            b = "0" + a;
+        }
+        return b;
+    }
+    month = timeFormat(month);
+    date = timeFormat(date);
+    h = timeFormat(h);
+    min = timeFormat(min);
+    return [year,month,date,h,min];
+
+}
+/*银行卡校验*/
+function checkBankNO(bankno) {
+    var reg = /^\d{11,}$/;
+    if(reg.test(bankno)){
+        return true;
+    }else{
+        return false;
+    }
+}
+/*获取转账比例*/
+function getTransfer(type1, type2,data) {
+    var rate;
+    if (type1 == 1 && type2 == 2) {
+        rate = data.oilGasArriveRatio;
+    }
+    if (type1 == 1 && type2 == 1) {
+        rate = data.oilOilArriveRatio;
+    }
+    if (type1 == 2 && type2 == 1) {
+        rate = data.gasOilArriveRatio;
+    }
+    if (type1 == 2 && type2 == 2) {
+        rate = data.gasGasArriveRatio;
+    }
+    return rate;
+}
+/*充值状态审核*/
+function rechargeStatus(status) {
+    var status_txt;
+    switch (status){
+        case 0:
+            status_txt = "充值审核中";
+            break;
+        case 1:
+            status_txt = "充值已完成";
+            break;
+        case 2:
+            status_txt = "充值失败";
+            break;
+    }
+    return status_txt;
+}
+/*获取轮播图*/
+function setBanner(type,callback) {
+    ajaxRequests("/common/getSlideshow/"+type,'get','',function (response) {
+        if (response.retCode === '0') {
+            callback && callback(response);
+        }
+    })
+};;//$(function () {
+summerready = function(){
     'use strict';
     var companyType = getCookie("companyType");
     var $infinite_scroll_preloader = $(".infinite-scroll-preloader");
@@ -4387,5 +6731,6 @@ var config = {
     if (orgin == "transfer") {
         $(".btn_2").trigger("click");
     }
-});
+    }
+//});
 

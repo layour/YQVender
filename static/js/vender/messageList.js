@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2018/4/11.
  */
-$(function () {
+;//$(function () {
+summerready = function(){
     var totalPage = 1;
     var currentPage = 1;
     $(document).on("pageInit", "#messagetList", function (e, id, page) {
@@ -75,4 +76,5 @@ $(function () {
     }
     getList();
     $.init();
-})
+   }
+//})

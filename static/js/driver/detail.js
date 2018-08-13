@@ -1,4 +1,5 @@
-;$(function () {
+;//$(function () {
+summerready = function(){
     var id = getQueryString("id");
     $.showPreloader();
     var carType = getCookie("carType");
@@ -35,4 +36,5 @@
         location.href = "./site.html?type=" + type + "&id=" + id;
     })
     $.init();
-})
+    }
+//})

@@ -395,6 +395,10 @@ a {
       #index .content .banner .swiper-pagination .swiper-pagination-bullet-active {
         background: #ff0000; }
   #index .content .menu {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 999999;
     background: #fff;
     text-align: center;
     font-size: .6rem;
