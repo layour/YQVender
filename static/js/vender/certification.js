@@ -1,16 +1,16 @@
 /**
  * Created by Administrator on 2018/4/9.
  */
-;//$(function () {
-summerready = function(){
+; //$(function () {
+summerready = function () {
     $.init();
     $.showPreloader();
-    var $businessLicensePath = $("#businessLicensePath");//营业执照
-    var $gasLicensePath = $("#gasLicensePath");//燃气经营许可证
-    var $dangerLicensePath = $("#dangerLicensePath");//危化品经营许可证
-    var $oilLicensePath = $("#oilLicensePath");//成品油经营许可证
-    var $invoicePath = $("#invoicePath");//发票信息图片
-    var $sitePicPath = $("#sitePicPath");//油气站图片
+    var $businessLicensePath = $("#businessLicensePath"); //营业执照
+    var $gasLicensePath = $("#gasLicensePath"); //燃气经营许可证
+    var $dangerLicensePath = $("#dangerLicensePath"); //危化品经营许可证
+    var $oilLicensePath = $("#oilLicensePath"); //成品油经营许可证
+    var $invoicePath = $("#invoicePath"); //发票信息图片
+    var $sitePicPath = $("#sitePicPath"); //油气站图片
     var type = parseInt(getCookie("companyType"));
     //判断要上传的资质
     switch (type) {
@@ -34,12 +34,12 @@ summerready = function(){
     //获取商家信息
     ajaxRequests('/venderInfo/info', 'get', {}, function (response) {
         if (response.retCode === '0') {
-            $(".businessLicensePath  .photo").attr("src","/app"+response.data.businessLicensePath);
-            $(".gasLicensePath  .photo").attr("src","/app"+response.data.gasLicensePath);
-            $(".dangerLicensePath  .photo").attr("src","/app"+response.data.dangerLicensePath);
-            $(".oilLicensePath  .photo").attr("src","/app"+response.data.oilLicensePath);
-            $(".invoicePath  .photo").attr("src","/app"+response.data.invoicePath);
-            $(".sitePicPath  .photo").attr("src","/app"+response.data.sitePicPath);
+            $(".businessLicensePath  .photo").attr("src", "/app" + response.data.businessLicensePath);
+            $(".gasLicensePath  .photo").attr("src", "/app" + response.data.gasLicensePath);
+            $(".dangerLicensePath  .photo").attr("src", "/app" + response.data.dangerLicensePath);
+            $(".oilLicensePath  .photo").attr("src", "/app" + response.data.oilLicensePath);
+            $(".invoicePath  .photo").attr("src", "/app" + response.data.invoicePath);
+            $(".sitePicPath  .photo").attr("src", "/app" + response.data.sitePicPath);
         }
     })
 
@@ -50,57 +50,109 @@ summerready = function(){
         var oilLicensePath = $oilLicensePath.val();
         var invoicePath = $invoicePath.val();
         var sitePicPath = $sitePicPath.val();
-        if(businessLicensePath||gasLicensePath||dangerLicensePath||oilLicensePath||invoicePath||sitePicPath){
+        if (businessLicensePath || gasLicensePath || dangerLicensePath || oilLicensePath || invoicePath || sitePicPath) {
             ajaxRequests('/venderInfo/venderEdit', 'post', {
                 body: {
-                    businessLicensePath: businessLicensePath==""?null:businessLicensePath,
-                    gasLicensePath: gasLicensePath==""?null:gasLicensePath,
-                    dangerLicensePath: dangerLicensePath==""?null:dangerLicensePath,
-                    oilLicensePath: oilLicensePath==""?null:oilLicensePath,
-                    invoicePath: invoicePath==""?null:invoicePath,
-                    sitePicPath: sitePicPath==""?null:sitePicPath
+                    businessLicensePath: businessLicensePath == "" ? null : businessLicensePath,
+                    gasLicensePath: gasLicensePath == "" ? null : gasLicensePath,
+                    dangerLicensePath: dangerLicensePath == "" ? null : dangerLicensePath,
+                    oilLicensePath: oilLicensePath == "" ? null : oilLicensePath,
+                    invoicePath: invoicePath == "" ? null : invoicePath,
+                    sitePicPath: sitePicPath == "" ? null : sitePicPath
                 }
             }, function (response) {
                 if (response.retCode === '0') {
-                    $.alert(response.retMsg,'',function () {
+                    $.alert(response.retMsg, '', function () {
                         pageGo("me");
                     });
                 } else {
                     $.alert(response.retMsg);
                 }
             })
-        }else{
+        } else {
             $.toast("您还没有没有上传新的资质图片", 3000);
         }
     })
     /*上传*/
     $(document).on('click', '.upload', function () {
-        var type  = $(this).attr("data-type");
-        getAPPMethod(function () {
-            if(window.gasstation){
+        var type = $(this).attr("data-type");
+        /* getAPPMethod(function () {
+            if (window.gasstation) {
                 window.gasstation.getPhoto(type);
             }
-        },function () {
-            if(window.webkit){
+        }, function () {
+            if (window.webkit) {
                 window.webkit.messageHandlers.getPhoto.postMessage(type);
             }
-        },function () {
+        }, function () {
             $.alert('暂无图片上传功能');
-        })
+        }) */
+        UM.actionsheet({
+            title : '',
+            items : ['拍照', '从相册中选择'],
+            callbacks : [camera, openPhotoAlbum]
+        });
+        function camera() {
+            summer.openCamera({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        function openPhotoAlbum() {
+            summer.openPhotoAlbum({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        // 把图片流上传用户中心
+        function upload(path) {
+            summer.showProgress();
+            var fileArray = [];
+            var item = {
+                fileURL : path,
+                type : "image/jpeg",
+                name : "file" 
+            };
+            fileArray.push(item);
+            summer.multiUpload({
+                fileArray : fileArray,
+                params : {},
+                SERVER : BASE_URL + "/common/upload/uploadFile"
+            }, function(ret) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "上传成功"
+                });
+                var photoPath = ret.data;
+                $("."+ type +" .photo").attr("src", BASE_URL + photoPath);
+                $("#"+ type).val(photoPath);
+            }, function(err) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "上传失败"
+                });
+            });
+        }
     })
-    }
+}
 //})
-function setImage(path,type) {
+function setImage(path, type) {
     if (browser.versions.ios) {
-        path =path.imageUrl;
+        path = path.imageUrl;
     }
-    if(path){
+    if (path) {
         var itemBox = $("." + type);
         var url = path;
         var img = '<img src="/app' + url + '" class="photo"/>';
         itemBox.find(".imgBox").val(url);
-        if(itemBox.find(".photo")){
-        	itemBox.find(".photo").remove();	
+        if (itemBox.find(".photo")) {
+            itemBox.find(".photo").remove();
         }
         itemBox.find(".item").append(img);
     }

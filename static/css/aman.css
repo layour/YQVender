@@ -854,7 +854,7 @@ a {
   display: none;
   background-color: rgba(0, 0, 0, 0.4);
   display: block;
-  z-index: 99;
+  z-index: 999999;
 }
 
 .um-overlay {
@@ -4478,7 +4478,7 @@ input[type="number"].form-control {
   /*right: 5px;*/
   -webkit-transition: -webkit-transform ease .3s;
   transition: transform ease .3s;
-  z-index: 9999;
+  z-index: 999999;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
    position: absolute;

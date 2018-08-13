@@ -2,7 +2,7 @@
  * Aman JavaScript Library
  * Version: 0.3.0.20170419.1411
  */
-(function (global, factory) {
+;(function (global, factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         module.exports = global.document ?
             factory(global, true) :

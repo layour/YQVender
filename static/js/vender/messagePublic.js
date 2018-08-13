@@ -29,7 +29,7 @@ summerready = function(){
     });
 
     $("#infoPicPathUrl").on("click",function () {
-        getAPPMethod(function () {
+        /* getAPPMethod(function () {
             if(window.gasstation){
                 window.gasstation.getPhoto('messageInfo');
             }
@@ -39,7 +39,59 @@ summerready = function(){
             }
         },function () {
             $.alert("请下载app再进行操作！");
-        })
+        }) */
+        UM.actionsheet({
+            title : '',
+            items : ['拍照', '从相册中选择'],
+            callbacks : [camera, openPhotoAlbum]
+        });
+        function camera() {
+            summer.openCamera({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        function openPhotoAlbum() {
+            summer.openPhotoAlbum({
+                compressionRatio : 0.5,
+                callback : function(ret) {
+                    var imgPath = ret.compressImgPath;
+                    upload(imgPath);
+                }
+            });
+        }
+        // 把图片流上传用户中心
+        function upload(path) {
+            summer.showProgress();
+            var fileArray = [];
+            var item = {
+                fileURL : path,
+                type : "image/jpeg",
+                name : "file" 
+            };
+            fileArray.push(item);
+            summer.multiUpload({
+                fileArray : fileArray,
+                params : {},
+                SERVER : BASE_URL + "/common/upload/uploadFile"
+            }, function(ret) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "上传成功"
+                });
+                var photoPath = ret.data;
+                $("#infoPicPathUrl").attr("src", BASE_URL + photoPath);
+                $("#infoPicPath").val(photoPath);
+            }, function(err) {
+                summer.hideProgress();
+                summer.toast({
+                    "msg" : "上传失败"
+                });
+            });
+        }
     })
     /*验证手机号是否存在*/
     function isMobileExist() {
