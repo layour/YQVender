@@ -1599,7 +1599,7 @@ if("undefined"==typeof o&&(o=!!(o||Math.abs(d-x.y)>Math.abs(c-x.x))),o)return vo
  * Aman JavaScript Library
  * Version: 0.3.0.20170419.1411
  */
-(function (global, factory) {
+;(function (global, factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         module.exports = global.document ?
             factory(global, true) :

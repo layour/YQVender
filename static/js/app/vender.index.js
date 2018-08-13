@@ -2892,7 +2892,7 @@ var config = {
  * Aman JavaScript Library
  * Version: 0.3.0.20170419.1411
  */
-(function (global, factory) {
+;(function (global, factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         module.exports = global.document ?
             factory(global, true) :
@@ -6439,6 +6439,57 @@ function setBanner(type,callback) {
 summerready = function(){
 	    //关闭启动图
     summer.hideLaunch();
+    // 检测升级
+    chenckUpdate();
+    function chenckUpdate () {
+        var appVersion = JSON.parse(summer.getAppVersion()).versionCode;
+        var params = {
+            url:'/static/app/driver.json',
+            type: 'get',
+            callback:function (res) {
+                if ($summer.os == "android") {
+                    var NEW_VERSION = String(res.version);
+                    if (NEW_VERSION > appVersion) {
+                        $.confirm('检测到新版本，是否升级？',
+                            function () {
+                                summer.upgradeApp({
+                                    url: res.updateUrl
+                                },function (ret) {
+                                    if (ret.state == 1 || ret == "OK") {
+                                        summer.toast({
+                                            msg : '升级成功'
+                                        });
+                                    }
+                                },function (err) {
+                                    summer.toast({
+                                        msg : '升级失败'
+                                    });
+                                })
+                            },
+                            function () {
+                                console.log('取消');
+                            }
+                        );
+                    }
+                } else if ($summer.os == "ios") {
+                    var NEW_VERSION = String(res.version);
+                    if (NEW_VERSION > appVersion) {
+                        $.confirm('检测到新版本，是否升级？',
+                            function () {
+                                summer.openWebView({
+                                    url : res.ios.updateUrl
+                                });
+                            },
+                            function () {
+                                console.log('取消');
+                            }
+                        );
+                    }
+                }
+            }
+        }
+        ajaxRequest(params);
+    };
     'use strict';
     var companyType = getCookie("companyType");
     var $infinite_scroll_preloader = $(".infinite-scroll-preloader");
