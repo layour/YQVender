@@ -311,6 +311,16 @@
             <path path="js/common/base.js"></path>
             <path path="js/vender/index.js"></path>
         </concat>
+        <concat destfile="js/app/vender.outLink.js" encoding="utf8">
+    		<path path="js/lib/zepto.js"></path>
+	        <path path="js/lib/sui/sm.min.js"></path>
+	        <path path="js/lib/sui/sm-extend.min.js"></path>
+	        <path path="js/lib/mustache/mustache.min.js"></path>
+            <path path="js/common/config.js"></path>
+    		<path path="js/common/aman.core.js"></path>
+            <path path="js/common/base.js"></path>
+            <path path="js/vender/outLink.js"></path>
+    	</concat>
         <concat destfile="js/app/vender.venderDetail.js" encoding="utf8">
             <path path="js/lib/zepto.js"></path>
             <path path="js/lib/sui/sm.min.js"></path>
@@ -599,6 +609,11 @@
             <path path="css/lib/sui/sm-extend.min.css"></path>
             <path path="css/vender/find.css"></path>
         </concat>
+         <concat destfile="css/app/vender.outLink.css" encoding="utf8">
+    	            <path path="css/lib/sui/sm.min.css"></path>
+    	            <path path="css/lib/sui/sm-extend.min.css"></path>
+    	            <path path="css/vender/outLink.css"></path>
+    	 </concat>
         <concat destfile="css/app/vender.me.css" encoding="utf8">
             <path path="css/aman.css"></path>
             <path path="css/lib/sui/sm.min.css"></path>

@@ -12,7 +12,7 @@ summerready = function(){
                     delCookie("token");
                     delCookie("id");
                     delCookie("companyType");
-                    getAPPMethod(function () {
+                 /*   getAPPMethod(function () {
                         if(window.gasstation){
                             window.gasstation.delete();
                         }
@@ -20,7 +20,7 @@ summerready = function(){
                         if(window.webkit){
                             window.webkit.messageHandlers.delete.postMessage(null);
                         }
-                    });
+                    });*/
                     pageGo('login');
                 });
             } else {
