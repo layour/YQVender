@@ -7,3 +7,6 @@ SHA256: 30:EB:2C:2B:11:9D:2B:63:DF:C9:FE:CD:C0:30:8C:44:67:D6:5E:AF:F8:A1:ED:5B:
 
 打包账号：
 zhongxin/zhongxin
+
+测试账号：
+tjg 123456
