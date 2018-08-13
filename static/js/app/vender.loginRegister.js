@@ -7322,7 +7322,8 @@ summerready = function(){
                             "companyType": response.data.companyType
                         }
                         var messageStr = JSON.stringify(message);
-                        getAPPMethod(function () {
+                        setCookie("messageStr",messageStr);
+                       /* getAPPMethod(function () {
                             if(window.gasstation){
                                 window.gasstation.saveCookie(messageStr);
                             }
@@ -7330,7 +7331,7 @@ summerready = function(){
                             if(window.webkit){
                                 window.webkit.messageHandlers.saveCookie.postMessage(messageStr);
                             }
-                        });
+                        });*/
                         pageGo("index");
                     }else{
                         $.alert(response.retMsg||'登录失败');
