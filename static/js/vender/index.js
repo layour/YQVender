@@ -7,7 +7,7 @@ summerready = function(){
     function chenckUpdate () {
         var appVersion = JSON.parse(summer.getAppVersion()).versionCode;
         var params = {
-            url:'/static/app/driver.json',
+            url:'/static/app/vender.json',
             type: 'get',
             callback:function (res) {
                 if ($summer.os == "android") {
