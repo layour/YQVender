@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>发票申请</title>
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.loginRegister.css">
+    <style>
+        .puzhuapiao .item-inner:after{
+            content: '';
+            background: none 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page-group" id="register_login_form">
+    <div class="page page-current" id="page-form">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./wallet.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">发票申请</h1>
+        </header>
+        <div class="content dis-n">
+            <form method="post" action="" id="from">
+                <div class="list-block mt0">
+                    <ul class="login-form-list">
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>消费金额</div>
+                                    <div id="amount">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>发票金额</div>
+                                    <div id="invoiceAmount"></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>接收方姓名</div>
+                                    <div>
+                                        <input type="text" id="receiptorName" placeholder="请输入接收方姓名" class="txt-r">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>接收方手机</div>
+                                    <div>
+                                        <input type="text" id="receiptorMobile" placeholder="请输入接收方手机号" class="txt-r">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>邮寄地址</div>
+                                    <div class="address1">
+                                        <input type="text" id='city_picker' class="txt-r address-choose" placeholder="请选择邮寄地址" value="" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input type="text" placeholder="详细地址" id="address">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>邮政编码</div>
+                                    <div>
+                                        <input type="text" placeholder="输入邮政编码" id="postcode" class="txt-r">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>发票抬头</div>
+                                    <div>个人</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>邮寄费用(豆)</div>
+                                    <div id="postFee"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>付款方式</div>
+                                    <div>
+                                        <select name="" id="pay_type">
+                                            <option value="1"><span class="mr4">个人账户</span></option>
+                                            <option value="2"><span class="mr4">转账账户</span></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex-box">
+                                <div class="flex-box-1 puzhuapiao">
+                                    <label class="label-checkbox item-content">
+                                        <input type="radio" name="invoiceType" value="2">
+                                        <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">专票</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="flex-box-1 puzhuapiao">
+                                    <label class="label-checkbox item-content">
+                                        <input type="radio" name="invoiceType" value="1" checked>
+                                        <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title-row">
+                                                <div class="item-title">普票</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="content-block">
+                                <div class="button button-big button-theme" id="pay">支付
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../../static/js/app/driver.invoiceApplication.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>充值记录</title>
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="account" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./account.html"
+               data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">充值记录</h1>
+            <a class="button button-link button-nav pull-right close-popup" href="./index.html"
+               data-transition='slide-out'>
+                <span class="icon icon-home"></span>
+            </a>
+        </header>
+        <div class="content native-scroll infinite-scroll" data-distance="60" id="rechargeList">
+            <div class="list-block media-list mt0">
+                <ul id="list" data-pageNum="1">
+
+                </ul>
+            </div>
+            <!-- 加载提示符 -->
+            <div class="infinite-scroll-preloader dis-b">
+                <div class="preloader">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="item" type="x-tmpl-mustache">
+    {{#list}}
+    <li>
+        <a href="./rechargeDetail.html?id={{id}}" class="close-popup">
+        <label class="label-checkbox item-content">
+            <div class="item-inner">
+                <div class="item-title-row">
+                    <div class="item-title">{{rechargeTime}}</div>
+                </div>
+                <div class="item-subtitle">
+                    <div class="flex-box">
+                        <div class="flex-box-1 flex-box">
+                            <div class="flex-box-1"><span class="mr4">充值</span>{{rechargeAmount}}</div>
+                            <div style="font-size: .6rem;color: #f00;">{{status_txt}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </label>
+        </a>
+    </li>
+    {{/list}}
+
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.rechargeList.js' charset='utf-8'></script>
+</body>
+</html>

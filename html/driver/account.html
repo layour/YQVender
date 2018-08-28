@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>我的账户</title>
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="account" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./wallet.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">我的账户</h1>
+            <a class="button button-link button-nav pull-right close-popup" href="./rechargeList.html" data-transition='slide-out'>
+               充值记录
+            </a>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0">
+                <div class="account-box">
+                    <div class="flex-box">
+                        <div class="flex-box-1">能源豆</div>
+                        <div id="total">0.00</div>
+                    </div>
+                    <div class="flex-box">
+                        <div>可用能源豆:</div>
+                        <div id="own_amount">0.00</div>
+                    </div>
+                    <div class="flex-box">
+                        <div>转账金额:</div>
+                        <div id="turn_into_amount">0.00</div>
+                    </div>
+                    <!--<div class="flex-box">-->
+                        <!--<div class="flex-box-1"></div>-->
+                        <!--<div><a href="./inquiryDetails.html">查询明细</a></div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="flex-box pay-box">
+                <div class="flex-box-1 pay-btn" data-type="wx">
+                    <div><img src="../../static/img/wx.svg"></div>
+                    <div>微信支付</div>
+                </div>
+                <div class="flex-box-1 pay-btn" data-type="alipay">
+                    <div><img src="../../static/img/alipay.svg"></div>
+                    <div>支付宝支付</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup registerPageTwo amount-recharge" id="registerPageTwo">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-right back close-popup">
+                返回
+            </a>
+            <h1 class="title">优惠充值</h1>
+        </header>
+        <div class="content native-scroll p20" id="payMessage">
+            <div>
+                <input id="amount" type="text" name="amount" placeholder="请输入充值金额" class="border-radius">
+            </div>
+            <div class="list-block mt0 bt">
+                <div class="account-box">
+                    <div class="flex-box">
+                        <div class="flex-box-1">优惠充值</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-box fee-box" id="feeList" style="flex-flow: row wrap;">
+
+            </div>
+            <div class="button button-big mt10 button-theme" id="submit">立即充值</div>
+        </div>
+    </div>
+    <form action="" id="payform" type="hiddden" method="post">
+        <input type="text" id="WIDout_trade_no" name="WIDout_trade_no">
+        <input type="text" id="WIDsubject" name="WIDsubject">
+        <input type="text" id="WIDtotal_amount" name="WIDtotal_amount">
+        <input type="text" id="WIDbody" name="WIDbody">
+        <input type="text" id="out_trade_no" name="out_trade_no">
+        <input type="text" id="total_fee" name="total_fee">
+        <input type="text" id="body" name="body">
+        <input type="text" id="payType" name="payType">
+        <input type="text" id="token" name="token">
+    </form>
+</div>
+
+<script id="list" type="x-tmpl-mustache">
+    {{#data}}
+    <div class="item" data-id="{{id}}" style="width:28%;margin-top:.5rem;" data-returnAmountRatio="{{returnAmountRatio}}" data-startamount="{{startAmount}}">
+        <div>充：<span class="money mr4">{{startAmount}}</span></div>
+        <div>得：<span class="num mr4">{{getAmount}}</span></div>
+    </div>
+    {{/data}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.recharge.js' charset='utf-8'></script>
+</body>
+</html>

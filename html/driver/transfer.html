@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>转账</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.loginRegister.css">
+</head>
+<body>
+<div class="page-group" id="register_login_form">
+    <div class="page page-current" id="page-form">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./wallet.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">转账</h1>
+            <a class="button button-link button-nav pull-right close-popup" href="./transferRecord.html">
+                转账记录
+            </a>
+        </header>
+        <div class="content">
+            <form method="post" action="" id="from">
+                <div class="list-block mt0">
+                    <ul class="login-form-list">
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>账户类型</div>
+                                    <div>
+                                        <select name="" id="sourceUserAmountType">
+                                            <option value="1">个人账号</option>
+                                            <option value="2">转账账号</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>到帐金额(豆)</div>
+                                    <div><input type="text" placeholder="请输入转账金额" class="txt-r" id="amount"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>对方姓名</div>
+                                    <div>
+                                        <input type="text" placeholder="请输入对方姓名" class="txt-r" id="userName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>对方手机号</div>
+                                    <div><input type="text" placeholder="请输入对方手机号" class="txt-r" id="mobile" data-id=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <!--<li class="border-box">-->
+                            <!--<div class="item-content">-->
+                                <!--<div class="item-inner item-border">-->
+                                    <!--<div>车辆类型</div>-->
+                                    <!--<div id="carType">加油车</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li class="border-box">-->
+                            <!--<div class="item-content">-->
+                                <!--<div class="item-inner item-border">-->
+                                    <!--<div>到账能源豆</div>-->
+                                    <!--<div id="total">1000</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div class="sm">备注说明</div>
+                                   <div>
+                                       <textarea id="sm" placeholder="请输入备注说明" class="font12 txt-r"></textarea>
+                                   </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-block">
+                                <div  class="button button-big button-theme" id="submit">转账</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../../static/js/app/driver.transfer.js' charset='utf-8'></script>
+</body>
+</html>

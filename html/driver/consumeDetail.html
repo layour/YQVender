@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>记录详情</title>
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div  class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="consumerList.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">记录详情</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0">
+                <ul>
+
+                </ul>
+                <div class="content-block dis-n">
+                    <div class="row">
+                        <div class="col-100"><a href="javascript:;" class="button button-big button-theme btn" id="submit">付款</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="" id="payform" type="hiddden" method="post">
+        <input type="text" id="WIDout_trade_no" name="WIDout_trade_no">
+        <input type="text" id="WIDsubject" name="WIDsubject">
+        <input type="text" id="WIDtotal_amount" name="WIDtotal_amount">
+        <input type="text" id="WIDbody" name="WIDbody">
+        <input type="text" id="out_trade_no" name="out_trade_no">
+        <input type="text" id="total_fee" name="total_fee">
+        <input type="text" id="body" name="body">
+        <input type="text" id="payType" name="payType">
+        <input type="text" id="token" name="token">
+    </form>
+</div>
+<script type="text/html" id="list">
+    {{#consumTime}}
+        <li class="item-content">
+            <div class="item-inner">
+                <div class="item-title w100p">
+                    <div class="flex-box">
+                        <div class="flex-box-1">订单日期</div>
+                        <div>{{consumTime}}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/consumTime}}
+    {{#venderName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">商家名称</div>
+                    <div>{{venderName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/venderName}}
+    {{#resourceGrade}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">消费资源</div>
+                    <div>{{resourceGrade}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/resourceGrade}}
+    {{#consumFee}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">消费金额</div>
+                    <div>{{consumFee}}豆</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/consumFee}}
+    {{#consumNum}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">消费数量</div>
+                    <div>{{consumNum}}L</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/consumNum}}
+    {{#unitFee}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">订单价格</div>
+                    <div>{{unitFee}}豆/L</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/unitFee}}
+    {{#resourceOutDeviceNo}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1">喷枪号</div>
+                    <div>{{resourceOutDeviceNo}}号枪</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/resourceOutDeviceNo}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.consumeDetail.js' charset='utf-8'></script>
+</body>
+</html>

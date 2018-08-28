@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>详情</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.detail.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current" id="detail">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left  close-popup" href="index.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">详情</h1>
+        </header>
+        <div class="content dis-n">
+            <div class="list-block media-list mt0 detail-info">
+                <ul id="detailList">
+
+                </ul>
+            </div>
+            <form method="post" action="" id="from">
+                <div class="list-block mt0">
+                    <ul>
+                        <!-- Text inputs -->
+                        <li v-if="isFillingStation">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">类型</div>
+                                    <select name="resourceGrade" id="resourceGrade">
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="price-box">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">单价(豆/升)</div>
+                                    <div class="item-input">
+                                        <span class="price p12"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">消费金额(豆)</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="请输入消费金额" value="" id="consumFee">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="quantity-box">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">数量(升)</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="请输入消费数量" value="" class="total">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">车牌号</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="车牌号" id="carNum" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">喷枪号</div>
+                                    <div class="item-input">
+                                        <select name="" id="resourceOutDeviceNo">
+                                            <option value="1">1号枪</option>
+                                            <option value="2">2号枪</option>
+                                            <option value="3">3号枪</option>
+                                            <option value="4">4号枪</option>
+                                            <option value="5">5号枪</option>
+                                            <option value="6">6号枪</option>
+                                            <option value="8">8号枪</option>
+                                            <option value="9">9号枪</option>
+                                            <option value="10">10号枪</option>
+                                            <option value="11">11号枪</option>
+                                            <option value="12">12号枪</option>
+                                            <option value="13">13号枪</option>
+                                            <option value="14">14号枪</option>
+                                            <option value="15">15号枪</option>
+                                            <option value="16">16号枪</option>
+                                            <option value="17">17号枪</option>
+                                            <option value="18">18号枪</option>
+                                            <option value="19">19号枪</option>
+                                            <option value="20">20号枪</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">付款方式</div>
+                                    <div class="item-input">
+                                        <select name="" id="pay_type">
+                                            <option value="1" data-payUseAmountType="1" class="ownAmount"><span class="mr4">个人账户</span></option>
+                                            <option value="1" data-payUseAmountType="2" class="turnIntoAmount"><span class="mr4">转账账户</span></option>
+                                            <option value="2">微信</option>
+                                            <option value="3">支付宝</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="align-top left-amount-box">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">剩余能源豆</div>
+                                    <div class="item-input lefAmount">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="align-top amount-box dis-n">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">本次支付所需</div>
+                                    <div class="item-input">
+                                        <span class="amount">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-block">
+                                <div class="button button-big button-theme" id="submit">提交支付</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    <form action="" id="payform" type="hiddden" method="post">
+        <input type="text" id="WIDout_trade_no" name="WIDout_trade_no">
+        <input type="text" id="WIDsubject" name="WIDsubject">
+        <input type="text" id="WIDtotal_amount" name="WIDtotal_amount">
+        <input type="text" id="WIDbody" name="WIDbody">
+        <input type="text" id="out_trade_no" name="out_trade_no">
+        <input type="text" id="total_fee" name="total_fee">
+        <input type="text" id="body" name="body">
+        <input type="text" id="payType" name="payType">
+        <input type="text" id="token" name="token">
+    </form>
+</div>
+<script type="x-tmpl-mustache" id="detail_demo">
+    <li>
+        <div class="item-link item-content">
+            <div class="item-media">
+                <img src="/app{{sitePicPath}}" onerror="this.src='../../static/img/siteImg.jpg'" class="site-img">
+            </div>
+            <div class="item-inner" style="background-image:none">
+                <div class="item-title-row">
+                    <div class="item-title">{{userName}}</div>
+                </div>
+                <div class="item-subtitle rating" data-starNum="{{starNum}}">
+                    {{#star}}
+                    <span class="xing">{{.}}</span>
+                    {{/star}}
+                </div>
+                <div class="item-text">
+                    <div class="flex-box">
+                        <div>电话：</div>
+                        <div><a href="tel:{{mobile}}">{{mobile}}</a></div>
+                    </div>
+                    <div class="flex-box">
+                        <div>接单数：</div>
+                        <div>{{ordersNum}}</div>
+                        单
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.site.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>信息详情</title>
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div  class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="/demos">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">信息详情</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0 list-xx">
+                <ul>
+
+                </ul>
+            </div>
+            <div class="content-block dis-n" id="public">
+                <div class="flex-box">
+                    <a class="button button-theme button-big flex-box-1 mr10" id="modify">修改</a>
+                    <div class="button button-theme button-big flex-box-1" id="disabled">删除</div>
+                </div>
+            </div>
+            <div class="content-block dis-n" id="rechive">
+                <div class="flex-box">
+                    <div class="button button-theme button-big  flex-box-1 mr10" id="cancle">取消接受</div>
+                    <div class="button button-theme button-big flex-box-1" id="complete">完成</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="list">
+    {{#infoTitle}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">信息标题:</div>
+                    <div>{{infoTitle}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/infoTitle}}
+    {{#updateTime}}
+        <li class="item-content">
+            <div class="item-inner">
+                <div class="item-title w100p">
+                    <div class="flex-box">
+                        <div class="flex-box-1 bt-labels">发布日期</div>
+                        <div>{{updateTimes}}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/updateTime}}
+    {{#beginAddress}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">起始地:</div>
+                    <div class="auto-line">{{beginAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/beginAddress}}
+    {{#endAddress}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">目的地:</div>
+                    <div class="auto-line">{{endAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/endAddress}}
+    {{#mobile}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">联系人手机:</div>
+                    <div>{{mobile}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/mobile}}
+    {{#fee}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">订单价格:</div>
+                    <div>{{fee}}豆</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/fee}}
+    {{#carNum}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">车牌号:</div>
+                    <div>{{carNum}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/carNum}}
+    {{#carType}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">车牌类型:</div>
+                    <div>{{carType}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/carType}}
+    {{#leaveTime}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">出发时间:</div>
+                    <div>{{leaveTime}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/leaveTime}}
+    {{#infoPicPath}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">车辆照片:</div>
+                    <div><img src="/app{{infoPicPath}}" width="50" height="40" onerror="this.src='../../static/img/default.png'"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/infoPicPath}}
+    {{#venderName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">商家名称:</div>
+                    <div>{{venderName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/venderName}}
+    {{#infoDetail}}
+    <li class="item-content">
+        <div class="item-inner">
+            {{infoDetail}}
+        </div>
+    </li>
+    {{/infoDetail}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.messageDetail.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>信息详情</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.index.css">
+</head>
+<body>
+<div class="page-group">
+    <div  class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="find.html" data-transition="slide-out">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">信息详情</h1>
+        </header>
+        <div class="content native-scroll bg-white">
+            <div class="list-block mt0 list-xx">
+                <ul>
+
+                </ul>
+            </div>
+            <!--<div class="content-block dis-n">-->
+                <!--<p><div class="button button-theme button-big" id="submit" data-Clickable="1">关注</div></p>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="list">
+    {{#infoTitle}}
+        <li class="item-content">
+            <div class="item-inner">
+                <div class="item-title w100p">
+                    <div class="flex-box">
+                        <div class="flex-box-1 bt-labels">信息标题</div>
+                        <div>{{infoTitle}}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/infoTitle}}
+    {{#updateTimes}}
+        <li class="item-content">
+            <div class="item-inner">
+                <div class="item-title w100p">
+                    <div class="flex-box">
+                        <div class="flex-box-1 bt-labels">发布日期</div>
+                        <div>{{updateTimes}}</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {{/updateTimes}}
+    {{#beginAddress}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">起始地</div>
+                    <div class="auto-line">{{beginAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/beginAddress}}
+    {{#endAddress}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">目的地</div>
+                    <div class="auto-line">{{endAddress}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/endAddress}}
+    {{#mobile}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">联系人手机</div>
+                    <div><a href="tel:{{mobile}}">{{mobile}}</a></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/mobile}}
+    <!--{{#fee}}-->
+    <!--<li class="item-content">-->
+        <!--<div class="item-inner">-->
+            <!--<div class="item-title w100p">-->
+                <!--<div class="flex-box">-->
+                    <!--<div class="flex-box-1 bt-labels">订单价格</div>-->
+                    <!--<div>{{fee}}能源豆</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</li>-->
+    <!--{{/fee}}-->
+    {{#carNum}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">车牌号</div>
+                    <div>{{carNum}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/carNum}}
+    {{#leaveTime}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">出发时间</div>
+                    <div>{{leaveTime}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/leaveTime}}
+    {{#infoPicPath}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">车辆照片</div>
+                    <div><img src="/app{{infoPicPath}}"  width="50" height="40" onerror="this.src='../../static/img/default.png'"></div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/infoPicPath}}
+    {{#venderName}}
+    <li class="item-content">
+        <div class="item-inner">
+            <div class="item-title w100p">
+                <div class="flex-box">
+                    <div class="flex-box-1 bt-labels">商家名称</div>
+                    <div>{{venderName}}</div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/venderName}}
+    {{#infoDetail}}
+    <li class="item-content">
+        {{infoDetail}}
+    </li>
+    {{/infoDetail}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.findDetail.js' charset='utf-8'></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>车源信息发布</title>
+    <link rel="stylesheet" href="../../static/css/lib/sui/sm.css">
+    <link rel="stylesheet" href="../../static/css/base.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="messagetList" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./myMessage.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">车源信息发布</h1>
+        </header>
+        <div class="content">
+            <form method="post" action="" id="from">
+                <div class="list-block mt10">
+                    <ul class="login-form-list">
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>信息标题</div>
+                                    <div>
+                                        <input type="text" placeholder="信息标题" id="carTypeDesc" class="txt-r">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>车型选择</div>
+                                    <div>
+                                        <select name="" id="carType">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>车源图片</div>
+                                    <div>
+                                        <img src="../../static/img/default.svg" id="infoPicPathUrl" width="80" height="50">
+                                        <input type="hidden" id="infoPicPath">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>起始地址</div>
+                                    <div class="flex-box address1 address-box">
+                                        <div class="flex-box-1">
+                                            <select name=""  id="beginProvince" class="address txt-r province" data-type="province" width="100">
+                                                <option value="">请选择</option>
+                                                <optgroup class="province-box">
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="flex-box-1">
+                                            <select name="" id="beginCity" class="address txt-r city" data-type="city" width="100">
+                                                <option value="">请选择</option>
+                                                <optgroup class="city-box">
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="flex-box-1">
+                                            <select name="" id="beginCounty"  class="address txt-r county" data-type="county" width="100">
+                                                <option value="">请选择</option>
+                                                <optgroup class="county-box">
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input type="text" placeholder="详细地址" id="beginAddress">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>目的地</div>
+                                    <div class="flex-box address2 address-box">
+                                        <div class="flex-box-1">
+                                            <select name="" id="endProvince" class="address txt-r province" data-type="province" width="100">
+                                                <option value="">请选择</option>
+                                                <optgroup class="province-box">
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="flex-box-1">
+                                            <select name="" id="endCity" class="address txt-r city" data-type="city" width="100">
+                                                <option value="">请选择</option>
+                                                <optgroup class="city-box">
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <div class="flex-box-1">
+                                            <select name="" id="endCounty" class="address txt-r county" data-type="county" width="100">
+                                                <option value="">请选择</option>
+                                                <optgroup class="county-box">
+
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <input type="text" placeholder="详细地址" id="endAddress">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>出发时间</div>
+                                    <div><input type="text" placeholder="出发时间" id="leaveTime"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>货物类型</div>
+                                    <div>
+                                        <select name="" id="goodsType">
+                                            <option value="1">汽油</option>
+                                            <option value="2">柴油</option>
+                                            <option value="3">天然气</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border-box">
+                            <div class="item-content">
+                                <div class="item-inner item-border">
+                                    <div>信息描述</div>
+                                    <div>
+                                        <textarea name="" id="infoDetail"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content-block">
+                                <div class="button button-big button-theme" id="login"><div id="submit">下一步</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="option">
+    {{#children}}
+    <option value="{{code}}" data-id="{{index}}">{{name}}</option>
+    {{/children}}
+
+</script>
+<script src="../../static/js/lib/zepto.js"></script>
+<script type='text/javascript' src='../../static/js/lib/sui/sm.js' charset='utf-8'></script>
+<script src="../../static/js/lib/mustache/mustache.min.js"></script>
+<script src="../../static/js/base.js"></script>
+<script src="../../static/js/config.js"></script>
+<script src="../../static/js/messageRentCarPublic.js"></script>
+</body>
+</html>

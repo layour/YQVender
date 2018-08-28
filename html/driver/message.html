@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>消息列表</title>
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="messagetList" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./me.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">发布的消息</h1>
+            <a class="button button-link button-nav pull-right close-popup" href="./messageType.html">
+                发布
+            </a>
+        </header>
+        <div class="content native-scroll infinite-scroll"  data-distance="60">
+            <div class="list-block media-list mt0">
+                <ul id="listBlock" data-currentPage="1">
+                </ul>
+            </div>
+            <!-- 加载提示符 -->
+            <div class="infinite-scroll-preloader" style="display: block;">
+                <div class="preloader">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="list">
+    {{#list}}
+    <li>
+        <a href="./messageDetail.html?id={{id}}&type={{messageType}}&&noticeInfoId={{driverNoticeInfoId}}" class="item-link item-content close-popup">
+            <div class="item-inner">
+                <div class="item-title-row">
+                    <div class="item-title">{{date}}</div>
+                    {{#messageStatus}}<div class="item-after">{{messageStatus}}</div>{{/messageStatus}}
+                </div>
+                <div class="item-text">{{infoTitle}}</div>
+            </div>
+        </a>
+    </li>
+    {{/list}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.message.js' charset='utf-8'></script>
+</body>
+</html>

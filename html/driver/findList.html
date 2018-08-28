@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>发现列表</title>
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.find.css">
+</head>
+<body>
+<div class="page-group" id="find">
+    <div class="page page-current" id="pageFind">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left  close-popup" href="find.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">发现列表</h1>
+        </header>
+        <div class="content">
+            <div class="list-block media-list mt0 find-list">
+                <ul id="findList">
+
+                </ul>
+                <!-- 加载提示符 -->
+                <div class="infinite-scroll-preloader">
+                    <div class="preloader">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="infoList1">
+    {{#list}}
+    <li>
+        <a href="./findDetail.html?id={{id}}&type=2" class="div100p close-popup">
+            <div class="flex-box item">
+                <div>
+                    <img src="/app{{infoPicPath}}" width="80" height="50" onerror="this.src='../../static/img/siteImg.jpg'">
+                </div>
+                <div class="flex-box-1 find-list-item">
+                    {{#beginCityName}}
+                    <div class="flex-box label-block">
+                        <div class="label-box">起始地：</div>
+                        <div>{{beginCityName}}</div>
+                    </div>
+                    {{/beginCityName}}
+                    {{#endCityName}}
+                    <div class="flex-box flex-box-1">
+                        <div class="label-box">目的地：</div>
+                        <div>{{endCityName}}</div>
+                    </div>
+                    {{/endCityName}}
+                    {{#carType}}
+                    <div class="flex-box label-block">
+                        <div class="label-box">车型：</div>
+                        <div>{{carType}}</div>
+                    </div>
+                    {{/carType}}
+                    {{#goodsType}}
+                    <div class="flex-box flex-box-1">
+                        <div class="label-box">货物：</div>
+                        <div>{{goodsType}}</div>
+                    </div>
+                    {{/goodsType}}
+                    {{#mobile}}
+                    <div>
+                        联系方式 <span>{{mobile}}</span>
+                    </div>
+                    {{/mobile}}
+                </div>
+            </div>
+        </a>
+    </li>
+    {{/list}}
+</script>
+<script type="x-tmpl-mustache" id="infoList2">
+    {{#list}}
+    <li>
+        <a href="./findDetail.html?id={{id}}&type=3" class="div100p close-popup">
+            <div class="flex-box item">
+                <div>
+                    <img src="/app{{infoPicPath}}"  onerror="this.src='../../static/img/siteImg.jpg'">
+                </div>
+                <div class="flex-box-1 find-list-item">
+                    <div class="flex-box flex-box-1">
+                        <div class="label-box">商家类型：</div>
+                        <div>{{companyTypeInfo}}</div>
+                    </div>
+                    <div class="limit-length">{{infoDetail}}</div>
+                </div>
+            </div>
+        </a>
+    </li>
+    {{/list}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.findList.js' charset='utf-8'></script>
+</body>
+</html>

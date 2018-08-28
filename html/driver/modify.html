@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>个人信息</title>
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.loginRegister.css">
+</head>
+<body>
+<div class="page-group" id="register_login_form">
+    <div class="page page-current" id="page-city-picker">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left close-popup" href="./me.html">
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">个人信息</h1>
+        </header>
+        <div class="content native-scroll dis-n">
+            <div class="list-block mt10" id="modify">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">头像</div>
+                                <div class="item-input">
+                                    <img src="" alt="" id="headImgPath" width="40"  onerror="this.src='../../static/img/me.png'">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">姓名</div>
+                                <div class="item-input">
+                                    <input type="text"  id="userName" value="" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">性别</div>
+                                <div class="item-input">
+                                    <select  id="sex">
+                                        <option value="">请选择性别</option>
+                                        <option value="男">男</option>
+                                        <option value="女">女</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">手机</div>
+                                <div class="item-input">
+                                    <input type="text" id="mobile" value="" placeholder="请输入手机号" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">地址</div>
+                                <div class="item-input address1">
+                                    <div class="flex-box">
+                                        <input type="text" id='city_picker' value=""  placeholder="请选择您的所在地址"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">车牌</div>
+                                <div class="item-input">
+                                    <input type="text" id="carNum"  value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">汽车类型</div>
+                                <div class="item-input">
+                                    <input type="text" id="carType"  value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100"><a href="javascript:;" class="button button-big button-theme" id="save">保存</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="x-tmpl-mustache" id="option">
+    {{#children}}
+    <option value="{{code}}" data-id="{{index}}">{{name}}</option>
+    {{/children}}
+</script>
+<script type='text/javascript' src='../../static/js/app/driver.modify.js' charset='utf-8'></script>
+</body>
+</html>

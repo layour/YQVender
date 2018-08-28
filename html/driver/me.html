@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../../static/css/app/driver.me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="me" class="page page-current">
+        <div class="content native-scroll mb60">
+            <div class="top">
+                <a href="./modify.html" class="close-popup">
+                    <div class="avator-box"><img src="../../static/img/me.png" onerror="this.src='../../static/img/me.png'"></div>
+                    <div class="user-name"></div>
+                </a>
+            </div>
+            <div class="amount-box">
+                <div class="flex-box amount">
+                    <a class="flex-box-1 item close-popup" href="./rechargeList.html">
+                        <div class="num" id="rechageAccount">0</div>
+                        <div class="sm" >充值金额</div>
+                    </a>
+                    <a class="flex-box-1 item close-popup" href="./transferRecord.html">
+                        <div class="num" id="transferAmount">0</div>
+                        <div class="sm" >转账金额</div>
+                    </a>
+                </div>
+            </div>
+            <div class="list-block media-list inset mt10">
+                <ul>
+                    <li>
+                        <a href="./wallet.html" class="item-link item-content close-popup">
+                            <div class="item-media"><img src="../../static/img/purse.png" width="44"></div>
+                            <div class="item-inner">
+                                <div class="item-subtitle">我的钱包</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="item-link item-content scan">
+                            <div class="item-media"><img src="../../static/img/code.png" width="44"></div>
+                            <div class="item-inner">
+                                <div class="item-subtitle">扫一扫</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="./message.html?type=2" class="item-link item-content close-popup">
+                            <div class="item-media"><img src="../../static/img/message.png" width="44"></div>
+                            <div class="item-inner">
+                                <div class="item-subtitle">我的信息</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./consumerList.html" class="item-link item-content close-popup">
+                            <div class="item-media"><img src="../../static/img/expensesRecord.png" width="44"></div>
+                            <div class="item-inner">
+                                <div class="item-subtitle">消费记录</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./set.html" class="item-link item-content close-popup">
+                            <div class="item-media"><img src="../../static/img/set.png" width="44"></div>
+                            <div class="item-inner">
+                                <div class="item-subtitle">设置</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./about.html" class="item-link item-content  close-popup">
+                            <div class="item-media"><img src="../../static/img/about.png" width="44"></div>
+                            <div class="item-inner">
+                                <div class="item-subtitle">关于</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer flex-box">
+            <div class="flex-box-1">
+                <a href="./index.html" class="close-popup">
+                    <div><span class="icon icon-home"></span></div>
+                    <div><span class="tab-label">首页</span></div>
+                </a>
+            </div>
+            <div class="flex-box-1">
+                <a href="./find.html" class="close-popup ">
+                    <div> <span class="icon icon-star"></span></div>
+                    <div><span class="tab-label">发现</span></div>
+                </a>
+            </div>
+            <div class="flex-box-1">
+                <a href="./me.html" class="close-popup active">
+                    <div><span class="icon icon-me"></span></div>
+                    <div><span class="tab-label">我的</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function downloadJSAtOnload() {
+        var element = document.createElement("script");
+        element.src = "../../static/js/app/driver.me.js";
+        document.body.appendChild(element);
+    }
+    setTimeout(function () {
+        downloadJSAtOnload();
+    },10)
+</script>
+<!--<script type='text/javascript' src='../../static/js/app/driver.me.js' charset='utf-8'></script>-->
+</body>
+</html>

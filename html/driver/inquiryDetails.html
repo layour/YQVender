@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>查询明细</title>
+    <link rel="stylesheet" href="../../static/css/lib/sui/sm.css">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+<div class="page-group">
+    <div id="account" class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="./account.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+
+            </a>
+            <h1 class="title">查询明细</h1>
+        </header>
+        <div class="content native-scroll">
+            <div class="list-block mt0">
+                <div class="account-box">
+                    <div class="flex-box">
+                        <div class="flex-box-1">能源豆</div>
+                        <div id="total">0.00</div>
+                    </div>
+                    <div class="flex-box">
+                        <div>可用能源豆:</div>
+                        <div id="own_amount">0.00</div>
+                    </div>
+                    <div class="flex-box">
+                        <div>物流商转账账户:</div>
+                        <div id="turn_into_amount">0.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-block-title ptb5">交易记录</div>
+            <div class="list-block media-list">
+                <ul>
+                    <li>
+                        <a href="./consumerDetails.html" class="item-link item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">充值</div>
+                                    <div class="item-after">2017-12-05 17:25:30</div>
+                                </div>
+                                <div class="item-subtitle">1000.00</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./consumerDetails.html" class="item-link item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">充值</div>
+                                    <div class="item-after">2017-12-05 17:25:30</div>
+                                </div>
+                                <div class="item-subtitle">1000.00</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./consumerDetails.html" class="item-link item-content">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">充值</div>
+                                    <div class="item-after">2017-12-05 17:25:30</div>
+                                </div>
+                                <div class="item-subtitle">1000.00</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/lib/zepto.js"></script>
+<script type='text/javascript' src='../../static/js/lib/sui/sm.js' charset='utf-8'></script>
+<script src="../../static/js/base.js"></script>
+<script src="../../static/js/config.js"></script>
+<script>
+    $(function () {
+        $.init();
+        var score  =getCookie("score");
+        $("#score").val(score);
+    })
+</script>
+</body>
+</html>
