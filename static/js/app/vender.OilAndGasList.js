@@ -6456,8 +6456,9 @@ summerready = function(){
                 if(listData){
                     for (var i = 0; i < listData.length; i++) {
                         listData[i].resourceType = filterOilAndGasType(listData[i].resourceGrade);
-                        listData[i].isShowAuditStatus = listData[i].usedUnitFee <= 0 ? true : false;
+                        listData[i].isShowAuditStatus = listData[i].platformUnitFee <= 0 ? true : false;
                         listData[i].auditStatus = filterAuditStatus(listData[i].auditStatus);
+                        listData[i].agreementPrice = parseFloat(listData[i].usedUnitFee) - parseFloat(listData[i].platformDiffVal);
                     }
                     addItem("#list",response.data,".list-box");
                 }

@@ -6461,10 +6461,10 @@ summerready = function(){
                     }else{
                         var consumCategory = 1;
                     }
-                    option += '<option value="' + venderResourceList[i].id + '" data-unit="' + venderResourceList[i].usedUnitFee + '" data-consumCategory ="'+consumCategory+'">' + filterOilAndGasType(resourceGrade) + '</option>';
+                    option += '<option value="' + venderResourceList[i].id + '" data-unit="' + venderResourceList[i].platformUnitFee + '" data-consumCategory ="'+consumCategory+'">' + filterOilAndGasType(resourceGrade) + '</option>';
                 }
                 $venderResourceId.html(option);
-                $usedUnitFee.val(response.data.venderResourceList[0].usedUnitFee);
+                $usedUnitFee.val(response.data.venderResourceList[0].platformUnitFee);
             }
         }
     })

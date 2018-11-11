@@ -37,11 +37,13 @@
 
 <script id="list" type="text/html">
     {{#list}}
-    <div class="item">
+    <div class="item" style="font-size: .6rem;">
         <div class="flex-box">
             <div class="resource-type-name mr10">{{resourceType}}</div>
-            {{#usedUnitFee}}<div class="flex-box-1"><span class="mr4">协议价: </span><span class="used-unit-fee">{{usedUnitFee}}能源豆/L</span></div>{{/usedUnitFee}}
-            {{^usedUnitFee}}<div class="flex-box-1"><span class="mr4">申请价: </span><span class="used-unit-fee">{{applyUnitFee}}能源豆/L</span></div>{{/usedUnitFee}}
+            {{#usedUnitFee}}
+            <div class="flex-box-1"><span>协议价: </span><span class="used-unit-fee" style="margin-right: .3rem;">{{agreementPrice}}豆/L</span><span style="font-size:.5rem;color: #999;text-decoration:line-through">{{usedUnitFee}}豆/L</span></div>
+            {{/usedUnitFee}}
+            {{^usedUnitFee}}<div class="flex-box-1"><span>申请价: </span><span class="used-unit-fee">{{applyUnitFee}}豆/L</span></div>{{/usedUnitFee}}
             {{#isShowAuditStatus}}<div>{{auditStatus}}</div>{{/isShowAuditStatus}}
         </div>
         <div class="flex-box">

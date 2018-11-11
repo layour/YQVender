@@ -6439,10 +6439,13 @@ summerready = function(){
     ajaxRequests('/venderWithdrawLog/withdrawalsApplyPre', 'get', {}, function (response) {
         if (response.retCode === '0') {
             var venderData = response.data.vender;
-            var balance = venderData.collectAmount + venderData.rechargeAmount;
+            //修改账户能源豆和可提现能源豆
+            // var balance = venderData.collectAmount + venderData.rechargeAmount;
+            // $(".balance").html(balance);
+            var balance = venderData.collectAmountWithService;
             $(".balance").html(balance);
-            $(".cash-withdrawal-amount").html(venderData.collectAmount);
-            cash_withdrawal_amount = venderData.collectAmount;
+            $(".cash-withdrawal-amount").html(venderData.withdrawnTotalAmount);
+            cash_withdrawal_amount = venderData.withdrawnTotalAmount;
             $(".content").removeClass("dis-n");
             var venderBankCardList = response.data.venderBankCardList;
             var tmpl = '';
