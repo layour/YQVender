@@ -36,8 +36,8 @@ summerready = function(){
                             }
                         );
                     }
-                } else if ($summer.os == "ios") {
-                    var NEW_VERSION = String(res.version);
+                } else if ($summer.os == "ios" && res.ios) {
+                    var NEW_VERSION = String(res.ios.version);
                     if (NEW_VERSION > appVersion) {
                         $.confirm('检测到新版本，是否升级？',
                             function () {
